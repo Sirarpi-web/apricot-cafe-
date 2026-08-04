@@ -1,6 +1,3 @@
-Here is a **menu-only** website code. It has clickable categories: breakfast, lunch, dinner, coffee, drinks, cocktails, desserts. Main language is Armenian, with Russian and English buttons.
-
-```html
 <!DOCTYPE html>
 <html lang="hy">
 <head>
@@ -190,18 +187,14 @@ Here is a **menu-only** website code. It has clickable categories: breakfast, lu
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
+      gap: 18px;
     }
 
     .menu-item {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 16px;
-      align-items: start;
+      overflow: hidden;
       background: #fff;
       border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 20px;
+      border-radius: 22px;
       box-shadow: 0 10px 28px rgba(35, 23, 19, 0.05);
       transition: 0.2s ease;
     }
@@ -210,6 +203,21 @@ Here is a **menu-only** website code. It has clickable categories: breakfast, lu
       transform: translateY(-3px);
       box-shadow: var(--shadow);
       border-color: rgba(244, 163, 64, 0.65);
+    }
+
+    .menu-photo {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      background: var(--cream);
+    }
+
+    .menu-info {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: start;
+      padding: 18px;
     }
 
     .menu-item h3 {
@@ -249,8 +257,12 @@ Here is a **menu-only** website code. It has clickable categories: breakfast, lu
         grid-template-columns: 1fr;
       }
 
-      .menu-item {
+      .menu-info {
         grid-template-columns: 1fr;
+      }
+
+      .menu-photo {
+        height: 210px;
       }
     }
   </style>
@@ -285,9 +297,7 @@ Here is a **menu-only** website code. It has clickable categories: breakfast, lu
 
     <section>
       <div class="menu-head">
-        <div>
-          <h2 id="categoryTitle">Նախաճաշ</h2>
-        </div>
+        <h2 id="categoryTitle">Նախաճաշ</h2>
         <p id="categoryText">Թեթեւ, համեղ եւ հագեցնող ընտրանի օրը սկսելու համար։</p>
       </div>
 
@@ -296,6 +306,79 @@ Here is a **menu-only** website code. It has clickable categories: breakfast, lu
   </main>
 
   <script>
+    const photos = {
+      breakfast: [
+        "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1590412200988-a436970781fa?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?auto=format&fit=crop&w=900&q=85"
+      ],
+      lunch: [
+        "https://images.unsplash.com/photo-1546793665-c74683f339c1?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85"
+      ],
+      dinner: [
+        "https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=85"
+      ],
+      coffee: [
+        "https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1497636577773-f1231844b336?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1561882468-9110e03e0f78?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1534687941688-651ccaafbff8?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=900&q=85"
+      ],
+      drinks: [
+        "https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1502741224143-90386d7f8c82?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=900&q=85"
+      ],
+      cocktails: [
+        "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1609951651556-5334e2706168?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1556855810-ac404aa91e85?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1605270012917-bf157c5a9541?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1545438102-799c3991ffb2?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1500217052183-bc01eee1a74e?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1551751299-1b51cab2694c?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=85"
+      ],
+      desserts: [
+        "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1549903072-7e6e0bedb7fb?auto=format&fit=crop&w=900&q=85"
+      ]
+    };
+
     const translations = {
       hy: {
         subtitle: "Մենյու",
@@ -610,16 +693,19 @@ Here is a **menu-only** website code. It has clickable categories: breakfast, lu
 
       menuGrid.innerHTML = "";
 
-      menu[currentLang][currentCategory].forEach(item => {
+      menu[currentLang][currentCategory].forEach((item, index) => {
         const menuItem = document.createElement("article");
         menuItem.className = "menu-item";
 
         menuItem.innerHTML = `
-          <div>
-            <h3>${item[0]}</h3>
-            <p>${item[1]}</p>
+          <img class="menu-photo" src="${photos[currentCategory][index]}" alt="${item[0]}" loading="lazy">
+          <div class="menu-info">
+            <div>
+              <h3>${item[0]}</h3>
+              <p>${item[1]}</p>
+            </div>
+            <div class="price">${item[2]}</div>
           </div>
-          <div class="price">${item[2]}</div>
         `;
 
         menuGrid.appendChild(menuItem);
