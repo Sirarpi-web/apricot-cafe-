@@ -1,4 +1,4 @@
-Paste this as your `index.html` file:
+Here is a **menu-only** website code. It has clickable categories: breakfast, lunch, dinner, coffee, drinks, cocktails, desserts. Main language is Armenian, with Russian and English buttons.
 
 ```html
 <!DOCTYPE html>
@@ -6,21 +6,22 @@ Paste this as your `index.html` file:
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apricot Cafe</title>
+  <title>Apricot Cafe Menu</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --apricot: #f4a340;
       --apricot-dark: #c9652d;
-      --cream: #fff7ec;
-      --text: #241914;
-      --muted: #74665d;
-      --line: #ead8c8;
+      --cream: #fff7ed;
+      --text: #231713;
+      --muted: #746258;
+      --line: #efd8c4;
       --white: #ffffff;
+      --shadow: 0 18px 45px rgba(201, 101, 45, 0.16);
     }
 
     * {
@@ -29,936 +30,599 @@ Paste this as your `index.html` file:
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       font-family: "Montserrat", Arial, sans-serif;
       background: var(--white);
       color: var(--text);
-      line-height: 1.6;
+      min-height: 100vh;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(1180px, calc(100% - 32px));
+    .page {
+      width: min(1180px, calc(100% - 28px));
       margin: 0 auto;
+      padding: 34px 0 60px;
     }
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .nav {
-      min-height: 76px;
+    .top {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 34px;
     }
 
-    .logo {
+    .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: 0.04em;
+      gap: 14px;
     }
 
-    .logo-mark {
-      width: 46px;
-      height: 46px;
+    .brand-mark {
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
-      display: grid;
-      place-items: center;
       background: var(--apricot);
       color: #fff;
-      font-weight: 800;
-      box-shadow: 0 10px 24px rgba(201, 101, 45, 0.25);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 24px;
+      box-shadow: var(--shadow);
     }
 
-    .logo-text span {
-      display: block;
-      font-size: 11px;
-      font-weight: 600;
+    .brand h1 {
+      font-size: clamp(28px, 5vw, 54px);
+      line-height: 1;
+      color: var(--text);
+    }
+
+    .brand p {
       color: var(--muted);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
       font-size: 14px;
       font-weight: 700;
+      margin-top: 6px;
     }
 
-    .nav-links a:hover {
-      color: var(--apricot-dark);
-    }
-
-    .lang-switch {
+    .lang {
       display: flex;
-      gap: 6px;
-      padding: 5px;
+      gap: 7px;
+      padding: 6px;
       border: 1px solid var(--line);
       border-radius: 999px;
       background: var(--cream);
+      flex-shrink: 0;
     }
 
-    .lang-switch button {
+    .lang button {
       border: 0;
       background: transparent;
       color: var(--muted);
-      font-weight: 800;
-      padding: 7px 10px;
+      font-weight: 900;
+      padding: 8px 11px;
       border-radius: 999px;
       cursor: pointer;
     }
 
-    .lang-switch button.active {
+    .lang button.active {
       background: var(--apricot);
       color: #fff;
     }
 
-    .hero {
-      padding: 74px 0 56px;
-      background:
-        radial-gradient(circle at 16% 12%, rgba(244, 163, 64, 0.18), transparent 30%),
-        linear-gradient(180deg, #fff, #fff8f0);
+    .intro {
+      background: linear-gradient(135deg, #fff7ed, #ffffff);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 26px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 48px;
-      align-items: center;
+    .intro h2 {
+      font-size: clamp(26px, 4vw, 44px);
+      line-height: 1.08;
+      margin-bottom: 10px;
     }
 
-    .eyebrow {
-      color: var(--apricot-dark);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 13px;
-      margin-bottom: 16px;
-    }
-
-    h1 {
-      font-size: clamp(42px, 6vw, 82px);
-      line-height: 0.98;
-      letter-spacing: 0;
-      margin-bottom: 22px;
-    }
-
-    h1 span {
+    .intro h2 span {
       color: var(--apricot-dark);
       font-style: italic;
     }
 
-    .hero p {
-      max-width: 620px;
+    .intro p {
       color: var(--muted);
-      font-size: 18px;
-      margin-bottom: 30px;
+      max-width: 720px;
+      font-size: 16px;
+      font-weight: 500;
     }
 
-    .hero-actions {
+    .categories {
       display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 22px;
-      border-radius: 999px;
-      border: 1px solid var(--apricot-dark);
-      font-weight: 800;
-      transition: 0.25s ease;
-    }
-
-    .btn-primary {
-      background: var(--apricot);
-      color: #fff;
-      border-color: var(--apricot);
-      box-shadow: 0 12px 26px rgba(201, 101, 45, 0.24);
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .hero-card {
-      position: relative;
-      border-radius: 28px;
-      overflow: hidden;
-      box-shadow: 0 30px 60px rgba(36, 25, 20, 0.18);
-      min-height: 520px;
-    }
-
-    .hero-card img {
-      width: 100%;
-      height: 520px;
-      object-fit: cover;
-    }
-
-    .hero-badge {
-      position: absolute;
-      left: 24px;
-      bottom: 24px;
-      right: 24px;
-      padding: 18px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(12px);
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      font-weight: 800;
-    }
-
-    section {
-      padding: 78px 0;
-    }
-
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 24px;
-      align-items: end;
-      margin-bottom: 34px;
-    }
-
-    .section-head h2 {
-      font-size: clamp(30px, 4vw, 48px);
-      line-height: 1.08;
-    }
-
-    .section-head p {
-      color: var(--muted);
-      max-width: 520px;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 36px;
-      align-items: center;
-    }
-
-    .about-photo {
-      border-radius: 26px;
-      overflow: hidden;
-      box-shadow: 0 22px 46px rgba(36, 25, 20, 0.14);
-    }
-
-    .about-photo img {
-      height: 440px;
-      width: 100%;
-      object-fit: cover;
-    }
-
-    .about-text {
-      padding: 32px;
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      background: #fff;
-    }
-
-    .about-text h2 {
-      font-size: clamp(30px, 4vw, 46px);
-      margin-bottom: 16px;
-    }
-
-    .about-text p {
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 28px;
-    }
-
-    .feature {
-      background: var(--cream);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 18px;
-    }
-
-    .feature strong {
-      display: block;
-      color: var(--apricot-dark);
-      margin-bottom: 5px;
-    }
-
-    .menu-section {
-      background: #fff8f0;
-    }
-
-    .tabs {
-      display: flex;
-      flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 28px;
+      overflow-x: auto;
+      padding: 8px 0 20px;
+      scrollbar-width: thin;
+      margin-bottom: 12px;
     }
 
-    .tab-btn {
+    .category-btn {
       border: 1px solid var(--line);
       background: #fff;
       color: var(--text);
       border-radius: 999px;
-      padding: 11px 18px;
-      font-weight: 800;
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: 900;
+      white-space: nowrap;
       cursor: pointer;
+      transition: 0.2s ease;
     }
 
-    .tab-btn.active {
+    .category-btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--apricot);
+    }
+
+    .category-btn.active {
       background: var(--apricot);
       color: #fff;
       border-color: var(--apricot);
+      box-shadow: 0 12px 24px rgba(201, 101, 45, 0.22);
+    }
+
+    .menu-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin: 18px 0 20px;
+    }
+
+    .menu-head h2 {
+      font-size: clamp(28px, 4vw, 42px);
+    }
+
+    .menu-head p {
+      color: var(--muted);
+      font-weight: 600;
+      max-width: 520px;
     }
 
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+      gap: 16px;
     }
 
     .menu-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 20px;
-      border-radius: 20px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: start;
       background: #fff;
       border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 28px rgba(35, 23, 19, 0.05);
+      transition: 0.2s ease;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+      border-color: rgba(244, 163, 64, 0.65);
     }
 
     .menu-item h3 {
       font-size: 17px;
-      margin-bottom: 5px;
+      line-height: 1.25;
+      margin-bottom: 7px;
     }
 
     .menu-item p {
       color: var(--muted);
       font-size: 14px;
+      font-weight: 500;
     }
 
     .price {
       color: var(--apricot-dark);
       font-weight: 900;
       white-space: nowrap;
+      font-size: 17px;
     }
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr 0.8fr;
-      gap: 16px;
-    }
-
-    .gallery-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 24px;
-      min-height: 280px;
-    }
-
-    .gallery-card.large {
-      grid-row: span 2;
-      min-height: 576px;
-    }
-
-    .gallery-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    .gallery-card:hover img {
-      transform: scale(1.06);
-    }
-
-    .gallery-card span {
-      position: absolute;
-      left: 18px;
-      bottom: 18px;
-      background: rgba(255, 255, 255, 0.88);
-      color: var(--text);
-      padding: 9px 14px;
-      border-radius: 999px;
-      font-weight: 800;
-    }
-
-    .contact {
-      background: var(--cream);
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 36px;
-      align-items: center;
-    }
-
-    .contact-card {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      padding: 30px;
-    }
-
-    .contact-card h2 {
-      font-size: clamp(30px, 4vw, 46px);
-      margin-bottom: 18px;
-    }
-
-    .contact-list {
-      display: grid;
-      gap: 14px;
-      margin-top: 22px;
-    }
-
-    .contact-list div {
-      padding: 16px;
-      border-radius: 16px;
-      background: var(--cream);
-      font-weight: 700;
-    }
-
-    .contact-photo {
-      border-radius: 26px;
-      overflow: hidden;
-    }
-
-    .contact-photo img {
-      height: 470px;
-      width: 100%;
-      object-fit: cover;
-    }
-
-    footer {
-      padding: 34px 0;
-      border-top: 1px solid var(--line);
-      text-align: center;
-      color: var(--muted);
-      background: #fff;
-    }
-
-    @media (max-width: 900px) {
-      .nav {
-        flex-wrap: wrap;
-        padding: 14px 0;
+    @media (max-width: 760px) {
+      .top {
+        align-items: flex-start;
+        flex-direction: column;
       }
 
-      .nav-links {
-        order: 3;
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 14px;
-      }
-
-      .hero-grid,
-      .about-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-card,
-      .hero-card img {
-        min-height: auto;
-        height: 420px;
-      }
-
-      .section-head {
+      .menu-head {
         display: block;
       }
 
-      .section-head p {
-        margin-top: 10px;
+      .menu-head p {
+        margin-top: 8px;
       }
 
-      .menu-grid,
-      .features,
-      .gallery-grid {
+      .menu-grid {
         grid-template-columns: 1fr;
-      }
-
-      .gallery-card.large {
-        min-height: 340px;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .container {
-        width: min(100% - 22px, 1180px);
-      }
-
-      section {
-        padding: 56px 0;
-      }
-
-      .hero {
-        padding: 48px 0;
       }
 
       .menu-item {
-        display: block;
-      }
-
-      .price {
-        display: block;
-        margin-top: 10px;
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="container nav">
-      <a class="logo" href="#home">
-        <span class="logo-mark">A</span>
-        <span class="logo-text">
-          Apricot Cafe
-          <span data-i18n="brandTag">բիստրո եւ սրճարան</span>
-        </span>
-      </a>
+  <main class="page">
+    <header class="top">
+      <div class="brand">
+        <div class="brand-mark">A</div>
+        <div>
+          <h1>Apricot Cafe</h1>
+          <p data-i18n="subtitle">Մենյու</p>
+        </div>
+      </div>
 
-      <nav class="nav-links">
-        <a href="#home" data-i18n="navHome">Գլխավոր</a>
-        <a href="#about" data-i18n="navAbout">Մեր մասին</a>
-        <a href="#menu" data-i18n="navMenu">Մենյու</a>
-        <a href="#gallery" data-i18n="navGallery">Պատկերասրահ</a>
-        <a href="#contact" data-i18n="navContact">Կապ</a>
-      </nav>
-
-      <div class="lang-switch">
+      <div class="lang">
         <button class="active" data-lang="hy">HY</button>
         <button data-lang="ru">RU</button>
         <button data-lang="en">EN</button>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
+    <section class="intro">
+      <h2 data-i18n-html="title">Ընտրեք ձեր սիրելի <span>համը</span></h2>
+      <p data-i18n="description">
+        Մեր մենյուն բաժանված է կատեգորիաների, որպեսզի հեշտ գտնեք նախաճաշ, լանչ, ընթրիք, սուրճ, խմիչքներ, կոկտեյլներ եւ աղանդեր։
+      </p>
+    </section>
+
+    <nav class="categories" id="categories"></nav>
+
+    <section>
+      <div class="menu-head">
         <div>
-          <div class="eyebrow" data-i18n="heroEyebrow">Երեւանի համով անկյունը</div>
-          <h1 data-i18n-html="heroTitle">Բարի գալուստ <span>Apricot</span></h1>
-          <p data-i18n="heroText">
-            Սպիտակ, լուսավոր եւ ջերմ սրճարան՝ նախաճաշի, հիմնական ուտեստների, աղանդերի, սուրճի եւ կոկտեյլների համար։
-          </p>
-          <div class="hero-actions">
-            <a href="#menu" class="btn btn-primary" data-i18n="seeMenu">Տեսնել մենյուն</a>
-            <a href="#contact" class="btn" data-i18n="reserve">Ամրագրել սեղան</a>
-          </div>
+          <h2 id="categoryTitle">Նախաճաշ</h2>
         </div>
-
-        <div class="hero-card">
-          <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1100&q=85" alt="Apricot Cafe interior">
-          <div class="hero-badge">
-            <span data-i18n="openEveryday">Բաց է ամեն օր</span>
-            <span>09:00 - 00:00</span>
-          </div>
-        </div>
+        <p id="categoryText">Թեթեւ, համեղ եւ հագեցնող ընտրանի օրը սկսելու համար։</p>
       </div>
-    </section>
 
-    <section id="about">
-      <div class="container about-grid">
-        <div class="about-photo">
-          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=85" alt="Coffee and dessert">
-        </div>
-
-        <div class="about-text">
-          <div class="eyebrow" data-i18n="aboutEyebrow">Մեր պատմությունը</div>
-          <h2 data-i18n="aboutTitle">Համ, ջերմություն եւ գեղեցիկ պահեր</h2>
-          <p data-i18n="aboutText1">
-            Apricot Cafe-ն ստեղծված է նրանց համար, ովքեր սիրում են համեղ ուտեստ, գեղեցիկ միջավայր եւ անկեղծ հյուրընկալություն։
-          </p>
-          <p data-i18n="aboutText2">
-            Մեր մենյուում կգտնեք նախաճաշեր, աղցաններ, պիցցա, պաստա, խորոված ուտեստներ, աղանդեր, սուրճ, լիմոնադներ եւ բարի ընտրանի։
-          </p>
-
-          <div class="features">
-            <div class="feature">
-              <strong data-i18n="feature1Title">Թարմ</strong>
-              <span data-i18n="feature1Text">Ամեն օր ընտրված մթերքներ</span>
-            </div>
-            <div class="feature">
-              <strong data-i18n="feature2Title">Հարմար</strong>
-              <span data-i18n="feature2Text">Ընկերների եւ ընտանիքի համար</span>
-            </div>
-            <div class="feature">
-              <strong data-i18n="feature3Title">Համեղ</strong>
-              <span data-i18n="feature3Text">Մեծ ընտրանի ամբողջ օրվա համար</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="menu-section" id="menu">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow" data-i18n="menuEyebrow">Մենյու</div>
-            <h2 data-i18n="menuTitle">Ընտրեք ձեր սիրելի համը</h2>
-          </div>
-          <p data-i18n="menuText">
-            Մենյուն ներառում է նախաճաշ, հիմնական ուտեստներ, աղանդեր, սուրճ, խմիչքներ եւ կոկտեյլներ։
-          </p>
-        </div>
-
-        <div class="tabs">
-          <button class="tab-btn active" data-category="breakfast" data-i18n="tabBreakfast">Նախաճաշ</button>
-          <button class="tab-btn" data-category="main" data-i18n="tabMain">Հիմնական</button>
-          <button class="tab-btn" data-category="bar" data-i18n="tabBar">Բար</button>
-        </div>
-
-        <div class="menu-grid" id="menuGrid"></div>
-      </div>
-    </section>
-
-    <section id="gallery">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow" data-i18n="galleryEyebrow">Պատկերասրահ</div>
-            <h2 data-i18n="galleryTitle">Ուտեստներ եւ խմիչքներ</h2>
-          </div>
-          <p data-i18n="galleryText">Լուսավոր, մաքուր եւ ախորժելի մթնոլորտ՝ ամեն այցի համար։</p>
-        </div>
-
-        <div class="gallery-grid">
-          <div class="gallery-card large">
-            <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=1200&q=85" alt="Breakfast">
-            <span data-i18n="photoBreakfast">Նախաճաշ</span>
-          </div>
-          <div class="gallery-card">
-            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=85" alt="Pizza">
-            <span data-i18n="photoPizza">Պիցցա</span>
-          </div>
-          <div class="gallery-card">
-            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=85" alt="Salad">
-            <span data-i18n="photoSalad">Աղցաններ</span>
-          </div>
-          <div class="gallery-card">
-            <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=85" alt="Dessert">
-            <span data-i18n="photoDessert">Աղանդեր</span>
-          </div>
-          <div class="gallery-card">
-            <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=900&q=85" alt="Cocktail">
-            <span data-i18n="photoCocktail">Կոկտեյլներ</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact" id="contact">
-      <div class="container contact-grid">
-        <div class="contact-card">
-          <div class="eyebrow" data-i18n="contactEyebrow">Կապ մեզ հետ</div>
-          <h2 data-i18n="contactTitle">Այցելեք Apricot Cafe</h2>
-          <p data-i18n="contactText">
-            Մենք սպասում ենք ձեզ համեղ ուտեստների, բուրավետ սուրճի եւ հաճելի երեկոների համար։
-          </p>
-
-          <div class="contact-list">
-            <div data-i18n="address">Հասցե՝ Երեւան, Կենտրոն</div>
-            <div data-i18n="phone">Հեռախոս՝ +374 00 000 000</div>
-            <div data-i18n="hours">Աշխատանքային ժամեր՝ 09:00 - 00:00</div>
-          </div>
-        </div>
-
-        <div class="contact-photo">
-          <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=1200&q=85" alt="Cafe table">
-        </div>
-      </div>
+      <div class="menu-grid" id="menuGrid"></div>
     </section>
   </main>
-
-  <footer>
-    <div class="container" data-i18n="footerText">
-      © 2026 Apricot Cafe. Բոլոր իրավունքները պաշտպանված են։
-    </div>
-  </footer>
 
   <script>
     const translations = {
       hy: {
-        brandTag: "բիստրո եւ սրճարան",
-        navHome: "Գլխավոր",
-        navAbout: "Մեր մասին",
-        navMenu: "Մենյու",
-        navGallery: "Պատկերասրահ",
-        navContact: "Կապ",
-        heroEyebrow: "Երեւանի համով անկյունը",
-        heroTitle: "Բարի գալուստ <span>Apricot</span>",
-        heroText: "Սպիտակ, լուսավոր եւ ջերմ սրճարան՝ նախաճաշի, հիմնական ուտեստների, աղանդերի, սուրճի եւ կոկտեյլների համար։",
-        seeMenu: "Տեսնել մենյուն",
-        reserve: "Ամրագրել սեղան",
-        openEveryday: "Բաց է ամեն օր",
-        aboutEyebrow: "Մեր պատմությունը",
-        aboutTitle: "Համ, ջերմություն եւ գեղեցիկ պահեր",
-        aboutText1: "Apricot Cafe-ն ստեղծված է նրանց համար, ովքեր սիրում են համեղ ուտեստ, գեղեցիկ միջավայր եւ անկեղծ հյուրընկալություն։",
-        aboutText2: "Մեր մենյուում կգտնեք նախաճաշեր, աղցաններ, պիցցա, պաստա, խորոված ուտեստներ, աղանդեր, սուրճ, լիմոնադներ եւ բարի ընտրանի։",
-        feature1Title: "Թարմ",
-        feature1Text: "Ամեն օր ընտրված մթերքներ",
-        feature2Title: "Հարմար",
-        feature2Text: "Ընկերների եւ ընտանիքի համար",
-        feature3Title: "Համեղ",
-        feature3Text: "Մեծ ընտրանի ամբողջ օրվա համար",
-        menuEyebrow: "Մենյու",
-        menuTitle: "Ընտրեք ձեր սիրելի համը",
-        menuText: "Մենյուն ներառում է նախաճաշ, հիմնական ուտեստներ, աղանդեր, սուրճ, խմիչքներ եւ կոկտեյլներ։",
-        tabBreakfast: "Նախաճաշ",
-        tabMain: "Հիմնական",
-        tabBar: "Բար",
-        galleryEyebrow: "Պատկերասրահ",
-        galleryTitle: "Ուտեստներ եւ խմիչքներ",
-        galleryText: "Լուսավոր, մաքուր եւ ախորժելի մթնոլորտ՝ ամեն այցի համար։",
-        photoBreakfast: "Նախաճաշ",
-        photoPizza: "Պիցցա",
-        photoSalad: "Աղցաններ",
-        photoDessert: "Աղանդեր",
-        photoCocktail: "Կոկտեյլներ",
-        contactEyebrow: "Կապ մեզ հետ",
-        contactTitle: "Այցելեք Apricot Cafe",
-        contactText: "Մենք սպասում ենք ձեզ համեղ ուտեստների, բուրավետ սուրճի եւ հաճելի երեկոների համար։",
-        address: "Հասցե՝ Երեւան, Կենտրոն",
-        phone: "Հեռախոս՝ +374 00 000 000",
-        hours: "Աշխատանքային ժամեր՝ 09:00 - 00:00",
-        footerText: "© 2026 Apricot Cafe. Բոլոր իրավունքները պաշտպանված են։"
+        subtitle: "Մենյու",
+        title: "Ընտրեք ձեր սիրելի <span>համը</span>",
+        description: "Մեր մենյուն բաժանված է կատեգորիաների, որպեսզի հեշտ գտնեք նախաճաշ, լանչ, ընթրիք, սուրճ, խմիչքներ, կոկտեյլներ եւ աղանդեր։",
+        categories: {
+          breakfast: ["Նախաճաշ", "Թեթեւ, համեղ եւ հագեցնող ընտրանի օրը սկսելու համար։"],
+          lunch: ["Լանչ", "Հարմար ուտեստներ արագ, համեղ եւ լիարժեք ճաշի համար։"],
+          dinner: ["Ընթրիք", "Տաք ուտեստներ եւ գեղեցիկ ընտրանի երեկոյան համար։"],
+          coffee: ["Սուրճ", "Բուրավետ սուրճեր ամեն ճաշակի համար։"],
+          drinks: ["Խմիչքներ", "Թարմացնող լիմոնադներ, հյութեր եւ սմուզիներ։"],
+          cocktails: ["Կոկտեյլներ", "Դասական եւ թարմացնող կոկտեյլներ։"],
+          desserts: ["Աղանդեր", "Քաղցր ու նուրբ աղանդեր սուրճի կամ թեյի հետ։"]
+        }
       },
-
       ru: {
-        brandTag: "бистро и кофейня",
-        navHome: "Главная",
-        navAbout: "О нас",
-        navMenu: "Меню",
-        navGallery: "Галерея",
-        navContact: "Контакты",
-        heroEyebrow: "Вкусный уголок Еревана",
-        heroTitle: "Добро пожаловать в <span>Apricot</span>",
-        heroText: "Светлое и уютное кафе для завтраков, основных блюд, десертов, кофе и коктейлей.",
-        seeMenu: "Посмотреть меню",
-        reserve: "Забронировать стол",
-        openEveryday: "Открыто каждый день",
-        aboutEyebrow: "Наша история",
-        aboutTitle: "Вкус, тепло и красивые моменты",
-        aboutText1: "Apricot Cafe создан для тех, кто любит вкусную еду, красивую атмосферу и искреннее гостеприимство.",
-        aboutText2: "В нашем меню есть завтраки, салаты, пицца, паста, блюда на гриле, десерты, кофе, лимонады и барная карта.",
-        feature1Title: "Свежо",
-        feature1Text: "Отборные продукты каждый день",
-        feature2Title: "Уютно",
-        feature2Text: "Для друзей и семьи",
-        feature3Title: "Вкусно",
-        feature3Text: "Большой выбор на весь день",
-        menuEyebrow: "Меню",
-        menuTitle: "Выберите любимый вкус",
-        menuText: "Меню включает завтраки, основные блюда, десерты, кофе, напитки и коктейли.",
-        tabBreakfast: "Завтрак",
-        tabMain: "Основное",
-        tabBar: "Бар",
-        galleryEyebrow: "Галерея",
-        galleryTitle: "Еда и напитки",
-        galleryText: "Светлая, чистая и аппетитная атмосфера для каждого визита.",
-        photoBreakfast: "Завтрак",
-        photoPizza: "Пицца",
-        photoSalad: "Салаты",
-        photoDessert: "Десерты",
-        photoCocktail: "Коктейли",
-        contactEyebrow: "Свяжитесь с нами",
-        contactTitle: "Посетите Apricot Cafe",
-        contactText: "Мы ждем вас на вкусные блюда, ароматный кофе и приятные вечера.",
-        address: "Адрес: Ереван, Центр",
-        phone: "Телефон: +374 00 000 000",
-        hours: "Часы работы: 09:00 - 00:00",
-        footerText: "© 2026 Apricot Cafe. Все права защищены."
+        subtitle: "Меню",
+        title: "Выберите любимый <span>вкус</span>",
+        description: "Наше меню разделено на категории, чтобы вы легко нашли завтрак, ланч, ужин, кофе, напитки, коктейли и десерты.",
+        categories: {
+          breakfast: ["Завтрак", "Легкий, вкусный и сытный выбор для начала дня."],
+          lunch: ["Ланч", "Удобные блюда для быстрого и полноценного обеда."],
+          dinner: ["Ужин", "Горячие блюда и красивая подборка для вечера."],
+          coffee: ["Кофе", "Ароматный кофе на любой вкус."],
+          drinks: ["Напитки", "Освежающие лимонады, соки и смузи."],
+          cocktails: ["Коктейли", "Классические и освежающие коктейли."],
+          desserts: ["Десерты", "Нежные сладости к кофе или чаю."]
+        }
       },
-
       en: {
-        brandTag: "bistro and coffee house",
-        navHome: "Home",
-        navAbout: "About",
-        navMenu: "Menu",
-        navGallery: "Gallery",
-        navContact: "Contact",
-        heroEyebrow: "A flavorful corner of Yerevan",
-        heroTitle: "Welcome to <span>Apricot</span>",
-        heroText: "A bright and warm cafe for breakfast, main dishes, desserts, coffee, and cocktails.",
-        seeMenu: "View menu",
-        reserve: "Reserve a table",
-        openEveryday: "Open every day",
-        aboutEyebrow: "Our story",
-        aboutTitle: "Taste, warmth, and beautiful moments",
-        aboutText1: "Apricot Cafe is made for people who love good food, a beautiful atmosphere, and sincere hospitality.",
-        aboutText2: "Our menu includes breakfast, salads, pizza, pasta, grilled dishes, desserts, coffee, lemonades, and a bar selection.",
-        feature1Title: "Fresh",
-        feature1Text: "Selected ingredients every day",
-        feature2Title: "Cozy",
-        feature2Text: "For friends and family",
-        feature3Title: "Delicious",
-        feature3Text: "A wide choice for the whole day",
-        menuEyebrow: "Menu",
-        menuTitle: "Choose your favorite flavor",
-        menuText: "The menu includes breakfast, main dishes, desserts, coffee, drinks, and cocktails.",
-        tabBreakfast: "Breakfast",
-        tabMain: "Main",
-        tabBar: "Bar",
-        galleryEyebrow: "Gallery",
-        galleryTitle: "Food and drinks",
-        galleryText: "A bright, clean, and appetizing atmosphere for every visit.",
-        photoBreakfast: "Breakfast",
-        photoPizza: "Pizza",
-        photoSalad: "Salads",
-        photoDessert: "Desserts",
-        photoCocktail: "Cocktails",
-        contactEyebrow: "Contact us",
-        contactTitle: "Visit Apricot Cafe",
-        contactText: "We are waiting for you with delicious food, aromatic coffee, and pleasant evenings.",
-        address: "Address: Yerevan, Center",
-        phone: "Phone: +374 00 000 000",
-        hours: "Working hours: 09:00 - 00:00",
-        footerText: "© 2026 Apricot Cafe. All rights reserved."
+        subtitle: "Menu",
+        title: "Choose your favorite <span>flavor</span>",
+        description: "Our menu is organized into categories, so you can easily find breakfast, lunch, dinner, coffee, drinks, cocktails, and desserts.",
+        categories: {
+          breakfast: ["Breakfast", "Light, delicious, and filling choices to start the day."],
+          lunch: ["Lunch", "Comfortable dishes for a quick and complete lunch."],
+          dinner: ["Dinner", "Warm dishes and a beautiful selection for the evening."],
+          coffee: ["Coffee", "Aromatic coffee for every taste."],
+          drinks: ["Drinks", "Refreshing lemonades, juices, and smoothies."],
+          cocktails: ["Cocktails", "Classic and refreshing cocktails."],
+          desserts: ["Desserts", "Sweet and delicate desserts with coffee or tea."]
+        }
       }
     };
 
-    const menuItems = {
+    const menu = {
       hy: {
         breakfast: [
-          ["Օմլետ դասական", "Պանրով, սնկով կամ բանջարեղենով", "700 ֏"],
-          ["Լոլիկով ձվածեղ", "Թարմ լոլիկով եւ կանաչիով", "1100 ֏"],
-          ["Շակշուկա", "Ձու, լոլիկի սոուս եւ համեմունքներ", "1400 ֏"],
-          ["Ավոկադոյով ձվածեղ", "Թեթեւ եւ սննդարար նախաճաշ", "1200 ֏"],
-          ["Ֆրանսիական կրուասան", "Կարագով փափուկ խմորեղեն", "1000 ֏"],
-          ["Նրբաբլիթ կաթնաշոռով", "Քաղցր եւ նուրբ միջուկով", "1300 ֏"]
+          ["Դասական օմլետ", "Ձու, կարագ, կանաչի", "1,200 ֏"],
+          ["Օմլետ պանրով", "Ձու, պանիր, թարմ կանաչի", "1,500 ֏"],
+          ["Օմլետ սնկով", "Ձու, սունկ, պանիր", "1,700 ֏"],
+          ["Շակշուկա", "Ձու, լոլիկի սոուս, համեմունքներ", "1,900 ֏"],
+          ["Ավոկադոյով տոստ", "Ավոկադո, ձու, հաց, կանաչի", "2,200 ֏"],
+          ["Կրուասան պանրով", "Թարմ կրուասան, պանիր, սոուս", "1,600 ֏"],
+          ["Նրբաբլիթ կաթնաշոռով", "Նրբաբլիթ, կաթնաշոռ, թթվասեր", "1,800 ֏"],
+          ["Յոգուրտ գրանոլայով", "Յոգուրտ, գրանոլա, հատապտուղ", "1,700 ֏"]
         ],
-        main: [
-          ["Բուրատա պղպեղով եւ ավոկադոյով", "Թարմ բուրատա, պղպեղ, ավոկադո", "4800 ֏"],
-          ["Հունական աղցան", "Լոլիկ, վարունգ, պանիր, ձիթապտուղ", "2800 ֏"],
-          ["Մարգարիտա պիցցա", "Լոլիկի սոուս, մոցարելլա, ռեհան", "2500 ֏"],
-          ["Կարբոնարա", "Պաստա, սերուցք, բեկոն, պարմեզան", "3300 ֏"],
-          ["Խորոված հավ", "Հյութալի հավ եւ կողմնակի ուտեստ", "3900 ֏"],
-          ["Չիզբուրգեր", "Միս, պանիր, թարմ բանջարեղեն", "3200 ֏"]
+        lunch: [
+          ["Հավով աղցան", "Հավ, հազար, լոլիկ, սոուս", "2,600 ֏"],
+          ["Հունական աղցան", "Լոլիկ, վարունգ, պանիր, ձիթապտուղ", "2,400 ֏"],
+          ["Կեսար աղցան", "Հավ, հազար, պարմեզան, չորահաց", "2,900 ֏"],
+          ["Սնկով կրեմ ապուր", "Սունկ, սերուցք, համեմունքներ", "2,100 ֏"],
+          ["Հավով ապուր", "Հավ, բանջարեղեն, արիշտա", "1,900 ֏"],
+          ["Պաստա Ալֆրեդո", "Պաստա, հավ, սերուցք, պանիր", "3,200 ֏"],
+          ["Մարգարիտա պիցցա", "Մոցարելլա, լոլիկի սոուս, ռեհան", "3,000 ֏"],
+          ["Չիզբուրգեր", "Միս, պանիր, բանջարեղեն, կարտոֆիլ", "3,400 ֏"]
         ],
-        bar: [
+        dinner: [
+          ["Հավի սթեյք", "Հավի ֆիլե, բանջարեղեն, սոուս", "3,600 ֏"],
+          ["Տավարի սթեյք", "Տավարի միս, կարտոֆիլ, սոուս", "5,800 ֏"],
+          ["Սաղմոն գրիլ", "Սաղմոն, բրինձ, բանջարեղեն", "6,200 ֏"],
+          ["Խոզի կողիկներ", "Կողիկներ, խորոված սոուս, կարտոֆիլ", "4,800 ֏"],
+          ["Հավով ռիզոտո", "Բրինձ, հավ, սունկ, պանիր", "3,700 ֏"],
+          ["Սնկով պաստա", "Պաստա, սունկ, սերուցք, պարմեզան", "3,300 ֏"],
+          ["Քառասեզոն պիցցա", "Պանիր, սունկ, խոզապուխտ, ձիթապտուղ", "3,900 ֏"],
+          ["Գրիլ բանջարեղեն", "Սեզոնային բանջարեղեն", "2,300 ֏"]
+        ],
+        coffee: [
           ["Էսպրեսսո", "Կարճ եւ հարուստ սուրճ", "900 ֏"],
-          ["Կապուչինո", "Սուրճ, կաթ եւ նուրբ փրփուր", "1400 ֏"],
-          ["Լատտե", "Փափուկ կաթնային սուրճ", "1500 ֏"],
-          ["Լիմոնադ հատապտուղներով", "Թարմ եւ սառը ըմպելիք", "1400 ֏"],
-          ["Մարգարիտա", "Դասական կոկտեյլ", "2800 ֏"],
-          ["Ապերոլ Սպրից", "Թեթեւ եւ թարմացնող", "3500 ֏"]
+          ["Ամերիկանո", "Էսպրեսսո եւ տաք ջուր", "1,000 ֏"],
+          ["Կապուչինո", "Սուրճ, կաթ, նուրբ փրփուր", "1,400 ֏"],
+          ["Լատտե", "Մեղմ կաթնային սուրճ", "1,500 ֏"],
+          ["Ֆլեթ Ուայթ", "Ուժեղ սուրճ կաթով", "1,600 ֏"],
+          ["Մոկա", "Սուրճ, շոկոլադ, կաթ", "1,700 ֏"],
+          ["Սառը սուրճ", "Սուրճ, սառույց, կաթ", "1,600 ֏"],
+          ["Հայկական սուրճ", "Դասական պատրաստում", "800 ֏"]
+        ],
+        drinks: [
+          ["Ջուր", "Գազավորված կամ բնական", "500 ֏"],
+          ["Թարմ նարնջի հյութ", "Թարմ քամած", "1,800 ֏"],
+          ["Խնձորի հյութ", "Բնական հյութ", "1,200 ֏"],
+          ["Հատապտղային լիմոնադ", "Հատապտուղ, լիմոն, անանուխ", "1,600 ֏"],
+          ["Ցիտրուսային լիմոնադ", "Լիմոն, նարինջ, սառույց", "1,600 ֏"],
+          ["Մանգոյի սմուզի", "Մանգո, բանան, յոգուրտ", "2,200 ֏"],
+          ["Ելակի սմուզի", "Ելակ, բանան, կաթ", "2,100 ֏"],
+          ["Սառը թեյ", "Թեյ, լիմոն, սառույց", "1,300 ֏"]
+        ],
+        cocktails: [
+          ["Մոխիտո", "Ռոմ, լայմ, անանուխ, սոդա", "3,000 ֏"],
+          ["Ապերոլ Սպրից", "Ապերոլ, պրոսեկո, սոդա", "3,500 ֏"],
+          ["Մարգարիտա", "Տեկիլա, լայմ, լիկյոր", "3,200 ֏"],
+          ["Նեգրոնի", "Ջին, վերմուտ, բիթեր", "3,400 ֏"],
+          ["Էսպրեսո Մարտինի", "Օղի, սուրճ, լիկյոր", "3,600 ֏"],
+          ["Պինա Կոլադա", "Ռոմ, արքայախնձոր, կոկոս", "3,500 ֏"],
+          ["Վիսկի Սաուր", "Վիսկի, լիմոն, օշարակ", "3,700 ֏"],
+          ["Ալկոհոլազուրկ Մոխիտո", "Լայմ, անանուխ, սոդա", "2,000 ֏"]
+        ],
+        desserts: [
+          ["Չիզքեյք", "Նուրբ կրեմային աղանդեր", "2,000 ֏"],
+          ["Տիրամիսու", "Սուրճ, կրեմ, կակաո", "2,200 ֏"],
+          ["Շոկոլադե տորթ", "Հարուստ շոկոլադային համ", "2,100 ֏"],
+          ["Մեղրով տորթ", "Դասական մեղրային շերտեր", "1,900 ֏"],
+          ["Պաննա Կոտա", "Կրեմային աղանդեր հատապտղով", "1,800 ֏"],
+          ["Պաղպաղակ", "Վանիլ, շոկոլադ կամ ելակ", "1,500 ֏"],
+          ["Վաֆլի պաղպաղակով", "Վաֆլի, պաղպաղակ, սոուս", "2,400 ֏"],
+          ["Կրուասան շոկոլադով", "Թարմ կրուասան, շոկոլադ", "1,600 ֏"]
         ]
       },
 
       ru: {
         breakfast: [
-          ["Классический омлет", "С сыром, грибами или овощами", "700 ֏"],
-          ["Яичница с помидорами", "Со свежими томатами и зеленью", "1100 ֏"],
-          ["Шакшука", "Яйца, томатный соус и специи", "1400 ֏"],
-          ["Омлет с авокадо", "Легкий и питательный завтрак", "1200 ֏"],
-          ["Французский круассан", "Нежная выпечка с маслом", "1000 ֏"],
-          ["Блины с творогом", "Сладкая и нежная начинка", "1300 ֏"]
+          ["Классический омлет", "Яйца, масло, зелень", "1,200 ֏"],
+          ["Омлет с сыром", "Яйца, сыр, свежая зелень", "1,500 ֏"],
+          ["Омлет с грибами", "Яйца, грибы, сыр", "1,700 ֏"],
+          ["Шакшука", "Яйца, томатный соус, специи", "1,900 ֏"],
+          ["Тост с авокадо", "Авокадо, яйцо, хлеб, зелень", "2,200 ֏"],
+          ["Круассан с сыром", "Свежий круассан, сыр, соус", "1,600 ֏"],
+          ["Блины с творогом", "Блины, творог, сметана", "1,800 ֏"],
+          ["Йогурт с гранолой", "Йогурт, гранола, ягоды", "1,700 ֏"]
         ],
-        main: [
-          ["Буррата с перцем и авокадо", "Свежая буррата, перец, авокадо", "4800 ֏"],
-          ["Греческий салат", "Помидор, огурец, сыр, оливки", "2800 ֏"],
-          ["Пицца Маргарита", "Томатный соус, моцарелла, базилик", "2500 ֏"],
-          ["Карбонара", "Паста, сливки, бекон, пармезан", "3300 ֏"],
-          ["Курица гриль", "Сочная курица с гарниром", "3900 ֏"],
-          ["Чизбургер", "Мясо, сыр, свежие овощи", "3200 ֏"]
+        lunch: [
+          ["Салат с курицей", "Курица, салат, томаты, соус", "2,600 ֏"],
+          ["Греческий салат", "Томаты, огурцы, сыр, оливки", "2,400 ֏"],
+          ["Цезарь", "Курица, салат, пармезан, сухари", "2,900 ֏"],
+          ["Грибной крем-суп", "Грибы, сливки, специи", "2,100 ֏"],
+          ["Куриный суп", "Курица, овощи, лапша", "1,900 ֏"],
+          ["Паста Альфредо", "Паста, курица, сливки, сыр", "3,200 ֏"],
+          ["Пицца Маргарита", "Моцарелла, томатный соус, базилик", "3,000 ֏"],
+          ["Чизбургер", "Мясо, сыр, овощи, картофель", "3,400 ֏"]
         ],
-        bar: [
-          ["Эспрессо", "Крепкий короткий кофе", "900 ֏"],
-          ["Капучино", "Кофе, молоко и нежная пенка", "1400 ֏"],
-          ["Латте", "Мягкий молочный кофе", "1500 ֏"],
-          ["Ягодный лимонад", "Свежий холодный напиток", "1400 ֏"],
-          ["Маргарита", "Классический коктейль", "2800 ֏"],
-          ["Апероль Спритц", "Легкий и освежающий", "3500 ֏"]
+        dinner: [
+          ["Куриный стейк", "Куриное филе, овощи, соус", "3,600 ֏"],
+          ["Говяжий стейк", "Говядина, картофель, соус", "5,800 ֏"],
+          ["Лосось гриль", "Лосось, рис, овощи", "6,200 ֏"],
+          ["Свиные ребрышки", "Ребрышки, BBQ соус, картофель", "4,800 ֏"],
+          ["Ризотто с курицей", "Рис, курица, грибы, сыр", "3,700 ֏"],
+          ["Паста с грибами", "Паста, грибы, сливки, пармезан", "3,300 ֏"],
+          ["Пицца Четыре сезона", "Сыр, грибы, ветчина, оливки", "3,900 ֏"],
+          ["Овощи гриль", "Сезонные овощи", "2,300 ֏"]
+        ],
+        coffee: [
+          ["Эспрессо", "Короткий и насыщенный кофе", "900 ֏"],
+          ["Американо", "Эспрессо и горячая вода", "1,000 ֏"],
+          ["Капучино", "Кофе, молоко, нежная пенка", "1,400 ֏"],
+          ["Латте", "Мягкий молочный кофе", "1,500 ֏"],
+          ["Флэт Уайт", "Крепкий кофе с молоком", "1,600 ֏"],
+          ["Мокка", "Кофе, шоколад, молоко", "1,700 ֏"],
+          ["Айс кофе", "Кофе, лед, молоко", "1,600 ֏"],
+          ["Армянский кофе", "Классическое приготовление", "800 ֏"]
+        ],
+        drinks: [
+          ["Вода", "Газированная или негазированная", "500 ֏"],
+          ["Свежий апельсиновый сок", "Свежевыжатый", "1,800 ֏"],
+          ["Яблочный сок", "Натуральный сок", "1,200 ֏"],
+          ["Ягодный лимонад", "Ягоды, лимон, мята", "1,600 ֏"],
+          ["Цитрусовый лимонад", "Лимон, апельсин, лед", "1,600 ֏"],
+          ["Смузи манго", "Манго, банан, йогурт", "2,200 ֏"],
+          ["Смузи клубника", "Клубника, банан, молоко", "2,100 ֏"],
+          ["Айс ти", "Чай, лимон, лед", "1,300 ֏"]
+        ],
+        cocktails: [
+          ["Мохито", "Ром, лайм, мята, содовая", "3,000 ֏"],
+          ["Апероль Спритц", "Апероль, просекко, содовая", "3,500 ֏"],
+          ["Маргарита", "Текила, лайм, ликер", "3,200 ֏"],
+          ["Негрони", "Джин, вермут, биттер", "3,400 ֏"],
+          ["Эспрессо Мартини", "Водка, кофе, ликер", "3,600 ֏"],
+          ["Пина Колада", "Ром, ананас, кокос", "3,500 ֏"],
+          ["Виски Сауэр", "Виски, лимон, сироп", "3,700 ֏"],
+          ["Безалкогольный Мохито", "Лайм, мята, содовая", "2,000 ֏"]
+        ],
+        desserts: [
+          ["Чизкейк", "Нежный кремовый десерт", "2,000 ֏"],
+          ["Тирамису", "Кофе, крем, какао", "2,200 ֏"],
+          ["Шоколадный торт", "Насыщенный шоколадный вкус", "2,100 ֏"],
+          ["Медовик", "Классические медовые слои", "1,900 ֏"],
+          ["Панна котта", "Кремовый десерт с ягодами", "1,800 ֏"],
+          ["Мороженое", "Ваниль, шоколад или клубника", "1,500 ֏"],
+          ["Вафли с мороженым", "Вафли, мороженое, соус", "2,400 ֏"],
+          ["Круассан с шоколадом", "Свежий круассан, шоколад", "1,600 ֏"]
         ]
       },
 
       en: {
         breakfast: [
-          ["Classic omelette", "With cheese, mushrooms, or vegetables", "700 ֏"],
-          ["Scrambled eggs with tomatoes", "With fresh tomatoes and herbs", "1100 ֏"],
-          ["Shakshuka", "Eggs, tomato sauce, and spices", "1400 ֏"],
-          ["Avocado omelette", "Light and nourishing breakfast", "1200 ֏"],
-          ["French croissant", "Soft buttery pastry", "1000 ֏"],
-          ["Pancakes with cottage cheese", "Sweet and delicate filling", "1300 ֏"]
+          ["Classic omelette", "Eggs, butter, herbs", "1,200 ֏"],
+          ["Cheese omelette", "Eggs, cheese, fresh herbs", "1,500 ֏"],
+          ["Mushroom omelette", "Eggs, mushrooms, cheese", "1,700 ֏"],
+          ["Shakshuka", "Eggs, tomato sauce, spices", "1,900 ֏"],
+          ["Avocado toast", "Avocado, egg, bread, herbs", "2,200 ֏"],
+          ["Cheese croissant", "Fresh croissant, cheese, sauce", "1,600 ֏"],
+          ["Cottage cheese pancakes", "Pancakes, cottage cheese, sour cream", "1,800 ֏"],
+          ["Yogurt with granola", "Yogurt, granola, berries", "1,700 ֏"]
         ],
-        main: [
-          ["Burrata with peppers and avocado", "Fresh burrata, peppers, avocado", "4800 ֏"],
-          ["Greek salad", "Tomato, cucumber, cheese, olives", "2800 ֏"],
-          ["Pizza Margherita", "Tomato sauce, mozzarella, basil", "2500 ֏"],
-          ["Carbonara", "Pasta, cream, bacon, parmesan", "3300 ֏"],
-          ["Grilled chicken", "Juicy chicken with a side dish", "3900 ֏"],
-          ["Cheeseburger", "Meat, cheese, fresh vegetables", "3200 ֏"]
+        lunch: [
+          ["Chicken salad", "Chicken, lettuce, tomato, sauce", "2,600 ֏"],
+          ["Greek salad", "Tomato, cucumber, cheese, olives", "2,400 ֏"],
+          ["Caesar salad", "Chicken, lettuce, parmesan, croutons", "2,900 ֏"],
+          ["Mushroom cream soup", "Mushrooms, cream, spices", "2,100 ֏"],
+          ["Chicken soup", "Chicken, vegetables, noodles", "1,900 ֏"],
+          ["Pasta Alfredo", "Pasta, chicken, cream, cheese", "3,200 ֏"],
+          ["Pizza Margherita", "Mozzarella, tomato sauce, basil", "3,000 ֏"],
+          ["Cheeseburger", "Meat, cheese, vegetables, fries", "3,400 ֏"]
         ],
-        bar: [
+        dinner: [
+          ["Chicken steak", "Chicken fillet, vegetables, sauce", "3,600 ֏"],
+          ["Beef steak", "Beef, potatoes, sauce", "5,800 ֏"],
+          ["Grilled salmon", "Salmon, rice, vegetables", "6,200 ֏"],
+          ["Pork ribs", "Ribs, BBQ sauce, potatoes", "4,800 ֏"],
+          ["Chicken risotto", "Rice, chicken, mushrooms, cheese", "3,700 ֏"],
+          ["Mushroom pasta", "Pasta, mushrooms, cream, parmesan", "3,300 ֏"],
+          ["Four seasons pizza", "Cheese, mushrooms, ham, olives", "3,900 ֏"],
+          ["Grilled vegetables", "Seasonal vegetables", "2,300 ֏"]
+        ],
+        coffee: [
           ["Espresso", "Short and rich coffee", "900 ֏"],
-          ["Cappuccino", "Coffee, milk, and soft foam", "1400 ֏"],
-          ["Latte", "Smooth milky coffee", "1500 ֏"],
-          ["Berry lemonade", "Fresh cold drink", "1400 ֏"],
-          ["Margarita", "Classic cocktail", "2800 ֏"],
-          ["Aperol Spritz", "Light and refreshing", "3500 ֏"]
+          ["Americano", "Espresso and hot water", "1,000 ֏"],
+          ["Cappuccino", "Coffee, milk, soft foam", "1,400 ֏"],
+          ["Latte", "Smooth milky coffee", "1,500 ֏"],
+          ["Flat white", "Strong coffee with milk", "1,600 ֏"],
+          ["Mocha", "Coffee, chocolate, milk", "1,700 ֏"],
+          ["Iced coffee", "Coffee, ice, milk", "1,600 ֏"],
+          ["Armenian coffee", "Classic preparation", "800 ֏"]
+        ],
+        drinks: [
+          ["Water", "Sparkling or still", "500 ֏"],
+          ["Fresh orange juice", "Freshly squeezed", "1,800 ֏"],
+          ["Apple juice", "Natural juice", "1,200 ֏"],
+          ["Berry lemonade", "Berries, lemon, mint", "1,600 ֏"],
+          ["Citrus lemonade", "Lemon, orange, ice", "1,600 ֏"],
+          ["Mango smoothie", "Mango, banana, yogurt", "2,200 ֏"],
+          ["Strawberry smoothie", "Strawberry, banana, milk", "2,100 ֏"],
+          ["Iced tea", "Tea, lemon, ice", "1,300 ֏"]
+        ],
+        cocktails: [
+          ["Mojito", "Rum, lime, mint, soda", "3,000 ֏"],
+          ["Aperol Spritz", "Aperol, prosecco, soda", "3,500 ֏"],
+          ["Margarita", "Tequila, lime, liqueur", "3,200 ֏"],
+          ["Negroni", "Gin, vermouth, bitter", "3,400 ֏"],
+          ["Espresso Martini", "Vodka, coffee, liqueur", "3,600 ֏"],
+          ["Pina Colada", "Rum, pineapple, coconut", "3,500 ֏"],
+          ["Whiskey Sour", "Whiskey, lemon, syrup", "3,700 ֏"],
+          ["Virgin Mojito", "Lime, mint, soda", "2,000 ֏"]
+        ],
+        desserts: [
+          ["Cheesecake", "Soft creamy dessert", "2,000 ֏"],
+          ["Tiramisu", "Coffee, cream, cocoa", "2,200 ֏"],
+          ["Chocolate cake", "Rich chocolate flavor", "2,100 ֏"],
+          ["Honey cake", "Classic honey layers", "1,900 ֏"],
+          ["Panna cotta", "Cream dessert with berries", "1,800 ֏"],
+          ["Ice cream", "Vanilla, chocolate, or strawberry", "1,500 ֏"],
+          ["Waffles with ice cream", "Waffles, ice cream, sauce", "2,400 ֏"],
+          ["Chocolate croissant", "Fresh croissant, chocolate", "1,600 ֏"]
         ]
       }
     };
+
+    const categoryOrder = ["breakfast", "lunch", "dinner", "coffee", "drinks", "cocktails", "desserts"];
 
     let currentLang = "hy";
     let currentCategory = "breakfast";
 
-    const textElements = document.querySelectorAll("[data-i18n]");
-    const htmlElements = document.querySelectorAll("[data-i18n-html]");
-    const langButtons = document.querySelectorAll("[data-lang]");
-    const tabButtons = document.querySelectorAll("[data-category]");
+    const categoriesContainer = document.getElementById("categories");
     const menuGrid = document.getElementById("menuGrid");
+    const categoryTitle = document.getElementById("categoryTitle");
+    const categoryText = document.getElementById("categoryText");
+
+    function renderStaticText() {
+      document.querySelectorAll("[data-i18n]").forEach(element => {
+        const key = element.dataset.i18n;
+        element.textContent = translations[currentLang][key];
+      });
+
+      document.querySelectorAll("[data-i18n-html]").forEach(element => {
+        const key = element.dataset.i18nHtml;
+        element.innerHTML = translations[currentLang][key];
+      });
+    }
+
+    function renderCategories() {
+      categoriesContainer.innerHTML = "";
+
+      categoryOrder.forEach(category => {
+        const button = document.createElement("button");
+        button.className = "category-btn";
+        button.textContent = translations[currentLang].categories[category][0];
+        button.classList.toggle("active", category === currentCategory);
+
+        button.addEventListener("click", () => {
+          currentCategory = category;
+          renderCategories();
+          renderMenu();
+        });
+
+        categoriesContainer.appendChild(button);
+      });
+    }
 
     function renderMenu() {
+      const categoryInfo = translations[currentLang].categories[currentCategory];
+      categoryTitle.textContent = categoryInfo[0];
+      categoryText.textContent = categoryInfo[1];
+
       menuGrid.innerHTML = "";
 
-      menuItems[currentLang][currentCategory].forEach(item => {
-        const card = document.createElement("div");
-        card.className = "menu-item";
-        card.innerHTML = `
+      menu[currentLang][currentCategory].forEach(item => {
+        const menuItem = document.createElement("article");
+        menuItem.className = "menu-item";
+
+        menuItem.innerHTML = `
           <div>
             <h3>${item[0]}</h3>
             <p>${item[1]}</p>
           </div>
-          <span class="price">${item[2]}</span>
+          <div class="price">${item[2]}</div>
         `;
-        menuGrid.appendChild(card);
+
+        menuGrid.appendChild(menuItem);
       });
     }
 
@@ -966,42 +630,18 @@ Paste this as your `index.html` file:
       currentLang = lang;
       document.documentElement.lang = lang;
 
-      textElements.forEach(element => {
-        const key = element.dataset.i18n;
-        if (translations[lang][key]) {
-          element.textContent = translations[lang][key];
-        }
-      });
-
-      htmlElements.forEach(element => {
-        const key = element.dataset.i18nHtml;
-        if (translations[lang][key]) {
-          element.innerHTML = translations[lang][key];
-        }
-      });
-
-      langButtons.forEach(button => {
+      document.querySelectorAll("[data-lang]").forEach(button => {
         button.classList.toggle("active", button.dataset.lang === lang);
       });
 
+      renderStaticText();
+      renderCategories();
       renderMenu();
     }
 
-    langButtons.forEach(button => {
+    document.querySelectorAll("[data-lang]").forEach(button => {
       button.addEventListener("click", () => {
         setLanguage(button.dataset.lang);
-      });
-    });
-
-    tabButtons.forEach(button => {
-      button.addEventListener("click", () => {
-        currentCategory = button.dataset.category;
-
-        tabButtons.forEach(tab => {
-          tab.classList.toggle("active", tab === button);
-        });
-
-        renderMenu();
       });
     });
 
