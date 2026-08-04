@@ -181,16 +181,16 @@
     const S = (query) => `https://www.pinterest.com/pin/887420301589294624/?${encodeURIComponent(query)}`;
 
     const photos = {
-      breakfast: [
-        S("classic omelette, eggs, breakfast"),
-        S("cheese omelette, eggs breakfast"),
-        S("mushroom omelette, breakfast"),
-        S("shakshuka, tomato eggs"),
-        S("avocado toast, egg, breakfast"),
-        S("cheese croissant, pastry"),
-        S("cottage cheese pancakes, blini"),
-        S("yogurt granola berries, breakfast bowl")
-      ],
+     breakfast: [
+  CLASSIC_OMLETTE_PHOTO, // ← Classic omelette = your Pinterest photo
+  S("cheese omelette, eggs breakfast"),
+  S("mushroom omelette, breakfast"),
+  S("shakshuka, tomato eggs"),
+  S("avocado toast, egg, breakfast"),
+  S("cheese croissant, pastry"),
+  S("cottage cheese pancakes, blini"),
+  S("yogurt granola berries, breakfast bowl")
+],
       lunch: [
         S("chicken salad, fresh, healthy"),
         S("greek salad, feta, olives"),
