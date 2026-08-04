@@ -177,20 +177,34 @@
   </main>
 
   <script>
-    /* ============ PHOTOS: Using Unsplash Source for accurate dish matching ============ */
-    const S = (query) => `https://www.pinterest.com/pin/887420301589294624/?${encodeURIComponent(query)}`;
+    /* ============ PHOTOS ============ */
+    /* 🍳 Classic omelette photo — your Pinterest pin:
+       https://www.pinterest.com/pin/887420301589294624/  ("Delectable omelette")
+
+       <img> needs the direct image file, not the Pinterest page.
+       Get it once (20 seconds):
+         1. Open the pin in your browser.
+         2. Right-click the photo → "Copy image address"
+            (it looks like: https://i.pinimg.com/736x/ab/cd/ef/…jpg)
+         3. Paste it between the quotes below.                          */
+    const CLASSIC_OMLETTE_PHOTO = ""; // 👈 paste the i.pinimg.com address here
+
+    /* Other dishes: keyword-based photo service (Pinterest page URLs can't load in <img>).
+       If you ever want the emoji placeholders back, swap the two lines below. */
+    const S = (query) => `https://loremflickr.com/900/600/${encodeURIComponent(query)}`;
+    // const S = (query) => `https://www.pinterest.com/pin/887420301589294624/?${encodeURIComponent(query)}`;
 
     const photos = {
-     breakfast: [
-  CLASSIC_OMLETTE_PHOTO, // ← Classic omelette = your Pinterest photo
-  S("cheese omelette, eggs breakfast"),
-  S("mushroom omelette, breakfast"),
-  S("shakshuka, tomato eggs"),
-  S("avocado toast, egg, breakfast"),
-  S("cheese croissant, pastry"),
-  S("cottage cheese pancakes, blini"),
-  S("yogurt granola berries, breakfast bowl")
-],
+      breakfast: [
+        CLASSIC_OMLETTE_PHOTO, // ← Classic omelette = your Pinterest photo
+        S("cheese omelette, eggs breakfast"),
+        S("mushroom omelette, breakfast"),
+        S("shakshuka, tomato eggs"),
+        S("avocado toast, egg, breakfast"),
+        S("cheese croissant, pastry"),
+        S("cottage cheese pancakes, blini"),
+        S("yogurt granola berries, breakfast bowl")
+      ],
       lunch: [
         S("chicken salad, fresh, healthy"),
         S("greek salad, feta, olives"),
@@ -346,8 +360,8 @@
           ["Լատտե", "Մեղմ կաթնային սուրճ", "1,500 ֏"],
           ["Ֆլեթ Ուայթ", "Ուժեղ սուրճ կաթով", "1,600 ֏"],
           ["Մոկա", "Սուրճ, շոկոլադ, կաթ", "1,700 ֏"],
-          ["Սառը սուրճ", "Սուրճ, սառույց, կաթ", "1,600 ֏"],
-          ["Հայկական սուրճ", "Դասական պատրաստում", "800 ֏"]
+          ["Սառը սուրճ", "ուրճ, սառույց, կաթ", "1,600 ֏"],
+          ["Հայկական սուրճ", "ասական պատրաստում", "800 ֏"]
         ],
         drinks: [
           ["Ջուր", "Գազավորված կամ բնական", "500 ֏"],
@@ -364,7 +378,7 @@
           ["Ապերոլ Սպրից", "Ապերոլ, պրոսեկո, սոդա", "3,500 ֏"],
           ["Մարգարիտա", "Տեկիլա, լայմ, լիկյոր", "3,200 ֏"],
           ["Նեգրոնի", "Ջին, վերմուտ, բիթեր", "3,400 ֏"],
-          ["Էսպրեսո Մարտինի", "Օղի, սուրճ, լիկյոր", "3,600 ֏"],
+          ["Էսպրեսո Մարտինի", "Օղի, սուրճ, իկյոր", "3,600 ֏"],
           ["Պինա Կոլադա", "Ռոմ, արքայախնձոր, կոկոս", "3,500 ֏"],
           ["Վիսկի Սաուր", "Վիսկի, լիմոն, օշարակ", "3,700 ֏"],
           ["Ալկոհոլազուրկ Մոխիտո", "Լայմ, անանուխ, սոդա", "2,000 ֏"]
