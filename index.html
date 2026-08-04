@@ -1,549 +1,983 @@
 <!DOCTYPE html>
 <html lang="hy">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Տոնիր — սրճարան Գյումրիում։ Նախաճաշ, հիմնական կերակուրներ և բար։">
-<title>Տոնիր — Սրճարան Գյումրիում</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%238f5a2b' d='M12 2C9 7 7 9 7 13a5 5 0 0 0 10 0c0-4-2-6-5-11z'/></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian:wght@400;600&family=Noto+Serif+Armenian:wght@600;700&family=Noto+Sans:wght@400;600&family=Noto+Serif:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arevik Cafe | Menu</title>
+  <meta name="description" content="Arevik Cafe menu in Armenian, Russian, and English. Breakfast, main dishes, desserts, coffee, cocktails, and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans+Armenian:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --cream: #f8f3eb;
+      --ink: #1f2d2f;
+      --muted: #667274;
+      --green: #516a62;
+      --green-dark: #314640;
+      --gold: #c6a16b;
+      --line: #eadfce;
+      --shadow: 0 18px 50px rgba(35, 48, 51, 0.12);
+      --radius: 22px;
+      --max: 1180px;
+      --font: "Montserrat", "Noto Sans Armenian", system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font);
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(198, 161, 107, 0.22);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      box-shadow: 0 8px 22px rgba(49, 70, 64, 0.25);
+    }
+
+    .brand small {
+      display: block;
+      margin-top: 2px;
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .nav-links a:hover { color: var(--green-dark); }
+
+    .lang {
+      display: flex;
+      gap: 6px;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--cream);
+    }
+
+    .lang button {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 8px 11px;
+      font: 700 12px var(--font);
+      cursor: pointer;
+    }
+
+    .lang button.active {
+      background: var(--green-dark);
+      color: #fff;
+    }
+
+    .hero {
+      padding: 64px 0 54px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.92fr;
+      gap: 46px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    h1 {
+      margin: 18px 0 18px;
+      font-size: clamp(42px, 7vw, 86px);
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+    }
+
+    h1 span { color: var(--green); }
+
+    .hero-text p {
+      max-width: 620px;
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    .btn-primary {
+      background: var(--green-dark);
+      color: #fff;
+      box-shadow: 0 14px 28px rgba(49, 70, 64, 0.22);
+    }
+
+    .btn-primary:hover { transform: translateY(-2px); }
+
+    .btn-soft {
+      color: var(--green-dark);
+      background: var(--cream);
+      border: 1px solid var(--line);
+    }
+
+    .hero-photo {
+      position: relative;
+      min-height: 590px;
+    }
+
+    .photo-card {
+      position: absolute;
+      overflow: hidden;
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      background: var(--cream);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-main {
+      inset: 0 0 64px 92px;
+    }
+
+    .photo-small {
+      left: 0;
+      bottom: 0;
+      width: 48%;
+      height: 240px;
+      border: 10px solid #fff;
+    }
+
+    .hero-badge {
+      position: absolute;
+      right: 24px;
+      bottom: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 12px 18px;
+      color: var(--green-dark);
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .section {
+      padding: 78px 0;
+    }
+
+    .section.alt {
+      background: var(--cream);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+    }
+
+    .section-head p {
+      max-width: 500px;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: 0 14px 34px rgba(35, 48, 51, 0.06);
+    }
+
+    .feature strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 18px;
+      color: var(--green-dark);
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr .8fr;
+      grid-auto-rows: 240px;
+      gap: 16px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 24px;
+      box-shadow: 0 14px 32px rgba(35, 48, 51, 0.08);
+    }
+
+    .gallery img:first-child {
+      grid-row: span 2;
+    }
+
+    .menu-tabs {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      margin-bottom: 28px;
+    }
+
+    .menu-tabs button {
+      flex: 0 0 auto;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 11px 16px;
+      font: 800 12px var(--font);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: background .2s ease, color .2s ease, border-color .2s ease;
+    }
+
+    .menu-tabs button.active {
+      background: var(--green-dark);
+      border-color: var(--green-dark);
+      color: white;
+    }
+
+    .menu-board {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .menu-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 14px 34px rgba(35, 48, 51, 0.06);
+    }
+
+    .menu-card h3 {
+      margin: 0 0 18px;
+      color: var(--green-dark);
+      font-size: 21px;
+      letter-spacing: -0.02em;
+    }
+
+    .menu-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      padding: 13px 0;
+      border-top: 1px dashed #e3d6c4;
+    }
+
+    .menu-item:first-of-type { border-top: 0; }
+
+    .item-name {
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    .item-desc {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .price {
+      color: var(--gold);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .contact-card {
+      background: var(--green-dark);
+      color: #fff;
+      border-radius: 26px;
+      padding: 34px;
+    }
+
+    .contact-card h2 {
+      margin: 0 0 20px;
+      font-size: 38px;
+      line-height: 1.05;
+    }
+
+    .contact-row {
+      padding: 16px 0;
+      border-top: 1px solid rgba(255,255,255,.16);
+    }
+
+    .contact-row small {
+      display: block;
+      color: rgba(255,255,255,.66);
+      margin-bottom: 3px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 800;
+    }
+
+    .contact-image {
+      min-height: 380px;
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    footer {
+      padding: 34px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .nav { flex-wrap: wrap; padding: 14px 0; }
+      .nav-links { order: 3; width: 100%; justify-content: center; flex-wrap: wrap; }
+      .hero-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero-photo { min-height: 460px; }
+      .photo-main { inset: 0 0 54px 52px; }
+      .menu-board, .feature-grid { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: 1fr 1fr; }
+      .gallery img:first-child { grid-column: span 2; grid-row: auto; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 12px; }
+    }
+
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 28px, var(--max)); }
+      .hero { padding-top: 38px; }
+      .hero-photo { min-height: 390px; }
+      .photo-main { inset: 0 0 76px 0; }
+      .photo-small { width: 62%; height: 180px; }
+      .hero-badge { right: 10px; bottom: 16px; font-size: 13px; }
+      .gallery { grid-template-columns: 1fr; grid-auto-rows: 220px; }
+      .gallery img:first-child { grid-column: auto; }
+      .menu-card { padding: 19px; }
+    }
+  </style>
 </head>
 <body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a href="#home" class="brand" aria-label="Arevik Cafe">
+        <span class="brand-mark">Ф±</span>
+        <span>Arevik Cafe<small data-i18n="brandTag">ХўХ«ХЅХїЦЂХё ХҐЦ‚ ХЅЦЂХіХЎЦЂХЎХ¶</small></span>
+      </a>
 
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a class="logo" href="#top">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C9 7 7 9 7 13a5 5 0 0 0 10 0c0-4-2-6-5-11z"/></svg>
-      <span class="logo-text">Տոնիր</span>
-    </a>
-    <nav class="nav">
-      <a href="#top"    data-i18n="nav_home">Գլխավոր</a>
-      <a href="#menu"   data-i18n="nav_menu">Մենյու</a>
-      <a href="#about"  data-i18n="nav_about">Մեր մասին</a>
-      <a href="#contact" data-i18n="nav_contact">Կապ</a>
-    </nav>
-    <div class="lang-switch" role="group" aria-label="Language">
-      <button data-lang="hy" class="active">ՀԱՅ</button>
-      <button data-lang="ru">РУС</button>
-      <button data-lang="en">ENG</button>
-    </div>
-  </div>
-</header>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about" data-i18n="navAbout">Х„ХҐЦЂ ХґХЎХЅХ«Х¶</a>
+        <a href="#menu" data-i18n="navMenu">Х„ХҐХ¶ХµХёЦ‚</a>
+        <a href="#gallery" data-i18n="navGallery">ХЉХЎХїХЇХҐЦЂХЎХЅЦЂХЎХ°</a>
+        <a href="#contact" data-i18n="navContact">ФїХЎХє</a>
+      </nav>
 
-<main id="top">
-
-  <section class="hero">
-    <div class="wrap">
-      <p class="hero-kicker" data-i18n="hero_kicker">Սրճարան Գյումրիում</p>
-      <h1 data-i18n="hero_title">Ջերմ ու համեղ՝ Գյումրու սրտում</h1>
-      <p class="hero-sub" data-i18n="hero_sub">Նախաճաշ, հիմնական կերակուրներ և բար՝ մեկ հարկի տակ։</p>
-      <a class="btn" href="#menu" data-i18n="hero_cta">Դիտել մենյուն</a>
-    </div>
-  </section>
-
-  <section id="menu" class="menu-section">
-    <div class="wrap">
-      <h2 data-i18n="menu_title">Մենյու</h2>
-      <div class="tabs">
-        <button class="tab active" data-tab="breakfast" data-i18n="tab_breakfast">Նախաճաշ</button>
-        <button class="tab" data-tab="main" data-i18n="tab_main">Հիմնական մենյու</button>
-        <button class="tab" data-tab="bar"  data-i18n="tab_bar">Բար</button>
-      </div>
-      <p class="menu-note" data-i18n="menu_note">Գները՝ հայկական դրամով (֏)</p>
-      <div id="menuGrid" class="menu-grid"></div>
-    </div>
-  </section>
-
-  <section id="about" class="about">
-    <div class="wrap">
-      <h2 data-i18n="about_title">Մեր մասին</h2>
-      <p class="about-text" data-i18n="about_text">
-        «Տոնիր» սրճարանը Գյումրու սրտում է։ Մենք պատրաստում ենք սիրով՝ օգտագործելով տեղական
-        մթերքներ և ավանդական բաղադրատոմսեր՝ ժամանակակից մատուցմամբ։
-      </p>
-    </div>
-  </section>
-
-  <section id="contact" class="contact">
-    <div class="wrap">
-      <h2 data-i18n="contact_title">Կապ</h2>
-      <div class="contact-grid">
-        <div class="card"><h3 data-i18n="card_address">Հասցե</h3><p data-i18n="card_address_v">Գյումրի, Հայաստան</p></div>
-        <div class="card"><h3 data-i18n="card_phone">Հեռախոս</h3><p data-i18n="card_phone_v">+374 XX XXX XXX</p></div>
-        <div class="card"><h3 data-i18n="card_hours">Աշխատանքային ժամեր</h3><p data-i18n="card_hours_v">Ամեն օր՝ 09:00–23:00</p></div>
-        <div class="card"><h3 data-i18n="card_inst">Ինստագրամ</h3><p><a href="https://instagram.com" target="_blank" rel="noopener" data-i18n="card_inst_v">@tonir.cafe</a></p></div>
+      <div class="lang" aria-label="Language switcher">
+        <button type="button" class="active" data-lang="hy">HY</button>
+        <button type="button" data-lang="ru">RU</button>
+        <button type="button" data-lang="en">EN</button>
       </div>
     </div>
-  </section>
+  </header>
 
-</main>
+  <main id="home">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-text">
+          <span class="eyebrow" data-i18n="heroEyebrow">Х¶ХёЦЂ ХЅХҐЦЂХ¶Х¤Х« ХЇХёЦ†ХҐ ХёЦ‚ Х­ХёХ°ХЎХ¶ХёЦЃ</span>
+          <h1 data-i18n-html="heroTitle">ФІХЎЦЂХ« ХЈХЎХ¬ХёЦ‚ХЅХї <span>Arevik</span></h1>
+          <p data-i18n="heroText">ХЌХєХ«ХїХЎХЇ, Х¬ХёЦ‚ХЅХЎХѕХёЦЂ ХёЦ‚ Х»ХҐЦЂХґ ХЅЦЂХіХЎЦЂХЎХ¶Хќ Х¶ХЎХ­ХЎХіХЎХ·ХҐЦЂХ«, Х°Х«ХґХ¶ХЎХЇХЎХ¶ ХёЦ‚ХїХҐХЅХїХ¶ХҐЦЂХ«, Ц„ХЎХІЦЃЦЂХЎХѕХҐХ¶Х«Ц„Х«, ХЅХёЦ‚ЦЂХіХ« ХҐЦ‚ ХЇХёХЇХїХҐХµХ¬Х¶ХҐЦЂХ« Х°ХЎЦЂХёЦ‚ХЅХї ХґХҐХ¶ХµХёЦ‚ХёХѕЦ‰</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#menu" data-i18n="heroBtnMenu">ФґХ«ХїХҐХ¬ ХґХҐХ¶ХµХёЦ‚Х¶</a>
+            <a class="btn btn-soft" href="#contact" data-i18n="heroBtnBook">Ф±ХґЦЂХЎХЈЦЂХҐХ¬ ХЅХҐХІХЎХ¶</a>
+          </div>
+        </div>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <p><span class="logo-text">Տոնիր</span> © <span id="year"></span> · <span data-i18n="footer_rights">Բոլոր իրավունքները պաշտպանված են։</span></p>
-  </div>
-</footer>
+        <div class="hero-photo" aria-hidden="true">
+          <div class="photo-card photo-main">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1100&q=85" alt="">
+          </div>
+          <div class="photo-card photo-small">
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=85" alt="">
+          </div>
+          <div class="hero-badge" data-i18n="heroBadge">08:30 - 00:00</div>
+        </div>
+      </div>
+    </section>
 
-<script src="js/data.js"></script>
-<script src="js/app.js"></script>
+    <section id="about" class="section alt">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow" data-i18n="aboutEyebrow">ХґХ©Х¶ХёХ¬ХёЦЂХї</span>
+            <h2 data-i18n="aboutTitle">ХЂХЎЦЂХґХЎЦЂ ХѕХЎХµЦЂ ЦЃХЎХ¶ХЇХЎЦЃХЎХ® ХЄХЎХґХ«</h2>
+          </div>
+          <p data-i18n="aboutText">Arevik Cafe-Х¶ ХЅХїХҐХІХ®ХѕХЎХ® Х§ Х¶ЦЂХЎХ¶ЦЃ Х°ХЎХґХЎЦЂ, ХёХѕЦ„ХҐЦЂ ХЅХ«ЦЂХёЦ‚Хґ ХҐХ¶ ХЈХҐХІХҐЦЃХ«ХЇ ХґХЎХїХёЦ‚ЦЃХёЦ‚Хґ, ХёЦЂХЎХЇХµХЎХ¬ ХЅХёЦ‚ЦЂХі, Х©ХЎЦЂХґ ХёЦ‚ХїХҐХЅХїХ¶ХҐЦЂ ХҐЦ‚ Х°ХЎХ¶ХЈХ«ХЅХї ХґХ«Х»ХЎХѕХЎХµЦЂЦ‰</p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature">
+            <strong data-i18n="feature1Title">Х†ХЎХ­ХЎХіХЎХ· ХЎХґХўХёХІХ» Ц…ЦЂ</strong>
+            <p data-i18n="feature1Text">ХЃХѕХЎХ®ХҐХІ, Х·ХЎХЇХ·ХёЦ‚ХЇХЎ, ХўХҐХ¶ХҐХ¤Х«ХЇХї, ХЇЦЂХёЦ‚ХЎХЅХЎХ¶Х¶ХҐЦЂ ХҐЦ‚ Х©ХЎЦЂХґ ХµХёХЈХёЦ‚ЦЂХїЦ‰</p>
+          </div>
+          <div class="feature">
+            <strong data-i18n="feature2Title">ФЅХёХ°ХЎХ¶ХёЦЃ ХўХёХ¬ХёЦЂХ« Х°ХЎХґХЎЦЂ</strong>
+            <p data-i18n="feature2Text">ХЌХЎХ¬ХЎХ©Х¶ХҐЦЂ, ХєХ«ЦЃЦЃХЎ, ХєХЎХЅХїХЎ, ХЈЦЂХ«Х¬, Х°Х«ХґХ¶ХЎХЇХЎХ¶ ХёЦ‚ХїХҐХЅХїХ¶ХҐЦЂ ХёЦ‚ ХЎХІХЎХ¶Х¤ХҐЦЂЦ‰</p>
+          </div>
+          <div class="feature">
+            <strong data-i18n="feature3Title">ФІХЎЦЂ ХҐЦ‚ ХЅХёЦ‚ЦЂХі</strong>
+            <p data-i18n="feature3Text">Ф·ХЅХєЦЂХҐХЅХЅХё, Х¬Х«ХґХёХ¶ХЎХ¤, ХЅХґХёЦ‚Х¦Х«, ХЇХёХЇХїХҐХµХ¬Х¶ХҐЦЂ, ХЈХ«Х¶Х«Х¶ХҐЦЂ ХҐЦ‚ Х©ХёЦ‚Х¶Х¤ Х­ХґХ«Х№Ц„Х¶ХҐЦЂЦ‰</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow" data-i18n="galleryEyebrow">ХїХҐХЅЦ„ ХёЦ‚ Х°ХЎХґ</span>
+            <h2 data-i18n="galleryTitle">ХЌХ«ЦЂХҐХ¬Х« ХєХЎХ°ХҐЦЂХ« Х¬ХёЦ‚ХЅХЎХѕХёЦЂ Х°ХЎХЅЦЃХҐ</h2>
+          </div>
+          <p data-i18n="galleryText">Х„ХҐХ¶Ц„ ХЁХ¶ХїЦЂХҐЦЃХ«Х¶Ц„ Х¬ХёЦ‚ХЅХЎХѕХёЦЂ, ХЎХ­ХёЦЂХЄХҐХ¬Х« Х¬ХёЦ‚ХЅХЎХ¶ХЇХЎЦЂХ¶ХҐЦЂ, ХёЦЂХєХҐХЅХ¦Х« ХЇХЎХµЦ„ХЁ ЦѓХёХ­ХЎХ¶ЦЃХ« ХЅЦЂХіХЎЦЂХЎХ¶Х« Х©ХҐХ©ХҐЦ‚ ХҐЦ‚ ХЄХЎХґХЎХ¶ХЎХЇХЎХЇХ«ЦЃ ХїЦЂХЎХґХЎХ¤ЦЂХёЦ‚Х©ХµХёЦ‚Х¶ХЁЦ‰</p>
+        </div>
+
+        <div class="gallery">
+          <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=1200&q=85" alt="Breakfast table">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=85" alt="Pizza">
+          <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=85" alt="Salad">
+          <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=85" alt="Dessert">
+          <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=900&q=85" alt="Cocktail">
+        </div>
+      </div>
+    </section>
+
+    <section id="menu" class="section alt">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow" data-i18n="menuEyebrow">ХґХҐХ¶ХµХёЦ‚</span>
+            <h2 data-i18n="menuTitle">ХЂХЎХґХҐЦЂХ« ХЁХ¶ХїЦЂХЎХ¶Х«</h2>
+          </div>
+          <p data-i18n="menuText">ФіХ¶ХҐЦЂХЁ Х¶Х·ХѕХЎХ® ХҐХ¶ Х¤ЦЂХЎХґХёХѕЦ‰ Х„ХҐХ¶ХµХёЦ‚Х¶ ХЇХЎХјХёЦ‚ЦЃХѕХЎХ® Х§ Х±ХҐЦЂ ХёЦ‚ХІХЎЦЂХЇХЎХ® Х¶ХЇХЎЦЂХ¶ХҐЦЂХ« ХўХЎХЄХ«Х¶Х¶ХҐЦЂХ« Х°Х«ХґХЎХ¶ ХѕЦЂХЎЦ‰</p>
+        </div>
+
+        <div class="menu-tabs" id="menuTabs"></div>
+        <div class="menu-board" id="menuBoard"></div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="wrap contact-grid">
+        <div class="contact-card">
+          <span class="eyebrow" data-i18n="contactEyebrow">ХЎХµЦЃХҐХ¬ХҐЦ„ ХґХҐХ¦</span>
+          <h2 data-i18n="contactTitle">ХЌХҐХІХЎХ¶Х¶ ХЎЦЂХ¤ХҐХ¶ ХЅХєХЎХЅХёЦ‚Хґ Х§</h2>
+          <div class="contact-row">
+            <small data-i18n="contactAddressLabel">ХЂХЎХЅЦЃХҐ</small>
+            <div data-i18n="contactAddress">ФµЦЂХҐЦ‚ХЎХ¶, ХЇХҐХ¶ХїЦЂХёХ¶</div>
+          </div>
+          <div class="contact-row">
+            <small data-i18n="contactHoursLabel">Ф±Х·Х­ХЎХїХЎХ¶Ц„ХЎХµХ«Х¶ ХЄХЎХґХҐЦЂ</small>
+            <div data-i18n="contactHours">Ф±ХґХҐХ¶ Ц…ЦЂХќ 08:30 - 00:00</div>
+          </div>
+          <div class="contact-row">
+            <small data-i18n="contactPhoneLabel">ХЂХҐХјХЎХ­ХёХЅ</small>
+            <div>+374 00 000 000</div>
+          </div>
+        </div>
+        <div class="contact-image">
+          <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=1200&q=85" alt="Cafe interior">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap" data-i18n="footerText">В© 2026 Arevik Cafe. ФІХёХ¬ХёЦЂ Х«ЦЂХЎХѕХёЦ‚Х¶Ц„Х¶ХҐЦЂХЁ ХєХЎХ·ХїХєХЎХ¶ХѕХЎХ® ХҐХ¶Ц‰</div>
+  </footer>
+
+  <script>
+    const translations = {
+      hy: {
+        brandTag: "ХўХ«ХЅХїЦЂХё ХҐЦ‚ ХЅЦЂХіХЎЦЂХЎХ¶",
+        navAbout: "Х„ХҐЦЂ ХґХЎХЅХ«Х¶",
+        navMenu: "Х„ХҐХ¶ХµХёЦ‚",
+        navGallery: "ХЉХЎХїХЇХҐЦЂХЎХЅЦЂХЎХ°",
+        navContact: "ФїХЎХє",
+        heroEyebrow: "Х¶ХёЦЂ ХЅХҐЦЂХ¶Х¤Х« ХЇХёЦ†ХҐ ХёЦ‚ Х­ХёХ°ХЎХ¶ХёЦЃ",
+        heroTitle: "ФІХЎЦЂХ« ХЈХЎХ¬ХёЦ‚ХЅХї <span>Arevik</span>",
+        heroText: "ХЌХєХ«ХїХЎХЇ, Х¬ХёЦ‚ХЅХЎХѕХёЦЂ ХёЦ‚ Х»ХҐЦЂХґ ХЅЦЂХіХЎЦЂХЎХ¶Хќ Х¶ХЎХ­ХЎХіХЎХ·ХҐЦЂХ«, Х°Х«ХґХ¶ХЎХЇХЎХ¶ ХёЦ‚ХїХҐХЅХїХ¶ХҐЦЂХ«, Ц„ХЎХІЦЃЦЂХЎХѕХҐХ¶Х«Ц„Х«, ХЅХёЦ‚ЦЂХіХ« ХҐЦ‚ ХЇХёХЇХїХҐХµХ¬Х¶ХҐЦЂХ« Х°ХЎЦЂХёЦ‚ХЅХї ХґХҐХ¶ХµХёЦ‚ХёХѕЦ‰",
+        heroBtnMenu: "ФґХ«ХїХҐХ¬ ХґХҐХ¶ХµХёЦ‚Х¶",
+        heroBtnBook: "Ф±ХґЦЂХЎХЈЦЂХҐХ¬ ХЅХҐХІХЎХ¶",
+        heroBadge: "08:30 - 00:00",
+        aboutEyebrow: "ХґХ©Х¶ХёХ¬ХёЦЂХї",
+        aboutTitle: "ХЂХЎЦЂХґХЎЦЂ ХѕХЎХµЦЂ ЦЃХЎХ¶ХЇХЎЦЃХЎХ® ХЄХЎХґХ«",
+        aboutText: "Arevik Cafe-Х¶ ХЅХїХҐХІХ®ХѕХЎХ® Х§ Х¶ЦЂХЎХ¶ЦЃ Х°ХЎХґХЎЦЂ, ХёХѕЦ„ХҐЦЂ ХЅХ«ЦЂХёЦ‚Хґ ХҐХ¶ ХЈХҐХІХҐЦЃХ«ХЇ ХґХЎХїХёЦ‚ЦЃХёЦ‚Хґ, ХёЦЂХЎХЇХµХЎХ¬ ХЅХёЦ‚ЦЂХі, Х©ХЎЦЂХґ ХёЦ‚ХїХҐХЅХїХ¶ХҐЦЂ ХҐЦ‚ Х°ХЎХ¶ХЈХ«ХЅХї ХґХ«Х»ХЎХѕХЎХµЦЂЦ‰",
+        feature1Title: "Х†ХЎХ­ХЎХіХЎХ· ХЎХґХўХёХІХ» Ц…ЦЂ",
+        feature1Text: "ХЃХѕХЎХ®ХҐХІ, Х·ХЎХЇХ·ХёЦ‚ХЇХЎ, ХўХҐХ¶ХҐХ¤Х«ХЇХї, ХЇЦЂХёЦ‚ХЎХЅХЎХ¶Х¶ХҐЦЂ ХҐЦ‚ Х©ХЎЦЂХґ ХµХёХЈХёЦ‚ЦЂХїЦ‰",
+        feature2Title: "ФЅХёХ°ХЎХ¶ХёЦЃ ХўХёХ¬ХёЦЂХ« Х°ХЎХґХЎЦЂ",
+        feature2Text: "ХЌХЎХ¬ХЎХ©Х¶ХҐЦЂ, ХєХ«ЦЃЦЃХЎ, ХєХЎХЅХїХЎ, ХЈЦЂХ«Х¬, Х°Х«ХґХ¶ХЎХЇХЎХ¶ ХёЦ‚ХїХҐХЅХїХ¶ХҐЦЂ ХёЦ‚ ХЎХІХЎХ¶Х¤ХҐЦЂЦ‰",
+        feature3Title: "ФІХЎЦЂ ХҐЦ‚ ХЅХёЦ‚ЦЂХі",
+        feature3Text: "Ф·ХЅХєЦЂХҐХЅХЅХё, Х¬Х«ХґХёХ¶ХЎХ¤, ХЅХґХёЦ‚Х¦Х«, ХЇХёХЇХїХҐХµХ¬Х¶ХҐЦЂ, ХЈХ«Х¶Х«Х¶ХҐЦЂ ХҐЦ‚ Х©ХёЦ‚Х¶Х¤ Х­ХґХ«Х№Ц„Х¶ХҐЦЂЦ‰",
+        galleryEyebrow: "ХїХҐХЅЦ„ ХёЦ‚ Х°ХЎХґ",
+        galleryTitle: "ХЌХ«ЦЂХҐХ¬Х« ХєХЎХ°ХҐЦЂХ« Х¬ХёЦ‚ХЅХЎХѕХёЦЂ Х°ХЎХЅЦЃХҐ",
+        galleryText: "Х„ХҐХ¶Ц„ ХЁХ¶ХїЦЂХҐЦЃХ«Х¶Ц„ Х¬ХёЦ‚ХЅХЎХѕХёЦЂ, ХЎХ­ХёЦЂХЄХҐХ¬Х« Х¬ХёЦ‚ХЅХЎХ¶ХЇХЎЦЂХ¶ХҐЦЂ, ХёЦЂХєХҐХЅХ¦Х« ХЇХЎХµЦ„ХЁ ЦѓХёХ­ХЎХ¶ЦЃХ« ХЅЦЂХіХЎЦЂХЎХ¶Х« Х©ХҐХ©ХҐЦ‚ ХҐЦ‚ ХЄХЎХґХЎХ¶ХЎХЇХЎХЇХ«ЦЃ ХїЦЂХЎХґХЎХ¤ЦЂХёЦ‚Х©ХµХёЦ‚Х¶ХЁЦ‰",
+        menuEyebrow: "ХґХҐХ¶ХµХёЦ‚",
+        menuTitle: "ХЂХЎХґХҐЦЂХ« ХЁХ¶ХїЦЂХЎХ¶Х«",
+        menuText: "ФіХ¶ХҐЦЂХЁ Х¶Х·ХѕХЎХ® ХҐХ¶ Х¤ЦЂХЎХґХёХѕЦ‰ Х„ХҐХ¶ХµХёЦ‚Х¶ ХЇХЎХјХёЦ‚ЦЃХѕХЎХ® Х§ Х±ХҐЦЂ ХёЦ‚ХІХЎЦЂХЇХЎХ® Х¶ХЇХЎЦЂХ¶ХҐЦЂХ« ХўХЎХЄХ«Х¶Х¶ХҐЦЂХ« Х°Х«ХґХЎХ¶ ХѕЦЂХЎЦ‰",
+        contactEyebrow: "ХЎХµЦЃХҐХ¬ХҐЦ„ ХґХҐХ¦",
+        contactTitle: "ХЌХҐХІХЎХ¶Х¶ ХЎЦЂХ¤ХҐХ¶ ХЅХєХЎХЅХёЦ‚Хґ Х§",
+        contactAddressLabel: "ХЂХЎХЅЦЃХҐ",
+        contactAddress: "ФµЦЂХҐЦ‚ХЎХ¶, ХЇХҐХ¶ХїЦЂХёХ¶",
+        contactHoursLabel: "Ф±Х·Х­ХЎХїХЎХ¶Ц„ХЎХµХ«Х¶ ХЄХЎХґХҐЦЂ",
+        contactHours: "Ф±ХґХҐХ¶ Ц…ЦЂХќ 08:30 - 00:00",
+        contactPhoneLabel: "ХЂХҐХјХЎХ­ХёХЅ",
+        footerText: "В© 2026 Arevik Cafe. ФІХёХ¬ХёЦЂ Х«ЦЂХЎХѕХёЦ‚Х¶Ц„Х¶ХҐЦЂХЁ ХєХЎХ·ХїХєХЎХ¶ХѕХЎХ® ХҐХ¶Ц‰",
+        menu: {
+          breakfast: "Х†ХЎХ­ХЎХіХЎХ·",
+          appetizers: "Х†ХЎХ­ХёЦ‚ХїХҐХЅХїХ¶ХҐЦЂ",
+          salads: "ХЌХЎХ¬ХЎХ©Х¶ХҐЦЂ",
+          pizzaPasta: "ХЉХ«ЦЃЦЃХЎ ХҐЦ‚ ХєХЎХЅХїХЎ",
+          grill: "ФіЦЂХ«Х¬ ХҐЦ‚ Х°Х«ХґХ¶ХЎХЇХЎХ¶",
+          desserts: "Ф±ХІХЎХ¶Х¤ХҐЦЂ",
+          drinks: "ФЅХґХ«Х№Ц„Х¶ХҐЦЂ",
+          bar: "ФІХЎЦЂ"
+        },
+        items: {
+          omelette: ["ФґХЎХЅХЎХЇХЎХ¶ Х±ХѕХЎХ®ХҐХІ", "ХєХЎХ¶Х«ЦЂХёХѕ, ХЅХ¶ХЇХёХѕ, Х­ХёХ¦ХЎХєХёЦ‚Х­ХїХёХѕ ХЇХЎХґ Х¬ХёХ¬Х«ХЇ-ХєХІХєХҐХІХёХѕ"],
+          eggsTomato: ["ФјХёХ¬Х«ХЇХёХѕ Х±ХѕХЎХ®ХҐХІ", "ЦѓХЎЦѓХёЦ‚ХЇ Х±ХёЦ‚ Х©ХЎЦЂХґ Х¬ХёХ¬Х«ХЇХёХѕ"],
+          shakshuka: ["Х‡ХЎХЇХ·ХёЦ‚ХЇХЎ", "ХЇХ®ХёЦ‚ Х¬ХёХ¬Х«ХЇХ« ХЅХёХёЦ‚ХЅ, Х±ХёЦ‚, ХЇХЎХ¶ХЎХ№Х«"],
+          benedict: ["ФІХҐХ¶ХҐХ¤Х«ХЇХї", "Х±ХёЦ‚, ХЅХёХёЦ‚ХЅ, Х°ХЎЦЃ ХҐЦ‚ ХўХҐХЇХёХ¶"],
+          avocado: ["Ф±ХѕХёХЇХЎХ¤ХёХµХёХѕ ХЅХЇЦЂХҐХґХўХ¬", "ХЇЦЂХҐХґХЎХµХ«Х¶ Х±ХёЦ‚ ХҐЦ‚ ХЎХѕХёХЇХЎХ¤Хё"],
+          croissant: ["ФїЦЂХёЦ‚ХЎХЅХЎХ¶", "Х·ХёХЇХёХ¬ХЎХ¤ХёХѕ, ХѕХЎХ¶Х«Х¬ХЎХµХ«Х¶ ХЇЦЂХҐХґХёХѕ ХЇХЎХґ Х»ХҐХґХёХѕ"],
+          bruschetta: ["ФІЦЂХёЦ‚ХЅХЇХҐХїХЎ ХЎХѕХёХЇХЎХ¤ХёХµХёХѕ", "ХїХЎХєХЎХЇХЎХ® Х°ХЎЦЃ, ХЎХѕХёХЇХЎХ¤Хё, Х¬ХёХ¬Х«ХЇ"],
+          hummus: ["ХЂХёЦ‚ХґХёЦ‚ХЅ", "ХЅХ«ХЅХҐХј, Х©ХЎХ°Х«Х¶, Х±Х«Х©ХЎХµХёЦ‚ХІ"],
+          cheesePlate: ["ХЉХЎХ¶ЦЂХ« ХЎЦѓХЅХҐ", "ХїХҐХІХЎХЇХЎХ¶ ХҐЦ‚ ХҐХѕЦЂХёХєХЎХЇХЎХ¶ ХєХЎХ¶Х«ЦЂХ¶ХҐЦЂ"],
+          meatPlate: ["Х„ХЅХЎХµХ«Х¶ ХЎЦѓХЅХҐ", "ХЎХєХ­ХїХЎХ® ХґХ«ХЅ, ХЅХёХёЦ‚ХЅХ¶ХҐЦЂ"],
+          greek: ["ХЂХёЦ‚Х¶ХЎХЇХЎХ¶ ХЅХЎХ¬ХЎХ©", "Х¬ХёХ¬Х«ХЇ, ХѕХЎЦЂХёЦ‚Х¶ХЈ, Х±Х«Х©ХЎХєХїХёЦ‚ХІ, Ц†ХҐХїХЎ"],
+          caesar: ["ФїХҐХЅХЎЦЂ Х°ХЎХѕХёХѕ", "Х°ХЎХѕ, ХјХёХґХЎХ¶Хё, ХЇЦЂХёЦ‚ХїХёХ¶, ХЅХёХёЦ‚ХЅ"],
+          salmon: ["ХЌХЎХІХґХёХ¶ХёХѕ ХЅХЎХ¬ХЎХ©", "Х©ХЎЦЂХґ ХЇХЎХ¶ХЎХ№Х« ХҐЦ‚ Х¶ХёЦ‚ЦЂХў ХЅХёХёЦ‚ХЅ"],
+          veal: ["ХЂХёЦЂХ©Х« ХґХЅХёХѕ ХЎХІЦЃХЎХ¶", "ХґХ«ХЅ, ХўХЎХ¶Х»ХЎЦЂХҐХІХҐХ¶, Х°ХЎХїХёЦ‚ХЇ ХЅХёХёЦ‚ХЅ"],
+          margarita: ["Х„ХЎЦЂХЈХЎЦЂХ«ХїХЎ", "Х¬ХёХ¬Х«ХЇХ« ХЅХёХёЦ‚ХЅ, ХґХёЦЃХЎЦЂХҐХ¬Х¬ХЎ, ХјХҐХ°ХЎХ¶"],
+          pepperoni: ["ХЉХҐХєХҐЦЂХёХ¶Х«", "ХєХҐХєХҐЦЂХёХ¶Х«, ХєХЎХ¶Х«ЦЂ, ХЇХ®ХёЦ‚ Х¶ХёХїХЎ"],
+          quattro: ["Х”ХёЦ‚ХЎХїЦЂХё Ц†ХёЦЂХґХЎХ»Х«", "Х№ХёЦЂХЅ ХїХҐХЅХЎХЇХ« ХєХЎХ¶Х«ЦЂ"],
+          carbonara: ["ФїХЎЦЂХўХёХ¶ХЎЦЂХЎ", "ХЅХєХЎХЈХҐХїХїХ«, ХўХҐХЇХёХ¶, ХєХЎХ¶Х«ЦЂ"],
+          bolognese: ["ФІХёХ¬ХёХ¶ХµХҐХ¦ХҐ", "ХґХЅХЎХµХ«Х¶ ХЅХёХёЦ‚ХЅ ХҐЦ‚ ХєХЎХЅХїХЎ"],
+          steak: ["Х–Х¬ХҐХµЦ„ ХґХ«Х¶ХµХёХ¶", "Х°ХµХёЦ‚Х©ХЎХ¬Х« ХґХ«ХЅ ХЅХёХёЦ‚ХЅХёХѕ"],
+          pork: ["ФЅХёХ¦Х« ХЅХ©ХҐХµЦ„", "ХЈЦЂХ«Х¬, ХЇХЎЦЂХїХёЦ†Х«Х¬ ХҐЦ‚ ХЅХёХёЦ‚ХЅ"],
+          chicken: ["ХЂХЎХѕХ« Х·Х¶Х«ЦЃХҐХ¬", "Х­ЦЂХ©Х­ЦЂХ©ХЎХ¶ ХєХЎХїХµХЎХ¶, Х©ХЎЦЂХґ ХЎХІЦЃХЎХ¶"],
+          beef: ["ХЏХЎХѕХЎЦЂХ« ХЅХїЦЂХёХЈХЎХ¶ХёЦ†", "ХЇЦЂХҐХґХЎХµХ«Х¶ ХЅХёХёЦ‚ХЅ ХҐЦ‚ ХўЦЂХ«Х¶Х±"],
+          napoleon: ["Х†ХЎХєХёХ¬ХҐХёХ¶", "Х·ХҐЦЂХїХЎХѕХёЦЂ ХЇЦЂХҐХґХЎХµХ«Х¶ ХЎХІХЎХ¶Х¤ХҐЦЂ"],
+          lava: ["ФјХЎХѕХЎ Ц„ХҐХµЦ„", "ХїХЎЦ„ Х·ХёХЇХёХ¬ХЎХ¤ХЎХµХ«Х¶ ХґХ«Х»ХёЦ‚ХЇ"],
+          cheesecake: ["Х‰Х«Х¦Ц„ХҐХµЦ„", "Х¶ХёЦ‚ЦЂХў ХЇЦЂХҐХґ, Х°ХЎХїХЎХєХїХІХЎХµХ«Х¶ ХЅХёХёЦ‚ХЅ"],
+          waffles: ["ХЋХЎЦ†Х¬Х« ХєХЎХІХєХЎХІХЎХЇХёХѕ", "ХґЦЂХЈХҐЦЂХёХѕ ХҐЦ‚ ХѕХЎХ¶Х«Х¬ХЎХµХ«Х¶ ХєХЎХІХєХЎХІХЎХЇХёХѕ"],
+          espresso: ["Ф·ХЅХєЦЂХҐХЅХЅХё", "ХЇХЎЦЂХі, Х­Х«Хї ХҐЦ‚ ХўХёЦ‚ЦЂХЎХѕХҐХї"],
+          americano: ["Ф±ХґХҐЦЂХ«ХЇХЎХ¶Хё", "Х¤ХЎХЅХЎХЇХЎХ¶ ХЅХҐЦ‚ ХЅХёЦ‚ЦЂХі"],
+          cappuccino: ["ФїХЎХєХёЦ‚Х№Х«Х¶Хё", "Х§ХЅХєЦЂХҐХЅХЅХё ХҐЦ‚ ХЇХЎХ©Х¶ХЎХµХ«Х¶ ЦѓЦЂЦѓХёЦ‚ЦЂ"],
+          latte: ["ФјХЎХїХїХҐ", "ЦѓХЎЦѓХёЦ‚ХЇ ХЇХЎХ©Х¶ХЎХµХ«Х¶ ХЅХёЦ‚ЦЂХі"],
+          tea: ["Ф№ХҐХµ", "ХЅХҐЦ‚, ХЇХЎХ¶ХЎХ№, ХўХёЦ‚ХЅХЎХЇХЎХ¶"],
+          lemonade: ["ФјХ«ХґХёХ¶ХЎХ¤", "Х°ХЎХїХЎХєХїХёЦ‚ХІ, ЦЃХ«ХїЦЂХёЦ‚ХЅ ХЇХЎХґ ХґХҐХІЦЂ"],
+          smoothie: ["ХЌХґХёЦ‚Х¦Х«", "ХҐХ¬ХЎХЇ-ХўХЎХ¶ХЎХ¶ ХЇХЎХґ Х¶ХЎЦЂХ«Х¶Х»-ХўХЎХ¶ХЎХ¶"],
+          cocktail: ["Х„ХЎЦЂХЈХЎЦЂХ«ХїХЎ", "ХїХҐХЇХ«Х¬ХЎ, Х¬ХЎХµХґ, Х©ХЎЦЂХґ Х¶ХёХїХЎ"],
+          mojito: ["Х„ХёХ­Х«ХїХё", "ХјХёХґ, Х¬ХЎХµХґ, ХЎХ¶ХЎХ¶ХёЦ‚Х­"],
+          whiskey: ["ХЋХ«ХЅХЇХ« ХЅХЎХёЦ‚ЦЂ", "ХѕХ«ХЅХЇХ«, ХЇХ«ХїЦЂХёХ¶, Ц…Х·ХЎЦЂХЎХЇ"],
+          wine: ["ФіХ«Х¶Х«", "ХЇХЎЦЂХґХ«ЦЂ, ХЅХєХ«ХїХЎХЇ, ХѕХЎЦЂХ¤ХЎХЈХёЦ‚ХµХ¶"]
+        }
+      },
+      ru: {
+        brandTag: "Р±РёСЃС‚СЂРѕ Рё РєРѕС„РµР№РЅСЏ",
+        navAbout: "Рћ РЅР°СЃ",
+        navMenu: "РњРµРЅСЋ",
+        navGallery: "Р“Р°Р»РµСЂРµСЏ",
+        navContact: "РљРѕРЅС‚Р°РєС‚С‹",
+        heroEyebrow: "СЃРѕРІСЂРµРјРµРЅРЅС‹Р№ РєРѕС„Рµ Рё РєСѓС…РЅСЏ",
+        heroTitle: "Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ РІ <span>Arevik</span>",
+        heroText: "РЎРІРµС‚Р»РѕРµ Рё СѓСЋС‚РЅРѕРµ РєР°С„Рµ СЃ Р±РѕРіР°С‚С‹Рј РјРµРЅСЋ Р·Р°РІС‚СЂР°РєРѕРІ, РѕСЃРЅРѕРІРЅС‹С… Р±Р»СЋРґ, РґРµСЃРµСЂС‚РѕРІ, РєРѕС„Рµ Рё РєРѕРєС‚РµР№Р»РµР№.",
+        heroBtnMenu: "РЎРјРѕС‚СЂРµС‚СЊ РјРµРЅСЋ",
+        heroBtnBook: "Р—Р°Р±СЂРѕРЅРёСЂРѕРІР°С‚СЊ",
+        heroBadge: "08:30 - 00:00",
+        aboutEyebrow: "Р°С‚РјРѕСЃС„РµСЂР°",
+        aboutTitle: "РЈСЋС‚РЅРѕРµ РјРµСЃС‚Рѕ РІ Р»СЋР±РѕРµ РІСЂРµРјСЏ",
+        aboutText: "Arevik Cafe СЃРѕР·РґР°РЅРѕ РґР»СЏ С‚РµС…, РєС‚Рѕ Р»СЋР±РёС‚ РєСЂР°СЃРёРІСѓСЋ РїРѕРґР°С‡Сѓ, РєР°С‡РµСЃС‚РІРµРЅРЅС‹Р№ РєРѕС„Рµ, СЃРІРµР¶РёРµ Р±Р»СЋРґР° Рё СЃРїРѕРєРѕР№РЅСѓСЋ Р°С‚РјРѕСЃС„РµСЂСѓ.",
+        feature1Title: "Р—Р°РІС‚СЂР°РєРё РІРµСЃСЊ РґРµРЅСЊ",
+        feature1Text: "РћРјР»РµС‚С‹, С€Р°РєС€СѓРєР°, Р±РµРЅРµРґРёРєС‚, РєСЂСѓР°СЃСЃР°РЅС‹ Рё СЃРІРµР¶РёР№ Р№РѕРіСѓСЂС‚.",
+        feature2Title: "РљСѓС…РЅСЏ РґР»СЏ РІСЃРµС…",
+        feature2Text: "РЎР°Р»Р°С‚С‹, РїРёС†С†Р°, РїР°СЃС‚Р°, РіСЂРёР»СЊ, РѕСЃРЅРѕРІРЅС‹Рµ Р±Р»СЋРґР° Рё РґРµСЃРµСЂС‚С‹.",
+        feature3Title: "Р‘Р°СЂ Рё РєРѕС„Рµ",
+        feature3Text: "Р­СЃРїСЂРµСЃСЃРѕ, Р»РёРјРѕРЅР°РґС‹, СЃРјСѓР·Рё, РєРѕРєС‚РµР№Р»Рё, РІРёРЅР° Рё РєСЂРµРїРєРёРµ РЅР°РїРёС‚РєРё.",
+        galleryEyebrow: "РІРёРґ Рё РІРєСѓСЃ",
+        galleryTitle: "РЎРІРµС‚Р»РѕРµ РјРµСЃС‚Рѕ РґР»СЏ Р»СЋР±РёРјС‹С… РјРѕРјРµРЅС‚РѕРІ",
+        galleryText: "РњС‹ РІС‹Р±СЂР°Р»Рё Р°РїРїРµС‚РёС‚РЅС‹Рµ С„РѕС‚РѕРіСЂР°С„РёРё, С‡С‚РѕР±С‹ СЃР°Р№С‚ РїРµСЂРµРґР°РІР°Р» Р»РµРіРєРѕРµ Рё СЃРѕРІСЂРµРјРµРЅРЅРѕРµ РЅР°СЃС‚СЂРѕРµРЅРёРµ РєР°С„Рµ.",
+        menuEyebrow: "РјРµРЅСЋ",
+        menuTitle: "Р’С‹Р±РѕСЂ РІРєСѓСЃРѕРІ",
+        menuText: "Р¦РµРЅС‹ СѓРєР°Р·Р°РЅС‹ РІ РґСЂР°РјР°С…. РњРµРЅСЋ РїРѕСЃС‚СЂРѕРµРЅРѕ РїРѕ СЂР°Р·РґРµР»Р°Рј РёР· РІР°С€РёС… РёР·РѕР±СЂР°Р¶РµРЅРёР№.",
+        contactEyebrow: "РїСЂРёС…РѕРґРёС‚Рµ",
+        contactTitle: "Р’Р°С€ СЃС‚РѕР» СѓР¶Рµ Р¶РґРµС‚",
+        contactAddressLabel: "РђРґСЂРµСЃ",
+        contactAddress: "Р•СЂРµРІР°РЅ, С†РµРЅС‚СЂ",
+        contactHoursLabel: "Р§Р°СЃС‹ СЂР°Р±РѕС‚С‹",
+        contactHours: "РљР°Р¶РґС‹Р№ РґРµРЅСЊ: 08:30 - 00:00",
+        contactPhoneLabel: "РўРµР»РµС„РѕРЅ",
+        footerText: "В© 2026 Arevik Cafe. Р’СЃРµ РїСЂР°РІР° Р·Р°С‰РёС‰РµРЅС‹.",
+        menu: {
+          breakfast: "Р—Р°РІС‚СЂР°РєРё",
+          appetizers: "Р—Р°РєСѓСЃРєРё",
+          salads: "РЎР°Р»Р°С‚С‹",
+          pizzaPasta: "РџРёС†С†Р° Рё РїР°СЃС‚Р°",
+          grill: "Р“СЂРёР»СЊ Рё РіРѕСЂСЏС‡РµРµ",
+          desserts: "Р”РµСЃРµСЂС‚С‹",
+          drinks: "РќР°РїРёС‚РєРё",
+          bar: "Р‘Р°СЂ"
+        },
+        items: {
+          omelette: ["РљР»Р°СЃСЃРёС‡РµСЃРєРёР№ РѕРјР»РµС‚", "СЃ СЃС‹СЂРѕРј, РіСЂРёР±Р°РјРё, РІРµС‚С‡РёРЅРѕР№ РёР»Рё С‚РѕРјР°С‚РѕРј Рё РїРµСЂС†РµРј"],
+          eggsTomato: ["РЇРёС‡РЅРёС†Р° СЃ С‚РѕРјР°С‚Р°РјРё", "РЅРµР¶РЅС‹Рµ СЏР№С†Р° СЃРѕ СЃРІРµР¶РёРјРё С‚РѕРјР°С‚Р°РјРё"],
+          shakshuka: ["РЁР°РєС€СѓРєР°", "РїСЂСЏРЅС‹Р№ С‚РѕРјР°С‚РЅС‹Р№ СЃРѕСѓСЃ, СЏР№С†Р°, Р·РµР»РµРЅСЊ"],
+          benedict: ["РЇР№С†Р° Р‘РµРЅРµРґРёРєС‚", "СЏР№С†Рѕ, СЃРѕСѓСЃ, С…Р»РµР± Рё Р±РµРєРѕРЅ"],
+          avocado: ["РЎРєСЂРµРјР±Р» СЃ Р°РІРѕРєР°РґРѕ", "РєСЂРµРјРѕРІС‹Рµ СЏР№С†Р° Рё Р°РІРѕРєР°РґРѕ"],
+          croissant: ["РљСЂСѓР°СЃСЃР°РЅ", "СЃ С€РѕРєРѕР»Р°РґРѕРј, РІР°РЅРёР»СЊРЅС‹Рј РєСЂРµРјРѕРј РёР»Рё РґР¶РµРјРѕРј"],
+          bruschetta: ["Р‘СЂСѓСЃРєРµС‚С‚Р° СЃ Р°РІРѕРєР°РґРѕ", "С‚РѕСЃС‚, Р°РІРѕРєР°РґРѕ, С‚РѕРјР°С‚С‹"],
+          hummus: ["РҐСѓРјСѓСЃ", "РЅСѓС‚, С‚Р°С…РёРЅРё, РѕР»РёРІРєРѕРІРѕРµ РјР°СЃР»Рѕ"],
+          cheesePlate: ["РЎС‹СЂРЅР°СЏ С‚Р°СЂРµР»РєР°", "РјРµСЃС‚РЅС‹Рµ Рё РµРІСЂРѕРїРµР№СЃРєРёРµ СЃС‹СЂС‹"],
+          meatPlate: ["РњСЏСЃРЅР°СЏ С‚Р°СЂРµР»РєР°", "РєРѕРїС‡РµРЅРѕРµ РјСЏСЃРѕ Рё СЃРѕСѓСЃС‹"],
+          greek: ["Р“СЂРµС‡РµСЃРєРёР№ СЃР°Р»Р°С‚", "С‚РѕРјР°С‚, РѕРіСѓСЂРµС†, РѕР»РёРІРєРё, С„РµС‚Р°"],
+          caesar: ["Р¦РµР·Р°СЂСЊ СЃ РєСѓСЂРёС†РµР№", "РєСѓСЂРёС†Р°, СЂРѕРјР°РЅРѕ, РєСЂСѓС‚РѕРЅС‹, СЃРѕСѓСЃ"],
+          salmon: ["РЎР°Р»Р°С‚ СЃ Р»РѕСЃРѕСЃРµРј", "СЃРІРµР¶Р°СЏ Р·РµР»РµРЅСЊ Рё РЅРµР¶РЅС‹Р№ СЃРѕСѓСЃ"],
+          veal: ["РЎР°Р»Р°С‚ СЃ С‚РµР»СЏС‚РёРЅРѕР№", "РјСЏСЃРѕ, РѕРІРѕС‰Рё, С„РёСЂРјРµРЅРЅС‹Р№ СЃРѕСѓСЃ"],
+          margarita: ["РњР°СЂРіР°СЂРёС‚Р°", "С‚РѕРјР°С‚РЅС‹Р№ СЃРѕСѓСЃ, РјРѕС†Р°СЂРµР»Р»Р°, Р±Р°Р·РёР»РёРє"],
+          pepperoni: ["РџРµРїРїРµСЂРѕРЅРё", "РїРµРїРїРµСЂРѕРЅРё, СЃС‹СЂ, РѕСЃС‚СЂР°СЏ РЅРѕС‚Р°"],
+          quattro: ["РљРІР°С‚СЂРѕ С„РѕСЂРјР°РґР¶Рё", "С‡РµС‚С‹СЂРµ РІРёРґР° СЃС‹СЂР°"],
+          carbonara: ["РљР°СЂР±РѕРЅР°СЂР°", "СЃРїР°РіРµС‚С‚Рё, Р±РµРєРѕРЅ, СЃС‹СЂ"],
+          bolognese: ["Р‘РѕР»РѕРЅСЊРµР·Рµ", "РјСЏСЃРЅРѕР№ СЃРѕСѓСЃ Рё РїР°СЃС‚Р°"],
+          steak: ["Р¤РёР»Рµ РјРёРЅСЊРѕРЅ", "СЃРѕС‡РЅРѕРµ РјСЏСЃРѕ СЃ СЃРѕСѓСЃРѕРј"],
+          pork: ["РЎРІРёРЅРѕР№ СЃС‚РµР№Рє", "РіСЂРёР»СЊ, РєР°СЂС‚РѕС„РµР»СЊ Рё СЃРѕСѓСЃ"],
+          chicken: ["РљСѓСЂРёРЅС‹Р№ С€РЅРёС†РµР»СЊ", "С…СЂСѓСЃС‚СЏС‰Р°СЏ РєРѕСЂРѕС‡РєР°, СЃРІРµР¶РёР№ СЃР°Р»Р°С‚"],
+          beef: ["Р‘РµС„СЃС‚СЂРѕРіР°РЅРѕРІ", "СЃР»РёРІРѕС‡РЅС‹Р№ СЃРѕСѓСЃ Рё СЂРёСЃ"],
+          napoleon: ["РќР°РїРѕР»РµРѕРЅ", "СЃР»РѕРµРЅС‹Р№ РєСЂРµРјРѕРІС‹Р№ РґРµСЃРµСЂС‚"],
+          lava: ["Р›Р°РІР° РєРµР№Рє", "С‚РµРїР»Р°СЏ С€РѕРєРѕР»Р°РґРЅР°СЏ РЅР°С‡РёРЅРєР°"],
+          cheesecake: ["Р§РёР·РєРµР№Рє", "РЅРµР¶РЅС‹Р№ РєСЂРµРј, СЏРіРѕРґРЅС‹Р№ СЃРѕСѓСЃ"],
+          waffles: ["Р’Р°С„Р»Рё СЃ РјРѕСЂРѕР¶РµРЅС‹Рј", "С„СЂСѓРєС‚С‹ Рё РІР°РЅРёР»СЊРЅРѕРµ РјРѕСЂРѕР¶РµРЅРѕРµ"],
+          espresso: ["Р­СЃРїСЂРµСЃСЃРѕ", "РєРѕСЂРѕС‚РєРёР№, РїР»РѕС‚РЅС‹Р№ Рё Р°СЂРѕРјР°С‚РЅС‹Р№"],
+          americano: ["РђРјРµСЂРёРєР°РЅРѕ", "РєР»Р°СЃСЃРёС‡РµСЃРєРёР№ С‡РµСЂРЅС‹Р№ РєРѕС„Рµ"],
+          cappuccino: ["РљР°РїСѓС‡РёРЅРѕ", "СЌСЃРїСЂРµСЃСЃРѕ Рё РјРѕР»РѕС‡РЅР°СЏ РїРµРЅР°"],
+          latte: ["Р›Р°С‚С‚Рµ", "РјСЏРіРєРёР№ РјРѕР»РѕС‡РЅС‹Р№ РєРѕС„Рµ"],
+          tea: ["Р§Р°Р№", "С‡РµСЂРЅС‹Р№, Р·РµР»РµРЅС‹Р№, С‚СЂР°РІСЏРЅРѕР№"],
+          lemonade: ["Р›РёРјРѕРЅР°Рґ", "СЏРіРѕРґР°, С†РёС‚СЂСѓСЃ РёР»Рё РјРµРґ"],
+          smoothie: ["РЎРјСѓР·Рё", "РєР»СѓР±РЅРёРєР°-Р±Р°РЅР°РЅ РёР»Рё Р°РїРµР»СЊСЃРёРЅ-Р±Р°РЅР°РЅ"],
+          cocktail: ["РњР°СЂРіР°СЂРёС‚Р°", "С‚РµРєРёР»Р°, Р»Р°Р№Рј, СЃРІРµР¶Р°СЏ РЅРѕС‚Р°"],
+          mojito: ["РњРѕС…РёС‚Рѕ", "СЂРѕРј, Р»Р°Р№Рј, РјСЏС‚Р°"],
+          whiskey: ["Р’РёСЃРєРё СЃР°СѓСЌСЂ", "РІРёСЃРєРё, Р»РёРјРѕРЅ, СЃРёСЂРѕРї"],
+          wine: ["Р’РёРЅРѕ", "РєСЂР°СЃРЅРѕРµ, Р±РµР»РѕРµ, СЂРѕР·РѕРІРѕРµ"]
+        }
+      },
+      en: {
+        brandTag: "bistro and coffee house",
+        navAbout: "About",
+        navMenu: "Menu",
+        navGallery: "Gallery",
+        navContact: "Contact",
+        heroEyebrow: "modern coffee and kitchen",
+        heroTitle: "Welcome to <span>Arevik</span>",
+        heroText: "A bright and warm cafe with a rich menu of breakfasts, main dishes, desserts, coffee, and cocktails.",
+        heroBtnMenu: "View menu",
+        heroBtnBook: "Book a table",
+        heroBadge: "08:30 - 00:00",
+        aboutEyebrow: "atmosphere",
+        aboutTitle: "A cozy place for any time",
+        aboutText: "Arevik Cafe is made for people who love beautiful plating, quality coffee, fresh dishes, and a calm setting.",
+        feature1Title: "Breakfast all day",
+        feature1Text: "Omelettes, shakshuka, benedict, croissants, and fresh yogurt.",
+        feature2Title: "Kitchen for everyone",
+        feature2Text: "Salads, pizza, pasta, grill, main dishes, and desserts.",
+        feature3Title: "Bar and coffee",
+        feature3Text: "Espresso, lemonades, smoothies, cocktails, wines, and spirits.",
+        galleryEyebrow: "look and taste",
+        galleryTitle: "A bright address for favorite moments",
+        galleryText: "We selected beautiful appetizing photos to give the website a light and modern cafe mood.",
+        menuEyebrow: "menu",
+        menuTitle: "A selection of flavors",
+        menuText: "Prices are shown in AMD. The menu follows the sections from your screenshots.",
+        contactEyebrow: "visit us",
+        contactTitle: "Your table is waiting",
+        contactAddressLabel: "Address",
+        contactAddress: "Yerevan, city center",
+        contactHoursLabel: "Hours",
+        contactHours: "Every day: 08:30 - 00:00",
+        contactPhoneLabel: "Phone",
+        footerText: "В© 2026 Arevik Cafe. All rights reserved.",
+        menu: {
+          breakfast: "Breakfast",
+          appetizers: "Appetizers",
+          salads: "Salads",
+          pizzaPasta: "Pizza & Pasta",
+          grill: "Grill & Mains",
+          desserts: "Desserts",
+          drinks: "Drinks",
+          bar: "Bar"
+        },
+        items: {
+          omelette: ["Omelette classic", "with cheese, mushrooms, ham, or tomato and peppers"],
+          eggsTomato: ["Scrambled eggs with tomatoes", "soft eggs with fresh tomatoes"],
+          shakshuka: ["Shakshuka", "spiced tomato sauce, eggs, herbs"],
+          benedict: ["Eggs Benedict", "egg, sauce, bread, and bacon"],
+          avocado: ["Scramble with avocado", "creamy eggs and avocado"],
+          croissant: ["Croissant", "with chocolate, vanilla cream, or jam"],
+          bruschetta: ["Bruschetta with avocado", "toast, avocado, tomatoes"],
+          hummus: ["Hummus", "chickpeas, tahini, olive oil"],
+          cheesePlate: ["Cheese plate", "local and European cheeses"],
+          meatPlate: ["Meat platter", "smoked meats and sauces"],
+          greek: ["Greek salad", "tomato, cucumber, olives, feta"],
+          caesar: ["Chicken Caesar", "chicken, romaine, croutons, sauce"],
+          salmon: ["Salmon salad", "fresh greens and delicate sauce"],
+          veal: ["Veal salad", "meat, vegetables, signature sauce"],
+          margarita: ["Margherita", "tomato sauce, mozzarella, basil"],
+          pepperoni: ["Pepperoni", "pepperoni, cheese, spicy note"],
+          quattro: ["Quattro formaggi", "four kinds of cheese"],
+          carbonara: ["Carbonara", "spaghetti, bacon, cheese"],
+          bolognese: ["Bolognese", "meat sauce and pasta"],
+          steak: ["Filet mignon", "juicy meat with sauce"],
+          pork: ["Pork steak", "grilled, potato, sauce"],
+          chicken: ["Chicken schnitzel", "crispy crust, fresh salad"],
+          beef: ["Beef Stroganoff", "creamy sauce and rice"],
+          napoleon: ["Napoleon", "layered creamy dessert"],
+          lava: ["Lava cake", "warm chocolate center"],
+          cheesecake: ["Cheesecake", "soft cream, berry sauce"],
+          waffles: ["Waffles with ice cream", "fruit and vanilla ice cream"],
+          espresso: ["Espresso", "short, rich, aromatic"],
+          americano: ["Americano", "classic black coffee"],
+          cappuccino: ["Cappuccino", "espresso and milk foam"],
+          latte: ["Latte", "soft milky coffee"],
+          tea: ["Tea", "black, green, herbal"],
+          lemonade: ["Lemonade", "berry, citrus, or honey"],
+          smoothie: ["Smoothie", "strawberry-banana or orange-banana"],
+          cocktail: ["Margarita", "tequila, lime, fresh note"],
+          mojito: ["Mojito", "rum, lime, mint"],
+          whiskey: ["Whiskey sour", "whiskey, lemon, syrup"],
+          wine: ["Wine", "red, white, rose"]
+        }
+      }
+    };
+
+    const menuData = [
+      { key: "breakfast", items: [["omelette", "700"], ["eggsTomato", "1100"], ["shakshuka", "1400"], ["benedict", "1700"], ["avocado", "1200"], ["croissant", "1000"]] },
+      { key: "appetizers", items: [["bruschetta", "2200"], ["hummus", "1500"], ["cheesePlate", "2000"], ["meatPlate", "3000"]] },
+      { key: "salads", items: [["greek", "2800"], ["caesar", "3000"], ["salmon", "3900"], ["veal", "3500"]] },
+      { key: "pizzaPasta", items: [["margarita", "2500"], ["pepperoni", "2900"], ["quattro", "3200"], ["carbonara", "3200"], ["bolognese", "3400"]] },
+      { key: "grill", items: [["steak", "4700"], ["pork", "5500"], ["chicken", "3900"], ["beef", "3900"]] },
+      { key: "desserts", items: [["napoleon", "2400"], ["lava", "2200"], ["cheesecake", "2000"], ["waffles", "2000"]] },
+      { key: "drinks", items: [["espresso", "900"], ["americano", "1000"], ["cappuccino", "1400"], ["latte", "1500"], ["tea", "1200"], ["lemonade", "1400/2900"], ["smoothie", "2200"]] },
+      { key: "bar", items: [["cocktail", "2800"], ["mojito", "2500/2800"], ["whiskey", "3600"], ["wine", "6200+"] ] }
+    ];
+
+    let currentLang = "hy";
+    let currentCategory = "breakfast";
+
+    function setLang(lang) {
+      currentLang = translations[lang] ? lang : "hy";
+      document.documentElement.lang = currentLang;
+
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        el.textContent = translations[currentLang][key] || "";
+      });
+
+      document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+        const key = el.getAttribute("data-i18n-html");
+        el.innerHTML = translations[currentLang][key] || "";
+      });
+
+      document.querySelectorAll(".lang button").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.lang === currentLang);
+      });
+
+      renderTabs();
+      renderMenu();
+    }
+
+    function renderTabs() {
+      const tabs = document.getElementById("menuTabs");
+      tabs.innerHTML = menuData.map((category) => `
+        <button type="button" class="${category.key === currentCategory ? "active" : ""}" data-category="${category.key}">
+          ${translations[currentLang].menu[category.key]}
+        </button>
+      `).join("");
+
+      tabs.querySelectorAll("button").forEach((button) => {
+        button.addEventListener("click", () => {
+          currentCategory = button.dataset.category;
+          renderTabs();
+          renderMenu();
+        });
+      });
+    }
+
+    function renderMenu() {
+      const board = document.getElementById("menuBoard");
+      const category = menuData.find((item) => item.key === currentCategory) || menuData[0];
+      const items = category.items.map(([itemKey, price]) => {
+        const item = translations[currentLang].items[itemKey];
+        return `
+          <div class="menu-item">
+            <div>
+              <div class="item-name">${item[0]}</div>
+              <div class="item-desc">${item[1]}</div>
+            </div>
+            <div class="price">${price}</div>
+          </div>
+        `;
+      }).join("");
+
+      board.innerHTML = `
+        <article class="menu-card">
+          <h3>${translations[currentLang].menu[category.key]}</h3>
+          ${items}
+        </article>
+        <article class="menu-card">
+          <h3>${currentLang === "hy" ? "Ф±ХјХЎХ»ХЎЦЂХЇХёЦ‚Хґ ХҐХ¶Ц„" : currentLang === "ru" ? "Р РµРєРѕРјРµРЅРґСѓРµРј" : "Recommended"}</h3>
+          ${menuData.slice(0, 4).map((group) => {
+            const first = translations[currentLang].items[group.items[0][0]];
+            return `
+              <div class="menu-item">
+                <div>
+                  <div class="item-name">${first[0]}</div>
+                  <div class="item-desc">${translations[currentLang].menu[group.key]}</div>
+                </div>
+                <div class="price">${group.items[0][1]}</div>
+              </div>
+            `;
+          }).join("")}
+        </article>
+      `;
+    }
+
+    document.querySelectorAll(".lang button").forEach((button) => {
+      button.addEventListener("click", () => setLang(button.dataset.lang));
+    });
+
+    setLang("hy");
+  </script>
 </body>
 </html>
-:root{
-  --bg:#ffffff;
-  --ink:#26221c;
-  --muted:#8a847a;
-  --accent:#8f5a2b;
-  --accent-dark:#74481f;
-  --line:#eae4da;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  background:var(--bg);
-  color:var(--ink);
-  font-family:'Noto Sans Armenian','Noto Sans',system-ui,sans-serif;
-  line-height:1.55;
-}
-h1,h2,h3{font-family:'Noto Serif Armenian','Noto Serif',serif;line-height:1.2}
-a{color:inherit}
-.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-section{scroll-margin-top:90px}
-
-/* ---------- header ---------- */
-.site-header{
-  position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
-  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
-}
-.header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;padding-top:8px;padding-bottom:8px}
-.logo{display:flex;align-items:center;gap:8px;text-decoration:none}
-.logo svg{width:26px;height:26px;fill:var(--accent)}
-.logo-text{font-family:'Noto Serif Armenian','Noto Serif',serif;font-weight:700;font-size:1.35rem}
-.nav{display:flex;gap:22px;flex-wrap:wrap}
-.nav a{text-decoration:none;font-weight:600;font-size:.95rem}
-.nav a:hover{color:var(--accent)}
-.lang-switch{display:flex;gap:6px}
-.lang-switch button{
-  border:1px solid var(--line);background:#fff;border-radius:999px;
-  padding:6px 12px;font-size:.75rem;font-weight:600;letter-spacing:.05em;
-  cursor:pointer;color:var(--muted);transition:.2s;
-}
-.lang-switch button:hover{color:var(--accent);border-color:var(--accent)}
-.lang-switch button.active{background:var(--accent);border-color:var(--accent);color:#fff}
-
-/* ---------- hero ---------- */
-.hero{position:relative;text-align:center;padding:110px 0 80px;overflow:hidden}
-.hero::before{
-  content:"";position:absolute;top:-950px;left:50%;transform:translateX(-50%);
-  width:1400px;height:1400px;border:1px solid #efe7da;border-radius:50%;
-}
-.hero::after{
-  content:"";position:absolute;top:-880px;left:50%;transform:translateX(-50%);
-  width:1200px;height:1200px;border:1px solid #f4eee3;border-radius:50%;
-}
-.hero-kicker{color:var(--accent);letter-spacing:.25em;text-transform:uppercase;font-size:.8rem;font-weight:600}
-.hero h1{font-size:clamp(2rem,5vw,3.4rem);margin:14px 0 12px}
-.hero-sub{color:var(--muted);max-width:560px;margin:0 auto 30px}
-.btn{
-  display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
-  padding:13px 30px;border-radius:999px;font-weight:600;transition:.2s;
-}
-.btn:hover{background:var(--accent-dark)}
-
-/* ---------- menu ---------- */
-.menu-section{padding:60px 0 20px}
-h2{font-size:clamp(1.6rem,3vw,2.2rem);text-align:center}
-h2::after{content:"";display:block;width:56px;height:2px;background:var(--accent);margin:14px auto 0}
-.tabs{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:30px 0 10px}
-.tab{
-  border:1px solid var(--line);background:#fff;border-radius:999px;
-  padding:10px 22px;font-weight:600;font-size:.95rem;cursor:pointer;transition:.2s;
-  font-family:inherit;color:var(--ink);
-}
-.tab:hover{border-color:var(--accent);color:var(--accent)}
-.tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
-.menu-note{text-align:center;color:var(--muted);font-size:.85rem;margin:6px 0 40px}
-.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:44px 56px}
-.cat-title{
-  font-size:.95rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
-  border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:14px;font-weight:700;
-}
-.items{list-style:none}
-.item{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:.95rem}
-.item .name{font-weight:600}
-.item .dots{flex:1;border-bottom:2px dotted #d9d2c6;transform:translateY(-4px)}
-.item .price{font-weight:600;color:var(--accent);white-space:nowrap}
-.item.sub{padding-left:20px}
-.item.sub .name{font-weight:400;color:var(--muted);font-size:.88rem}
-.item.sub .price{font-size:.88rem}
-
-/* ---------- about ---------- */
-.about{padding:70px 0 30px}
-.about-text{max-width:720px;margin:26px auto 0;text-align:center;color:var(--muted);font-size:1.05rem}
-
-/* ---------- contact ---------- */
-.contact{padding:50px 0 10px}
-.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:30px}
-.card{border:1px solid var(--line);border-radius:16px;padding:22px;text-align:center}
-.card h3{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-.card p{font-weight:600}
-.card a{color:var(--accent);text-decoration:none}
-.card a:hover{text-decoration:underline}
-
-/* ---------- footer ---------- */
-.site-footer{border-top:1px solid var(--line);margin-top:70px;padding:30px 0 40px;text-align:center;color:var(--muted);font-size:.9rem}
-
-/* ---------- responsive ---------- */
-@media (max-width:760px){
-  .header-inner{flex-wrap:wrap;justify-content:center}
-  .menu-grid{grid-template-columns:1fr}
-  .hero{padding:80px 0 60px}
-}
-/* Menu data. I(hy, ru, en, price, isSubItem). B(name, price) = same name in all languages.
-   Prices marked with  /* check */  were not fully readable from the source — please verify. */
-const I = (hy, ru, en, p, s) => ({ n: { hy, ru, en }, p, s: !!s });
-const B = (n, p) => I(n, n, n, p);
-
-const MENU = [
-{ id: "breakfast", cats: [
-  { t: { hy: "Նախաճաշ", ru: "Завтрак", en: "Breakfast" }, items: [
-    I("Օմլետ դասական","Омлет классический","Omelette classic","700"),
-    I("Պանրով","С сыром","With cheese","+400",1),
-    I("Սնկով","С грибами","With mushrooms","+300",1),
-    I("Ֆրանսիական տոստով","С французским тостом","With french toast","+200",1),
-    I("Խոզապխտով և քաղցր պղպեղով","С ветчиной и болгарским перцем","With ham and bell peppers","+400",1),
-    I("Լոլիկով ձվածեղ","Яичница-болтунья с помидорами","Scrambled eggs with tomatoes","1100"),
-    I("Շակշուկա","Шакшука","Shakshuka","1400"),
-    I("Ձու բենեդիկտ","Яйца Бенедикт","Eggs Benedict","1700"),
-    I("Սքրեմբլ ավոկադոյով","Скрэмбл с авокадо","Scramble with avocado","1200"),
-    I("Կրուասան տապակած ձվով","Круассан с жареными яйцами","Fried eggs croissant","1500"),
-    I("Կրուասան կապրեզե","Круассан капрезе","Caprese croissant","1300"),
-    I("Յոգուրտ թարմ պատրաստված","Йогурт свежеприготовленный","Freshly made yogurt","900"),
-    I("Յոգուրտ չիայի սերմերով, հատապտուղներով և ջեմով","Йогурт с чиа, ягодами и джемом","Yogurt with chia seeds, berries and jam","1300"),
-    I("Կրուասան շոկոլադով/վանիլային կրեմով/ջեմով","Круассан с шоколадом/ванильным кремом/джемом","Croissant with chocolate/vanilla cream/jam","1000"),
-    I("Նրբաբլիթ կաթնաշոռով","Блинчик с творогом","Crepe with cottage cheese","900"),
-    I("Կաթնաշոռով պանկեյկներ","Панкейки с творогом","Pancakes with cottage cheese","1300")
-  ]}
-]},
-{ id: "main", cats: [
-  { t: { hy: "Նախուտեստներ", ru: "Закуски", en: "Appetizers" }, items: [
-    I("Բուրատա խորոված պղպեղով և ավոկադոյով","Буррата с запечённым перцем и авокадо","Burrata with roasted peppers and avocado","4800"),
-    I("Բրուսկետա ֆոկաչչայով","Брускетта на фокачче","Bruschetta focaccia","2200"),
-    I("Բրուսկետա հորթի լեզվի բաստուրմայով","Брускетта с бастурмой из телячьего языка","Bruschetta with veal tongue basturma","1800"),
-    I("Բրուսկետա չեչիլ պանրով","Брускетта с сыром чечил","Bruschetta with chechil cheese","1800"),
-    I("Համեմված սև հաց","Пряный ржаной хлеб","Spiced rye bread","1400"),
-    I("Դայնամիթ շրիմփ","Креветки «Динамит»","Dynamite shrimp","3800"),
-    I("Ֆրիտո միստո","Фритто мисто","Fritto misto","3300"),
-    I("Էդամամե","Эдамаме","Edamame","1500"),
-    I("Պանրի գնդիկներ","Сырные шарики","Cheese balls","2000"),
-    I("Կարամելիզացված սմբուկ","Карамелизированные баклажаны","Caramelized eggplants","2200" /* check */),
-    I("Բուֆալո հավ","Курица «Буффало»","Buffalo chicken","2000" /* check */),
-    I("Պանրի և մսի ափսե","Сырная и мясная тарелка","Cheese and meat platter","2000/4000"),
-    I("Պանրի և մսի ափսե գինու հետ","Сырная и мясная тарелка к вину","Cheese and meat platter for wine","3000/6000")
-  ]},
-  { t: { hy: "Աղցաններ", ru: "Салаты", en: "Salads" }, items: [
-    I("Սաղմոնի պոկե","Поке с лососем","Salmon poke","3900"),
-    I("Հավի տերիյակի պոկե","Поке с курицей терияки","Chicken teriyaki poke","3200"),
-    I("Աղցան հորթի մսով և չոր լոլիկով","Салат с телятиной и вялеными томатами","Veal and dried tomatoes salad","3500"),
-    I("Աղցան հավով և կինոայով","Салат с курицей и киноа","Chicken and quinoa salad","3200"),
-    I("Կեսար հավով/ծովախեցգետնիկներով","Цезарь с курицей/креветками","Caesar with chicken/shrimp","3000/3500"),
-    I("Հունական աղցան","Греческий салат","Greek salad","2800"),
-    I("Աղցան բազմակով և ստրաչատելլայով","Салат со свёклой и страчателлой","Roasted beets and stracciatella salad","2800"),
-    I("Ֆունչոզա բանջարեղենով","Фунчоза с овощами","Funchoza with vegetables","2500"),
-    I("Կապրեզե աղցան","Салат Капрезе","Caprese salad","2500")
-  ]},
-  { t: { hy: "Պիցցա", ru: "Пицца", en: "Pizza" }, items: [
-    I("Մորտադելլա և ստրաչատելլա","Мортаделла и страчателла","Mortadella and stracciatella","3400"),
-    I("Պրոշուտտո պեստոյով","Прошутто с песто","Prosciutto with pesto","3400"),
-    I("Մարգարիտա","Маргарита","Margherita","2500"),
-    I("Պեպերոնի","Пепперони","Pepperoni","2900"),
-    I("Քվատտրո ֆորմաջի","Четыре сыра","Quattro formaggi","3200"),
-    I("Պալերմո","Палермо","Palermo","2900")
-  ]},
-  { t: { hy: "Պաստա", ru: "Паста", en: "Pasta" }, items: [
-    I("Կարբոնարա","Карбонара","Carbonara","3000" /* check */),
-    I("Սպագետտի բոլոնյեզե","Спагетти Болоньезе","Spaghetti Bolognese","2800" /* check */),
-    I("Ֆետուչինի Ալֆրեդո","Феттучине Альфредо","Fettuccine Alfredo","2800" /* check */),
-    I("Սպագետտի պեստո ստրաչատելլայով","Спагетти с песто и страчателлой","Spaghetti pesto stracciatella","3000" /* check */),
-    I("Բորակի մատունով","Армянская паста бораки с мацуни","Armenian pasta boraki with matzoni","2600" /* check */)
-  ]},
-  { t: { hy: "Բուրգերներ և սենդվիչներ", ru: "Бургеры и сэндвичи", en: "Burgers & Sandwiches" }, items: [
-    I("Անգուս բուրգեր","Бургер Ангус","Angus burger","3500" /* check */),
-    I("Հավի բուրգեր","Куриный бургер","Chicken burger","3000" /* check */),
-    I("Քլաբ սենդվիչ","Клаб сэндвич","Club sandwich","2800" /* check */)
-  ]},
-  { t: { hy: "Ապուրներ", ru: "Супы", en: "Soups" }, items: [
-    I("Հավով և նարնջով կրեմ-ապուր","Крем-суп с курицей и апельсином","Chicken and orange cream soup","2200"),
-    I("Լոլիկով և այծի պանրով ապուր","Томатный суп с козьим сыром","Tomato soup with goat cheese","2000"),
-    I("Հավով և բրնձով ապուր","Куриный суп с рисом","Chicken and rice soup","1600"),
-    I("Սպաս","Спас","Spas (yogurt soup)","1600")
-  ]}
-]},
-{ id: "bar", cats: [
-  { t: { hy: "Զովացնող ըմպելիքներ", ru: "Прохлади­тельные напитки".replace("­",""), en: "Soft Drinks" }, items: [
-    I("Ջուր / Հանքային ջուր","Вода / Минеральная вода","Water / Mineral water","400"),
-    I("Բնական հյութ","Натуральный сок","Natural juice","600"),
-    I("Գազավորված ըմպելիք","Газированный напиток","Fizzy drink","600"),
-    I("Էներգետիկ ըմպելիք","Энергетик","Energy drink","1500"),
-    I("Տոնիկ","Тоник","Tonic","1500")
-  ]},
-  { t: { hy: "Լիմոնադ", ru: "Лимонад", en: "Lemonade" }, items: [
-    I("Հատապտղային","Ягодный","Berry","1400/2900"),
-    I("Ցիտրուսային","Цитрусовый","Citrus","1400/2900"),
-    I("Մեղրով","Медовый","Honey","1600/3200")
-  ]},
-  { t: { hy: "Սմուզի", ru: "Смузи", en: "Smoothie" }, items: [
-    I("Հատապտղային","Ягодный","Berry","2200"),
-    I("Ելակով և բանանով","Клубника и банан","Strawberry and banana","2200"),
-    I("Նարնջով և բանանով","Апельсин и банан","Orange and banana","2200")
-  ]},
-  { t: { hy: "Միլքշեյք", ru: "Милкшейк", en: "Milkshake" }, items: [
-    I("Վանիլային","Ванильный","Vanilla","1300"),
-    I("Շոկոլադե","Шоколадный","Chocolate","1400"),
-    I("Հատապտղային","Ягодный","Berry","1500"),
-    I("Օրեո","Орео","Oreo","1800")
-  ]},
-  { t: { hy: "Սուրճ", ru: "Кофе", en: "Coffee" }, items: [
-    I("Էսպրեսո","Эспрессо","Espresso","900"),
-    I("Ամերիկանո","Американо","Americano","1000"),
-    I("Կապուչինո","Капучино","Cappuccino","1400"),
-    I("Լատտե","Латте","Latte","1500"),
-    I("Մոկա","Мокка","Mocca","1800"),
-    I("Ռաֆ սուրճ","Раф кофе","Raf coffee","1800"),
-    I("Ֆլեթ ուայթ","Флэт уайт","Flat white","1900"),
-    I("Սուրճ Բեյլիսով","Кофе с Бейлис","Coffee with Baileys","2200"),
-    I("Սուրճ պաղպաղակով","Кофе с мороженым","Coffee with ice cream","1500"),
-    I("Արևելյան սուրճ","Восточный кофе","Oriental coffee","600")
-  ]},
-  { t: { hy: "Թեյ 500մլ", ru: "Чай 500 мл", en: "Tea 500 ml" }, items: [
-    I("Սև թեյ","Чёрный чай","Black tea","1200"),
-    I("Կանաչ թեյ","Зелёный чай","Green tea","1200"),
-    I("Խոտաբույսերով թեյ","Травяной чай","Herbal tea","1600"),
-    I("Դարչինով և մեխակով թեյ","Чай с корицей и гвоздикой","Cinnamon and clove tea","1900"),
-    I("Հատապտղային թեյ","Ягодный чай","Berry tea","2200"),
-    I("Դեղձի սառը թեյ","Холодный чай с персиком","Peach iced tea","1200"),
-    I("Հատապտղային սառը թեյ","Холодный ягодный чай","Berry iced tea","1200")
-  ]},
-  { t: { hy: "Թարմ քամած հյութ", ru: "Свежевыжатый сок", en: "Fresh Juice" }, items: [
-    I("Ցիտրուսային","Цитрусовый","Citrus","1500")
-  ]},
-  { t: { hy: "Կոկտեյլներ", ru: "Коктейли", en: "Cocktails" }, items: [
-    I("Մարգարիտա","Маргарита","Margarita","2800"),
-    I("Կոսմոպոլիտեն","Космополитен","Cosmopolitan","2600"),
-    I("Քլովեր Քլաբ","Кловер Клаб","Clover Club","2600"),
-    I("Ուայթ Լեդի","Уайт Леди","White Lady","2600"),
-    I("Սինգապուր Սլինգ","Сингапур Слинг","Singapore Sling","2900"),
-    I("Վիսկի սաուր","Виски сауэр","Whiskey sour","3600"),
-    I("Ֆրենչ 75","Френч 75","French 75","2800"),
-    I("Ապերոլ Շպրից","Апероль Шприц","Aperol Spritz","3100"),
-    I("Ապերոլ ելակի Շպրից","Апероль клубничный Шприц","Aperol strawberry Spritz","3500"),
-    I("Էսպրեսո Մարտինի","Эспрессо Мартини","Espresso Martini","2600"),
-    I("Նեգրոնի","Негрони","Negroni","2800"),
-    I("Օլդ Ֆեշնդ","Олд Фэшн","Old Fashioned","3500"),
-    I("Մայ Տայ","Май Тай","Mai Tai","3200"),
-    I("Սառեցված ելակի Դայկիրի","Замороженный клубничный Дайкири","Frozen Strawberry Daiquiri","3200"),
-    I("Մոխիտո / Ելակի մոխիտո","Мохито / Клубничный мохито","Mojito / Strawberry Mojito","2500/2800"),
-    I("Տեկիլա Սանրայզ","Текила Санрайз","Tequila Sunrise","2500"),
-    I("Լոնգ Այլենդ","Лонг Айленд","Long Island Iced Tea","3800")
-  ]},
-  { t: { hy: "Կոնյակ 50մլ", ru: "Бренди 50 мл", en: "Brandy 50 ml" }, items: [
-    B("Hennessy V.S.O.P","5700"), B("Hennessy VS","3200"), B("Ararat Nairi 20","7200"),
-    B("Ararat Vaspurakan 15","4700"), B("Ararat Akhtamar 10","2200"), B("Ararat Ani 7","2000"),
-    B("Ararat 5","1900"), I("Ararat (ծիրան/բալ/սուրճ/մեղր)","Ararat (абрикос/вишня/кофе/мёд)","Ararat (apricot/cherry/coffee/honey)","1800")
-  ]},
-  { t: { hy: "Վիսկի 50մլ", ru: "Виски 50 мл", en: "Whiskey 50 ml" }, items: [
-    B("Macallan 12","8900"), B("Chivas 18","5800"), B("Chivas 12","2900"), B("Black Label","2800"),
-    B("Jack Daniels","2500"), B("Jack Daniels Honey","2500"), B("Jim Beam","2500"),
-    B("Jameson Black Barrel","3100"), B("Jameson","1900")
-  ]},
-  { t: { hy: "Տեկիլա 50մլ", ru: "Текила 50 мл", en: "Tequila 50 ml" }, items: [
-    B("Don Julio 1942","14000"), B("Don Julio Anejo","5000"), B("Don Julio Reposado","4900"),
-    B("Don Julio Blanco","4800"), B("Patron Anejo","6500"), B("Patron Silver","5200"),
-    B("Jose Cuervo Silver","1900"), B("Olmeca Gold","1900"), B("Olmeca Blanco","1800")
-  ]},
-  { t: { hy: "Ջին 50մլ", ru: "Джин 50 мл", en: "Gin 50 ml" }, items: [
-    B("Hendrick's","3200"), B("Bombay Sapphire","2200"), B("Beefeater","1600"), B("Barrister","1400")
-  ]},
-  { t: { hy: "Օղի 0.5լ", ru: "Водка 0.5 л", en: "Vodka 0.5 L" }, items: [
-    B("Grey Goose","32000"), B("Beluga","18000"), B("Kremlin Award Classic","14000"),
-    B("Ohanyan Ice / 50ml","1400/13000"), B("Absolut / 50ml","1200/11000")
-  ]},
-  { t: { hy: "Վերմուտ 50մլ", ru: "Вермут 50 мл", en: "Vermouth 50 ml" }, items: [
-    B("Martini Extra Dry","1200"), B("Martini Bianco","1200"), B("Martini Rosso","1200"), B("Martini Fiero","1200")
-  ]},
-  { t: { hy: "Լիկյոր 50մլ", ru: "Ликёр 50 мл", en: "Liqueur 50 ml" }, items: [
-    B("Baileys","1400"), B("Campari","1400"), B("Aperol","1700"), B("Jagermeister","1700"), B("Sambuca Ramazzotti","1700")
-  ]},
-  { t: { hy: "Ռոմ 50մլ", ru: "Ром 50 мл", en: "Rum 50 ml" }, items: [
-    B("Bacardi Carta Negra","2400"), B("Bacardi Carta Blanca","2400"),
-    B("Captain Morgan White","1900"), B("Captain Morgan Black","1900")
-  ]},
-  { t: { hy: "Գարեջուր 0.33լ", ru: "Пиво 0.33 л", en: "Beer 0.33 L" }, items: [
-    B("Paulaner","1600"), B("Budweiser","1500"), B("Warsteiner","1500"), B("Corona Extra","1400"),
-    B("Heineken","1200"), B("Miller","1100"), B("Aleksandrapol","1100")
-  ]},
-  { t: { hy: "Կարմիր գինի 750մլ", ru: "Красное вино 750 мл", en: "Red Wine 750 ml" }, items: [
-    B("Koor Reserve","24000"), B("Karas Reserve","21000"), B("Gosh Reserve","15000"),
-    B("Dulong Medoc Reserve (France)","12000"), B("Puro Carbo","11000"),
-    B("Karas / 150ml","1900/9500"), B("Sargon / 150ml","1900/9500"), B("Koor","9500"),
-    B("Dulong Merlot-Cabernet (France)","9500"), B("J.P.Chenet Cabernet-Syrah (France)","8600"),
-    B("J.P.Chenet Medium Sweet (France)","8600"), B("Postales Malbec (Argentina)","7600"),
-    B("Fantini Primo Merlot (Italy)","7200"), B("Canti Merlot (Italy)","6500"),
-    B("Baron D'Arignac Rouge (France)","6200")
-  ]},
-  { t: { hy: "Սպիտակ գինի 750մլ", ru: "Белое вино 750 мл", en: "White Wine 750 ml" }, items: [
-    B("Koor Reserve","23000"), B("Karas Chardonnay","22000"), B("Gosh Reserve","13000"),
-    B("Karas / 150ml","1900/9500"), B("Sargon / 150ml","1900/9500"), B("Koor","9500"),
-    B("Dulong Semillon-Sauvignon (France)","9500"), B("Café de Paris Le Blanc (France)","8900"),
-    B("J.P.Chenet Colombard-Sauvignon (France)","8600"), B("J.P.Chenet Medium Sweet (France)","8600"),
-    B("Postales Malbec (Argentina)","7600"), B("Fantini Primo Merlot (Italy)","7200"),
-    B("Canti Chardonnay (Italy)","6500"), B("Baron D'Arignac Blanc (France)","6200" /* check */)
-  ]},
-  { t: { hy: "Փրփրուն գինի 750մլ", ru: "Игристое вино 750 мл", en: "Sparkling Wine 750 ml" }, items: [
-    B("Martini Asti","16500"), B("Astoria Treviso Butterfly Prosecco","11000"),
-    B("Astoria Rose Butterfly Prosecco","11000"), B("J.P.Chenet (Brut/Demi-Sec/Ice Rose)","8600"),
-    B("Val D'Oca Prosecco","7900"), B("Moscato Prosecco","7500" /* check */)
-  ]},
-  { t: { hy: "Վարդագույն գինի 750մլ", ru: "Розовое вино 750 мл", en: "Rosé Wine 750 ml" }, items: [
-    B("Sargon Rose","9500"), B("Café de Paris Le Rosé (France)","8900"),
-    B("J.P.Chenet Rosé (France)","7900"), B("Ijevan Tea Rose","7000")
-  ]}
-]}
-];
-/* ---------- UI translations ---------- */
-const UI = {
-  hy: {
-    nav_home:"Գլխավոր", nav_menu:"Մենյու", nav_about:"Մեր մասին", nav_contact:"Կապ",
-    hero_kicker:"Սրճարան Գյումրիում",
-    hero_title:"Ջերմ ու համեղ՝ Գյումրու սրտում",
-    hero_sub:"Նախաճաշ, հիմնական կերակուրներ և բար՝ մեկ հարկի տակ։",
-    hero_cta:"Դիտել մենյուն",
-    menu_title:"Մենյու", menu_note:"Գները՝ հայկական դրամով (֏)",
-    tab_breakfast:"Նախաճաշ", tab_main:"Հիմնական մենյու", tab_bar:"Բար",
-    about_title:"Մեր մասին",
-    about_text:"«Տոնիր» սրճարանը Գյումրու սրտում է։ Մենք պատրաստում ենք սիրով՝ օգտագործելով տեղական մթերքներ և ավանդական բաղադրատոմսեր՝ ժամանակակից մատուցմամբ։",
-    contact_title:"Կապ",
-    card_address:"Հասցե", card_address_v:"Գյումրի, Հայաստան",
-    card_phone:"Հեռախոս", card_phone_v:"+374 XX XXX XXX",
-    card_hours:"Աշխատանքային ժամեր", card_hours_v:"Ամեն օր՝ 09:00–23:00",
-    card_inst:"Ինստագրամ", card_inst_v:"@tonir.cafe",
-    footer_rights:"Բոլոր իրավունքները պաշտպանված են։",
-    title:"Տոնիր — Սրճարան Գյումրիում"
-  },
-  ru: {
-    nav_home:"Главная", nav_menu:"Меню", nav_about:"О нас", nav_contact:"Контакты",
-    hero_kicker:"Кафе в Гюмри",
-    hero_title:"Тепло и вкусно — в сердце Гюмри",
-    hero_sub:"Завтраки, основные блюда и бар — под одной крышей.",
-    hero_cta:"Смотреть меню",
-    menu_title:"Меню", menu_note:"Цены в армянских драмах (֏)",
-    tab_breakfast:"Завтрак", tab_main:"Основное меню", tab_bar:"Бар",
-    about_title:"О нас",
-    about_text:"Кафе «Тонир» находится в самом сердце Гюмри. Мы готовим с любовью: местные продукты и традиционные рецепты в современной подаче.",
-    contact_title:"Контакты",
-    card_address:"Адрес", card_address_v:"Гюмри, Армения",
-    card_phone:"Телефон", card_phone_v:"+374 XX XXX XXX",
-    card_hours:"Часы работы", card_hours_v:"Ежедневно 09:00–23:00",
-    card_inst:"Инстаграм", card_inst_v:"@tonir.cafe",
-    footer_rights:"Все права защищены.",
-    title:"Тонир — кафе в Гюмри"
-  },
-  en: {
-    nav_home:"Home", nav_menu:"Menu", nav_about:"About", nav_contact:"Contact",
-    hero_kicker:"Café in Gyumri",
-    hero_title:"Warm & tasty in the heart of Gyumri",
-    hero_sub:"Breakfast, mains and bar — all under one roof.",
-    hero_cta:"View menu",
-    menu_title:"Menu", menu_note:"Prices in Armenian dram (֏)",
-    tab_breakfast:"Breakfast", tab_main:"Main Menu", tab_bar:"Bar",
-    about_title:"About Us",
-    about_text:"Tonir café sits in the heart of Gyumri. We cook with love — local ingredients and traditional recipes with a modern touch.",
-    contact_title:"Contact",
-    card_address:"Address", card_address_v:"Gyumri, Armenia",
-    card_phone:"Phone", card_phone_v:"+374 XX XXX XXX",
-    card_hours:"Opening hours", card_hours_v:"Daily 09:00–23:00",
-    card_inst:"Instagram", card_inst_v:"@tonir.cafe",
-    footer_rights:"All rights reserved.",
-    title:"Tonir — Café in Gyumri"
-  }
-};
-
-/* ---------- state ---------- */
-const state = {
-  lang: localStorage.getItem("tonir-lang") || "hy",   // Armenian by default
-  tab: "breakfast"
-};
-
-const $  = s => document.querySelector(s);
-const $$ = s => [...document.querySelectorAll(s)];
-
-/* ---------- helpers ---------- */
-function fmtPrice(p){
-  return p.replace(/\d{5,}/g, d => d.replace(/\B(?=(\d{3})+(?!\d))/g, " ")) + " ֏";
-}
-
-function applyI18n(){
-  $$("[data-i18n]").forEach(el => {
-    const v = UI[state.lang][el.dataset.i18n];
-    if (v) el.textContent = v;
-  });
-  document.title = UI[state.lang].title;
-  document.documentElement.lang = state.lang;
-}
-
-function renderMenu(){
-  const sec = MENU.find(s => s.id === state.tab);
-  $("#menuGrid").innerHTML = sec.cats.map(cat => `
-    <section class="cat">
-      <h3 class="cat-title">${cat.t[state.lang]}</h3>
-      <ul class="items">
-        ${cat.items.map(i => `
-          <li class="item${i.s ? " sub" : ""}">
-            <span class="name">${i.n[state.lang]}</span>
-            <span class="dots"></span>
-            <span class="price">${fmtPrice(i.p)}</span>
-          </li>`).join("")}
-      </ul>
-    </section>`).join("");
-}
-
-/* ---------- events ---------- */
-$$(".lang-switch button").forEach(b => b.addEventListener("click", () => {
-  state.lang = b.dataset.lang;
-  localStorage.setItem("tonir-lang", state.lang);
-  $$(".lang-switch button").forEach(x => x.classList.toggle("active", x === b));
-  applyI18n(); renderMenu();
-}));
-
-$$(".tab").forEach(t => t.addEventListener("click", () => {
-  state.tab = t.dataset.tab;
-  $$(".tab").forEach(x => x.classList.toggle("active", x === t));
-  renderMenu();
-}));
-
-/* ---------- init ---------- */
-$$(".lang-switch button").forEach(b => b.classList.toggle("active", b.dataset.lang === state.lang));
-$("#year").textContent = new Date().getFullYear();
-applyI18n();
-renderMenu();
-# Տոնիր — Tonir Café Website
-
-Trilingual (Armenian / Russian / English) café website. Armenian is the default language.
-White background, fully responsive, no dependencies — perfect for GitHub Pages.
-
-## Run locally
-Just open `index.html` in a browser.
-
-## Publish on GitHub Pages
-1. Create a new repository (e.g. `tonir-cafe`).
-2. Upload the files keeping the folder structure (`index.html`, `css/`, `js/`, `README.md`).
-3. Go to **Settings → Pages → Branch: `main` → folder: `/ (root)` → Save**.
-4. In 1–2 minutes your site is live at `https://YOUR-USERNAME.github.io/tonir-cafe/`.
-
-## Editing
-- **Café name:** change «Տոնիր» in `index.html` (logo + footer) and the `title` keys in `js/app.js`.
-- **Menu / prices:** everything lives in `js/data.js`. Items marked `/* check */` were
-  unreadable from the source photos — please verify those prices.
-- **Contacts:** replace the placeholder phone / address / Instagram in `js/app.js`.
