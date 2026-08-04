@@ -177,51 +177,79 @@
   </main>
 
   <script>
-    /* ============ PHOTOS: 56 matching photos (1 per dish) ============ */
-    const U = (id) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=85`;
+    /* ============ PHOTOS: Using Unsplash Source for accurate dish matching ============ */
+    const S = (query) => `https://source.unsplash.com/900x600/?${encodeURIComponent(query)}`;
 
     const photos = {
       breakfast: [
-        U("photo-1510693206972-4b6311cbbe93"), U("photo-1525351484163-7529414344d8"),
-        U("photo-1482049016688-2d3e1b311543"), U("photo-1590412200988-a436970781fa"),
-        U("photo-1541519227354-08fa5d50c44d"), U("photo-1555507036-ab1f4038808a"),
-        U("photo-1567206563064-6f60f40a2b57"), U("photo-1490474418585-ba9bad8fd0ea")
+        S("classic omelette, eggs, breakfast"),
+        S("cheese omelette, eggs breakfast"),
+        S("mushroom omelette, breakfast"),
+        S("shakshuka, tomato eggs"),
+        S("avocado toast, egg, breakfast"),
+        S("cheese croissant, pastry"),
+        S("cottage cheese pancakes, blini"),
+        S("yogurt granola berries, breakfast bowl")
       ],
       lunch: [
-        U("photo-1546793665-c74683f339c1"), U("photo-1540189549336-e6e99c3679fe"),
-        U("photo-1550304943-4f24f54ddde9"), U("photo-1547592166-23ac45744acd"),
-        U("photo-1547592180-85f173990554"), U("photo-1621996346565-e3dbc646d9a9"),
-        U("photo-1574071318508-1cdbab808002"), U("photo-1568901346375-23c9450c58cd")
+        S("chicken salad, fresh, healthy"),
+        S("greek salad, feta, olives"),
+        S("caesar salad, chicken, croutons"),
+        S("mushroom cream soup, bowl"),
+        S("chicken soup, noodles, vegetables"),
+        S("pasta alfredo, creamy, chicken"),
+        S("pizza margherita, mozzarella, basil"),
+        S("cheeseburger, fries, lunch")
       ],
       dinner: [
-        U("photo-1532550907401-a500c9a57435"), U("photo-1546833999-b9f581a1996d"),
-        U("photo-1467003909585-2f8a72700288"), U("photo-1544025162-d76694265947"),
-        U("photo-1476124369491-e7addf5db371"), U("photo-1473093295043-cdd812d0e601"),
-        U("photo-1565299624946-b28f40a0ae38"), U("photo-1512621776951-a57141f2eefd")
+        S("chicken steak, grilled, vegetables"),
+        S("beef steak, grilled, potatoes"),
+        S("grilled salmon, rice, vegetables"),
+        S("pork ribs, bbq, potatoes"),
+        S("chicken risotto, mushroom, parmesan"),
+        S("mushroom pasta, cream, parmesan"),
+        S("four seasons pizza, toppings"),
+        S("grilled vegetables, seasonal")
       ],
       coffee: [
-        U("photo-1510707577719-ae7c14805e3a"), U("photo-1509042239860-f550ce710b93"),
-        U("photo-1572442388796-11668a67e53d"), U("photo-1461023058943-07fcbe16d735"),
-        U("photo-1442512595331-e89e73853f31"), U("photo-1497636577773-f1231844b336"),
-        U("photo-1517701550927-30cf4ba1dba5"), U("photo-1512562246646-118eb15f5780")
+        S("espresso, cup, coffee"),
+        S("americano, black coffee"),
+        S("cappuccino, foam, latte art"),
+        S("latte, milk coffee, art"),
+        S("flat white, coffee, milk"),
+        S("mocha, chocolate coffee"),
+        S("iced coffee, cold, ice"),
+        S("armenian coffee, traditional, cezve")
       ],
       drinks: [
-        U("photo-1548839140-29a749e1cf4d"), U("photo-1600271886742-f049cd451bba"),
-        U("photo-1576673442512-106c49551bfc"), U("photo-1523362628745-0c100150b504"),
-        U("photo-1556679343-c7306c1976bc"), U("photo-1505252585461-04db1eb84625"),
-        U("photo-1553530666-ba11a7da3888"), U("photo-1499638673689-79a0b5115d87")
+        S("water, glass, bottle"),
+        S("fresh orange juice, citrus"),
+        S("apple juice, natural"),
+        S("berry lemonade, berries, mint"),
+        S("citrus lemonade, lemon, orange"),
+        S("mango smoothie, tropical"),
+        S("strawberry smoothie, berry"),
+        S("iced tea, lemon, cold")
       ],
       cocktails: [
-        U("photo-1513558161293-cdaf765ed2fd"), U("photo-1544145945-f90425340c7e"),
-        U("photo-1556855810-ac404aa91e85"), U("photo-1551751299-1b51cab2694c"),
-        U("photo-1545438102-799c3991ffb2"), U("photo-1605270012917-bf157c5a9541"),
-        U("photo-1470337458703-46ad1756a187"), U("photo-1551538827-9c037cb4f32a")
+        S("mojito, rum, mint, lime"),
+        S("aperol spritz, orange, prosecco"),
+        S("margarita, tequila, lime, salt"),
+        S("negroni, gin, vermouth, bitter"),
+        S("espresso martini, coffee, cocktail"),
+        S("pina colada, pineapple, coconut"),
+        S("whiskey sour, lemon, cocktail"),
+        S("virgin mojito, non alcoholic, mint")
       ],
       desserts: [
-        U("photo-1533134242443-d4fd215305ad"), U("photo-1631206753348-db44968fd440"),
-        U("photo-1578985545062-69928b1d9587"), U("photo-1549903072-7e6e0bedb7fb"),
-        U("photo-1488477181946-6428a0291777"), U("photo-1571877227200-a0d98ea607e9"),
-        U("photo-1562376552-0d160a2f238d"), U("photo-1499638673689-79a0b5115d87")
+        S("cheesecake, creamy, dessert"),
+        S("tiramisu, coffee, cocoa, dessert"),
+        S("chocolate cake, rich, dessert"),
+        S("honey cake, layers, medovik"),
+        S("panna cotta, berries, dessert"),
+        S("ice cream, scoops, vanilla"),
+        S("waffles ice cream, dessert"),
+        S("chocolate croissant, pastry, pain au chocolat")
       ]
     };
 
@@ -573,4 +601,3 @@
   </script>
 </body>
 </html>
-```
