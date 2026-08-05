@@ -40,8 +40,8 @@
           <a class="btn primary" href="#menu">See the Menu</a>
         </div>
         <div class="hero-photo">
-          <!-- Unsplash hero (cafe / brunch / apricot) -->
-          <img src="https://source.unsplash.com/1400x900/?cafe,brunch,apricot" alt="Apricot Cafe meal">
+          <!-- Hero: cozy cafe brunch table -->
+          <img src="https://source.unsplash.com/1400x900/?brunch,cafe,table" alt="Apricot Cafe meal">
         </div>
       </div>
     </section>
@@ -58,7 +58,8 @@
         <h2>Our Menu</h2>
         <div class="menu-grid">
           <article class="menu-card">
-            <img src="https://source.unsplash.com/800x600/?apricot,chicken" alt="Apricot Glazed Chicken">
+            <!-- Apricot Glazed Chicken — targeted query -->
+            <img src="https://source.unsplash.com/800x600/?grilled-chicken,apricot,glaze" alt="Apricot Glazed Chicken">
             <div class="menu-card-body">
               <h3>Apricot Glazed Chicken</h3>
               <p class="price">$16</p>
@@ -67,7 +68,8 @@
           </article>
 
           <article class="menu-card">
-            <img src="https://source.unsplash.com/800x600/?brunch,eggs,avocado" alt="Sunny Brunch Plate">
+            <!-- Sunny Brunch Plate — avocado toast with egg -->
+            <img src="https://source.unsplash.com/800x600/?avocado-toast,egg,brunch" alt="Sunny Brunch Plate">
             <div class="menu-card-body">
               <h3>Sunny Brunch Plate</h3>
               <p class="price">$12</p>
@@ -76,7 +78,8 @@
           </article>
 
           <article class="menu-card">
-            <img src="https://source.unsplash.com/800x600/?apricot,tart,dessert" alt="Apricot Baked Tart">
+            <!-- Apricot Baked Tart — dessert / tart -->
+            <img src="https://source.unsplash.com/800x600/?apricot-tart,dessert,tart" alt="Apricot Baked Tart">
             <div class="menu-card-body">
               <h3>Apricot Baked Tart</h3>
               <p class="price">$7</p>
@@ -85,6 +88,7 @@
           </article>
 
           <article class="menu-card">
+            <!-- Signature Latte — latte art -->
             <img src="https://source.unsplash.com/800x600/?latte,coffee,latte-art" alt="Signature Latte">
             <div class="menu-card-body">
               <h3>Signature Latte</h3>
@@ -100,21 +104,21 @@
       <div class="container">
         <h2>Gallery</h2>
         <div class="gallery-grid">
-          <!-- Gallery items use Unsplash queries; thumbnails are smaller sizes -->
-          <button class="gallery-item" data-src="https://source.unsplash.com/1400x900/?apricot,tart" aria-label="Open photo 1">
-            <img src="https://source.unsplash.com/400x300/?apricot,tart" alt="Gallery 1">
+          <!-- Gallery items use targeted queries and smaller thumbs -->
+          <button class="gallery-item" data-src="https://source.unsplash.com/1400x900/?apricot-tart,dessert" aria-label="Open photo 1">
+            <img src="https://source.unsplash.com/400x300/?apricot-tart,dessert" alt="Gallery 1">
           </button>
 
-          <button class="gallery-item" data-src="https://source.unsplash.com/1400x900/?brunch,platter" aria-label="Open photo 2">
-            <img src="https://source.unsplash.com/400x300/?brunch,platter" alt="Gallery 2">
+          <button class="gallery-item" data-src="https://source.unsplash.com/1400x900/?avocado-toast,egg" aria-label="Open photo 2">
+            <img src="https://source.unsplash.com/400x300/?avocado-toast,egg" alt="Gallery 2">
           </button>
 
           <button class="gallery-item" data-src="https://source.unsplash.com/1400x900/?cafe,interior,cozy" aria-label="Open photo 3">
             <img src="https://source.unsplash.com/400x300/?cafe,interior,cozy" alt="Gallery 3">
           </button>
 
-          <button class="gallery-item" data-src="https://source.unsplash.com/1400x900/?coffee,pastry" aria-label="Open photo 4">
-            <img src="https://source.unsplash.com/400x300/?coffee,pastry" alt="Gallery 4">
+          <button class="gallery-item" data-src="https://source.unsplash.com/1400x900/?coffee,pastry,latte" aria-label="Open photo 4">
+            <img src="https://source.unsplash.com/400x300/?coffee,pastry,latte" alt="Gallery 4">
           </button>
         </div>
       </div>
@@ -170,6 +174,7 @@
 
   <script src="js/main.js"></script>
 </body>
+</html>
   :root{
   --apricot: #ffb07c;        /* main apricot */
   --apricot-dark: #ff8a4d;   /* accent */
