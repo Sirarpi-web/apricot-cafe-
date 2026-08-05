@@ -21,17 +21,16 @@
       --shadow: 0 18px 45px rgba(201, 101, 45, 0.16);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height: 100%; }
 
     body {
       font-family: "Montserrat", Arial, sans-serif;
       background: var(--white);
       color: var(--text);
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     .page {
@@ -48,227 +47,78 @@
       margin-bottom: 34px;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
+    .brand { display:flex; align-items:center; gap:14px; }
     .brand-mark {
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      background: var(--apricot);
-      color: #fff;
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      font-size: 24px;
-      box-shadow: var(--shadow);
+      width:54px; height:54px; border-radius:50%;
+      background:var(--apricot); color:#fff;
+      display:grid; place-items:center; font-weight:900; font-size:24px;
+      box-shadow:var(--shadow);
     }
-
-    .brand h1 {
-      font-size: clamp(28px, 5vw, 54px);
-      line-height: 1;
-      color: var(--text);
-    }
-
-    .brand p {
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 700;
-      margin-top: 6px;
-    }
+    .brand h1 { font-size: clamp(28px, 5vw, 54px); line-height:1; color:var(--text); }
+    .brand p { color:var(--muted); font-size:14px; font-weight:700; margin-top:6px; }
 
     .lang {
-      display: flex;
-      gap: 7px;
-      padding: 6px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--cream);
-      flex-shrink: 0;
+      display:flex; gap:7px; padding:6px;
+      border:1px solid var(--line); border-radius:999px; background:var(--cream);
+      flex-shrink:0;
     }
-
     .lang button {
-      border: 0;
-      background: transparent;
-      color: var(--muted);
-      font-weight: 900;
-      padding: 8px 11px;
-      border-radius: 999px;
-      cursor: pointer;
+      border:0; background:transparent; color:var(--muted);
+      font-weight:900; padding:8px 11px; border-radius:999px; cursor:pointer;
     }
-
-    .lang button.active {
-      background: var(--apricot);
-      color: #fff;
-    }
+    .lang button.active { background:var(--apricot); color:#fff; }
 
     .intro {
       background: linear-gradient(135deg, #fff7ed, #ffffff);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 26px;
-      margin-bottom: 24px;
-      box-shadow: var(--shadow);
+      border:1px solid var(--line); border-radius:24px; padding:26px;
+      margin-bottom:24px; box-shadow:var(--shadow);
     }
+    .intro h2 { font-size:clamp(26px,4vw,44px); line-height:1.08; margin-bottom:10px; }
+    .intro h2 span { color:var(--apricot-dark); font-style:italic; }
+    .intro p { color:var(--muted); max-width:720px; font-size:16px; font-weight:500; }
 
-    .intro h2 {
-      font-size: clamp(26px, 4vw, 44px);
-      line-height: 1.08;
-      margin-bottom: 10px;
-    }
-
-    .intro h2 span {
-      color: var(--apricot-dark);
-      font-style: italic;
-    }
-
-    .intro p {
-      color: var(--muted);
-      max-width: 720px;
-      font-size: 16px;
-      font-weight: 500;
-    }
-
-    .categories {
-      display: flex;
-      gap: 10px;
-      overflow-x: auto;
-      padding: 8px 0 20px;
-      scrollbar-width: thin;
-      margin-bottom: 12px;
-    }
-
+    .categories { display:flex; gap:10px; overflow-x:auto; padding:8px 0 20px; scrollbar-width:thin; margin-bottom:12px; }
     .category-btn {
-      border: 1px solid var(--line);
-      background: #fff;
-      color: var(--text);
-      border-radius: 999px;
-      padding: 12px 18px;
-      font-size: 14px;
-      font-weight: 900;
-      white-space: nowrap;
-      cursor: pointer;
-      transition: 0.2s ease;
+      border:1px solid var(--line); background:#fff; color:var(--text);
+      border-radius:999px; padding:12px 18px; font-size:14px; font-weight:900;
+      white-space:nowrap; cursor:pointer; transition:0.2s ease;
     }
-
-    .category-btn:hover {
-      transform: translateY(-2px);
-      border-color: var(--apricot);
-    }
-
+    .category-btn:hover { transform:translateY(-2px); border-color:var(--apricot); }
     .category-btn.active {
-      background: var(--apricot);
-      color: #fff;
-      border-color: var(--apricot);
-      box-shadow: 0 12px 24px rgba(201, 101, 45, 0.22);
+      background:var(--apricot); color:#fff; border-color:var(--apricot);
+      box-shadow:0 12px 24px rgba(201,101,45,0.22);
     }
 
-    .menu-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 18px;
-      margin: 18px 0 20px;
-    }
+    .menu-head { display:flex; justify-content:space-between; align-items:end; gap:18px; margin:18px 0 20px; }
+    .menu-head h2 { font-size:clamp(28px,4vw,42px); }
+    .menu-head p { color:var(--muted); font-weight:600; max-width:520px; }
 
-    .menu-head h2 {
-      font-size: clamp(28px, 4vw, 42px);
-    }
-
-    .menu-head p {
-      color: var(--muted);
-      font-weight: 600;
-      max-width: 520px;
-    }
-
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
+    .menu-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
     .menu-item {
-      overflow: hidden;
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      box-shadow: 0 10px 28px rgba(35, 23, 19, 0.05);
-      transition: 0.2s ease;
+      overflow:hidden; background:#fff; border:1px solid var(--line); border-radius:22px;
+      box-shadow:0 10px 28px rgba(35,23,19,0.05); transition:0.2s ease;
     }
+    .menu-item:hover { transform:translateY(-3px); box-shadow:var(--shadow); border-color:rgba(244,163,64,0.65); }
 
-    .menu-item:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow);
-      border-color: rgba(244, 163, 64, 0.65);
-    }
-
-    .menu-photo {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      display: block;
-      background: var(--cream);
-    }
-
+    .menu-photo { width:100%; height:220px; object-fit:cover; display:block; background:var(--cream); }
     .menu-info {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 16px;
-      align-items: start;
-      padding: 18px;
+      display:grid; grid-template-columns:1fr auto; gap:16px; align-items:start; padding:18px;
     }
 
-    .menu-item h3 {
-      font-size: 17px;
-      line-height: 1.25;
-      margin-bottom: 7px;
-    }
+    .menu-item h3 { font-size:17px; line-height:1.25; margin-bottom:7px; }
+    .menu-item p { color:var(--muted); font-size:14px; font-weight:500; }
+    .price { color:var(--apricot-dark); font-weight:900; white-space:nowrap; font-size:17px; }
 
-    .menu-item p {
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    .price {
-      color: var(--apricot-dark);
-      font-weight: 900;
-      white-space: nowrap;
-      font-size: 17px;
-    }
-
-    @media (max-width: 760px) {
-      .top {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .menu-head {
-        display: block;
-      }
-
-      .menu-head p {
-        margin-top: 8px;
-      }
-
-      .menu-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .menu-info {
-        grid-template-columns: 1fr;
-      }
-
-      .menu-photo {
-        height: 210px;
-      }
+    @media (max-width:760px) {
+      .top { align-items:flex-start; flex-direction:column; }
+      .menu-head { display:block; }
+      .menu-head p { margin-top:8px; }
+      .menu-grid { grid-template-columns:1fr; }
+      .menu-info { grid-template-columns:1fr; }
+      .menu-photo { height:210px; }
     }
   </style>
 </head>
-
 <body>
   <main class="page">
     <header class="top">
@@ -294,7 +144,7 @@
       </p>
     </section>
 
-    <nav class="categories" id="categories"></nav>
+    <nav class="categories" id="categories" aria-label="Categories"></nav>
 
     <section>
       <div class="menu-head">
@@ -302,84 +152,92 @@
         <p id="categoryText">Թեթեւ, համեղ եւ հագեցնող ընտրանի օրը սկսելու համար։</p>
       </div>
 
-      <div class="menu-grid" id="menuGrid"></div>
+      <div class="menu-grid" id="menuGrid" aria-live="polite"></div>
     </section>
   </main>
 
   <script>
+    // Pinned Unsplash images (direct images.unsplash.com URLs)
     const photos = {
       breakfast: [
-        "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1590412200988-a436970781fa?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?auto=format&fit=crop&w=900&q=85"
+        "https://images.unsplash.com/photo-1508163229359-95a0b2b6f8fb?auto=format&fit=crop&w=900&q=85", // Classic omelette
+        "https://images.unsplash.com/photo-1495214783159-3503fd1b572d?auto=format&fit=crop&w=900&q=85", // Cheese omelette
+        "https://images.unsplash.com/photo-1498511897127-8c2b0a9d1d6a?auto=format&fit=crop&w=900&q=85", // Mushroom omelette
+        "https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=900&q=85", // Shakshuka
+        "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=900&q=85", // Avocado toast
+        "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=85", // Cheese croissant
+        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=85", // Cottage pancakes
+        "https://images.unsplash.com/photo-1505250469679-203ad9ced0cb?auto=format&fit=crop&w=900&q=85"  // Yogurt granola
       ],
+
       lunch: [
-        "https://images.unsplash.com/photo-1546793665-c74683f339c1?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85"
+        "https://images.unsplash.com/photo-1541542684-47f7f28d79e9?auto=format&fit=crop&w=900&q=85", // Chicken salad
+        "https://images.unsplash.com/photo-1566843973590-4b1f63f39169?auto=format&fit=crop&w=900&q=85", // Greek salad
+        "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=900&q=85", // Caesar
+        "https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=900&q=85", // Mushroom soup
+        "https://images.unsplash.com/photo-1543352634-69e5f3c0f0d9?auto=format&fit=crop&w=900&q=85", // Chicken soup
+        "https://images.unsplash.com/photo-1512058564366-c9e3d0b06df3?auto=format&fit=crop&w=900&q=85", // Pasta Alfredo
+        "https://images.unsplash.com/photo-1548365328-2f2fd0464bca?auto=format&fit=crop&w=900&q=85", // Pizza Margherita
+        "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=85"  // Cheeseburger
       ],
+
       dinner: [
-        "https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=85"
+        "https://images.unsplash.com/photo-1542444459-db8d7f7a095b?auto=format&fit=crop&w=900&q=85", // Chicken steak
+        "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=900&q=85", // Beef steak
+        "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85", // Grilled salmon
+        "https://images.unsplash.com/photo-1544025162-21b1d3c3c4f1?auto=format&fit=crop&w=900&q=85", // Pork ribs
+        "https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642?auto=format&fit=crop&w=900&q=85", // Chicken risotto
+        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=85", // Mushroom pasta
+        "https://images.unsplash.com/photo-1604473859947-93f8f5199c7a?auto=format&fit=crop&w=900&q=85", // Four seasons pizza
+        "https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642?auto=format&fit=crop&w=900&q=85"  // Grilled vegetables (reuse)
       ],
+
       coffee: [
-        "https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1497636577773-f1231844b336?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1561882468-9110e03e0f78?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1534687941688-651ccaafbff8?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=900&q=85"
+        "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=85", // Espresso
+        "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=900&q=85", // Americano
+        "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=900&q=85", // Cappuccino
+        "https://images.unsplash.com/photo-1459257831348-9c66f3e90d13?auto=format&fit=crop&w=900&q=85", // Latte
+        "https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=900&q=85", // Flat white
+        "https://images.unsplash.com/photo-1521305880189-4e9b9a6b2a7f?auto=format&fit=crop&w=900&q=85", // Mocha
+        "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=85", // Iced coffee (reuse)
+        "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=900&q=85"  // Traditional pot (Armenian coffee)
       ],
+
       drinks: [
-        "https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1502741224143-90386d7f8c82?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=900&q=85"
+        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=85", // Water (generic)
+        "https://images.unsplash.com/photo-1542444459-5f3f3b1c9f2a?auto=format&fit=crop&w=900&q=85", // Orange juice
+        "https://images.unsplash.com/photo-1543353071-087092ec393b?auto=format&fit=crop&w=900&q=85", // Apple juice
+        "https://images.unsplash.com/photo-1505575967458-91f3f6a11b4b?auto=format&fit=crop&w=900&q=85", // Berry lemonade
+        "https://images.unsplash.com/photo-1532634896-26909d0d1b19?auto=format&fit=crop&w=900&q=85", // Citrus lemonade
+        "https://images.unsplash.com/photo-1526318472351-c75fcf0702a8?auto=format&fit=crop&w=900&q=85", // Mango smoothie
+        "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=900&q=85", // Strawberry smoothie
+        "https://images.unsplash.com/photo-1497551060073-4c5ab6435f40?auto=format&fit=crop&w=900&q=85"  // Iced tea
       ],
+
       cocktails: [
-        "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1609951651556-5334e2706168?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1556855810-ac404aa91e85?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1605270012917-bf157c5a9541?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1545438102-799c3991ffb2?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1500217052183-bc01eee1a74e?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1551751299-1b51cab2694c?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=85"
+        "https://images.unsplash.com/photo-1505577058444-a3dab5a6ccf1?auto=format&fit=crop&w=900&q=85", // Mojito
+        "https://images.unsplash.com/photo-1510627498534-cf7e9002facc?auto=format&fit=crop&w=900&q=85", // Aperol Spritz
+        "https://images.unsplash.com/photo-1564758866819-5e0c1f72d4c8?auto=format&fit=crop&w=900&q=85", // Margarita
+        "https://images.unsplash.com/photo-1542444459-9b6572b1c8b1?auto=format&fit=crop&w=900&q=85", // Negroni
+        "https://images.unsplash.com/photo-1514361892635-6f2a3ff2f6b8?auto=format&fit=crop&w=900&q=85", // Espresso Martini
+        "https://images.unsplash.com/photo-1549903072-7e6e0bedb7fb?auto=format&fit=crop&w=900&q=85", // Pina Colada
+        "https://images.unsplash.com/photo-1510626176961-4f5f1f35d7d1?auto=format&fit=crop&w=900&q=85", // Whiskey Sour
+        "https://images.unsplash.com/photo-1526318472351-e7e9f4cc3d8f?auto=format&fit=crop&w=900&q=85"  // Virgin Mojito
       ],
+
       desserts: [
-        "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=900&q=85",
-        "https://images.unsplash.com/photo-1549903072-7e6e0bedb7fb?auto=format&fit=crop&w=900&q=85"
+        "https://images.unsplash.com/photo-1551022371-8f7a0b2f2a4b?auto=format&fit=crop&w=900&q=85", // Cheesecake
+        "https://images.unsplash.com/photo-1505250469679-203ad9ced0cb?auto=format&fit=crop&w=900&q=85", // Tiramisu
+        "https://images.unsplash.com/photo-1543779508-df3b8a1f8a03?auto=format&fit=crop&w=900&q=85", // Chocolate cake
+        "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=900&q=85", // Honey cake
+        "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=900&q=85", // Panna cotta
+        "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=900&q=85", // Ice cream
+        "https://images.unsplash.com/photo-1505576391880-503b7ef3a3c8?auto=format&fit=crop&w=900&q=85", // Waffles & ice cream
+        "https://images.unsplash.com/photo-1432139555190-58524dae6a55?auto=format&fit=crop&w=900&q=85"  // Chocolate croissant
       ]
     };
 
+    // Translations and category labels
     const translations = {
       hy: {
         subtitle: "Մենյու",
@@ -392,7 +250,7 @@
           coffee: ["Սուրճ", "Բուրավետ սուրճեր ամեն ճաշակի համար։"],
           drinks: ["Խմիչքներ", "Թարմացնող լիմոնադներ, հյութեր եւ սմուզիներ։"],
           cocktails: ["Կոկտեյլներ", "Դասական եւ թարմացնող կոկտեյլներ։"],
-          desserts: ["Աղանդեր", "Քաղցր ու նուրբ աղանդեր սուրճի կամ թեյի հետ։"]
+          desserts: ["Աղանդեր", "Քաղցր ու նրբաճաշակ աղանդեր սուրճի կամ թեյի հետ։"]
         }
       },
       ru: {
@@ -425,6 +283,7 @@
       }
     };
 
+    // Full menu text per language (pinned items and prices)
     const menu = {
       hy: {
         breakfast: [
@@ -432,7 +291,7 @@
           ["Օմլետ պանրով", "Ձու, պանիր, թարմ կանաչի", "1,500 ֏"],
           ["Օմլետ սնկով", "Ձու, սունկ, պանիր", "1,700 ֏"],
           ["Շակշուկա", "Ձու, լոլիկի սոուս, համեմունքներ", "1,900 ֏"],
-          ["Ավոկադոյով տոստ", "Ավոկադո, ձու, հաց, կանաչի", "2,200 ֏"],
+          ["Ավոկադոյով տոստ", "Ավոկադո, ձու, հաց, կանաչי", "2,200 ֏"],
           ["Կրուասան պանրով", "Թարմ կրուասան, պանիր, սոուս", "1,600 ֏"],
           ["Նրբաբլիթ կաթնաշոռով", "Նրբաբլիթ, կաթնաշոռ, թթվասեր", "1,800 ֏"],
           ["Յոգուրտ գրանոլայով", "Յոգուրտ, գրանոլա, հատապտուղ", "1,700 ֏"]
@@ -454,7 +313,7 @@
           ["Խոզի կողիկներ", "Կողիկներ, խորոված սոուս, կարտոֆիլ", "4,800 ֏"],
           ["Հավով ռիզոտո", "Բրինձ, հավ, սունկ, պանիր", "3,700 ֏"],
           ["Սնկով պաստա", "Պաստա, սունկ, սերուցք, պարմեզան", "3,300 ֏"],
-          ["Քառասեզոն պիցցա", "Պանիր, սունկ, խոզապուխտ, ձիթապտուղ", "3,900 ֏"],
+          ["Քառասեզոն պիցցա", "Պանիր, սունկ, խոզապուխտ, ձիթապուխտ", "3,900 ֏"],
           ["Գրիլ բանջարեղեն", "Սեզոնային բանջարեղեն", "2,300 ֏"]
         ],
         coffee: [
@@ -471,7 +330,7 @@
           ["Ջուր", "Գազավորված կամ բնական", "500 ֏"],
           ["Թարմ նարնջի հյութ", "Թարմ քամած", "1,800 ֏"],
           ["Խնձորի հյութ", "Բնական հյութ", "1,200 ֏"],
-          ["Հատապտղային լիմոնադ", "Հատապտուղ, լիմոն, անանուխ", "1,600 ֏"],
+          ["Հատապտղային լիմונադ", "Հատապտուղ, լիմոն, անանուխ", "1,600 ֏"],
           ["Ցիտրուսային լիմոնադ", "Լիմոն, նարինջ, սառույց", "1,600 ֏"],
           ["Մանգոյի սմուզի", "Մանգո, բանան, յոգուրտ", "2,200 ֏"],
           ["Ելակի սմուզի", "Ելակ, բանան, կաթ", "2,100 ֏"],
@@ -535,14 +394,14 @@
           ["Американо", "Эспрессо и горячая вода", "1,000 ֏"],
           ["Капучино", "Кофе, молоко, нежная пенка", "1,400 ֏"],
           ["Латте", "Мягкий молочный кофе", "1,500 ֏"],
-          ["Флэт Уайт", "Крепкий кофе с молоком", "1,600 ֏"],
+          ["Флэт уайт", "Крепкий кофе с молоком", "1,600 ֏"],
           ["Мокка", "Кофе, шоколад, молоко", "1,700 ֏"],
           ["Айс кофе", "Кофе, лед, молоко", "1,600 ֏"],
           ["Армянский кофе", "Классическое приготовление", "800 ֏"]
         ],
         drinks: [
           ["Вода", "Газированная или негазированная", "500 ֏"],
-          ["Свежий апельсиновый сок", "Свежевыжатый", "1,800 ֏"],
+          ["Свежевыжатый апельсиновый сок", "Свежевыжатый", "1,800 ֏"],
           ["Яблочный сок", "Натуральный сок", "1,200 ֏"],
           ["Ягодный лимонад", "Ягоды, лимон, мята", "1,600 ֏"],
           ["Цитрусовый лимонад", "Лимон, апельсин, лед", "1,600 ֏"],
@@ -557,7 +416,7 @@
           ["Негрони", "Джин, вермут, биттер", "3,400 ֏"],
           ["Эспрессо Мартини", "Водка, кофе, ликер", "3,600 ֏"],
           ["Пина Колада", "Ром, ананас, кокос", "3,500 ֏"],
-          ["Виски Сауэр", "Виски, лимон, сироп", "3,700 ֏"],
+          ["Виски Саур", "Виски, лимон, сироп", "3,700 ֏"],
           ["Безалкогольный Мохито", "Лайм, мята, содовая", "2,000 ֏"]
         ],
         desserts: [
@@ -647,7 +506,6 @@
     };
 
     const categoryOrder = ["breakfast", "lunch", "dinner", "coffee", "drinks", "cocktails", "desserts"];
-
     let currentLang = "hy";
     let currentCategory = "breakfast";
 
@@ -657,33 +515,29 @@
     const categoryText = document.getElementById("categoryText");
 
     function renderStaticText() {
-      document.querySelectorAll("[data-i18n]").forEach(element => {
-        const key = element.dataset.i18n;
-        element.textContent = translations[currentLang][key];
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.dataset.i18n;
+        el.textContent = translations[currentLang][key];
       });
-
-      document.querySelectorAll("[data-i18n-html]").forEach(element => {
-        const key = element.dataset.i18nHtml;
-        element.innerHTML = translations[currentLang][key];
+      document.querySelectorAll("[data-i18n-html]").forEach(el => {
+        const key = el.dataset.i18nHtml || el.dataset.i18nHtml;
+        el.innerHTML = translations[currentLang][key];
       });
     }
 
     function renderCategories() {
       categoriesContainer.innerHTML = "";
-
-      categoryOrder.forEach(category => {
-        const button = document.createElement("button");
-        button.className = "category-btn";
-        button.textContent = translations[currentLang].categories[category][0];
-        button.classList.toggle("active", category === currentCategory);
-
-        button.addEventListener("click", () => {
-          currentCategory = category;
+      categoryOrder.forEach(cat => {
+        const btn = document.createElement("button");
+        btn.className = "category-btn";
+        btn.textContent = translations[currentLang].categories[cat][0];
+        btn.classList.toggle("active", cat === currentCategory);
+        btn.addEventListener("click", () => {
+          currentCategory = cat;
           renderCategories();
           renderMenu();
         });
-
-        categoriesContainer.appendChild(button);
+        categoriesContainer.appendChild(btn);
       });
     }
 
@@ -694,12 +548,17 @@
 
       menuGrid.innerHTML = "";
 
-      menu[currentLang][currentCategory].forEach((item, index) => {
-        const menuItem = document.createElement("article");
-        menuItem.className = "menu-item";
+      const menuForLang = menu[currentLang] || menu["en"];
+      const photosForCategory = photos[currentCategory] || [];
 
-        menuItem.innerHTML = `
-          <img class="menu-photo" src="${photos[currentCategory][index]}" alt="${item[0]}" loading="lazy">
+      menuForLang[currentCategory].forEach((item, index) => {
+        const article = document.createElement("article");
+        article.className = "menu-item";
+
+        const photoUrl = photosForCategory.length ? photosForCategory[index % photosForCategory.length] : "";
+
+        article.innerHTML = `
+          <img class="menu-photo" src="${photoUrl}" alt="${item[0]}" loading="lazy" />
           <div class="menu-info">
             <div>
               <h3>${item[0]}</h3>
@@ -709,31 +568,25 @@
           </div>
         `;
 
-        menuGrid.appendChild(menuItem);
+        menuGrid.appendChild(article);
       });
     }
 
     function setLanguage(lang) {
       currentLang = lang;
       document.documentElement.lang = lang;
-
-      document.querySelectorAll("[data-lang]").forEach(button => {
-        button.classList.toggle("active", button.dataset.lang === lang);
-      });
-
+      document.querySelectorAll("[data-lang]").forEach(btn => btn.classList.toggle("active", btn.dataset.lang === lang));
       renderStaticText();
       renderCategories();
       renderMenu();
     }
 
-    document.querySelectorAll("[data-lang]").forEach(button => {
-      button.addEventListener("click", () => {
-        setLanguage(button.dataset.lang);
-      });
+    document.querySelectorAll("[data-lang]").forEach(btn => {
+      btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
     });
 
+    // Initialize
     setLanguage("hy");
   </script>
 </body>
 </html>
-```
