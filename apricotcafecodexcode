@@ -1,1 +1,739 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apricot Cafe Menu</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --apricot: #f4a340;
+      --apricot-dark: #c9652d;
+      --cream: #fff7ed;
+      --text: #231713;
+      --muted: #746258;
+      --line: #efd8c4;
+      --white: #ffffff;
+      --shadow: 0 18px 45px rgba(201, 101, 45, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Montserrat", Arial, sans-serif;
+      background: var(--white);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 34px 0 60px;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 34px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-mark {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--apricot);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .brand h1 {
+      font-size: clamp(28px, 5vw, 54px);
+      line-height: 1;
+      color: var(--text);
+    }
+
+    .brand p {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 6px;
+    }
+
+    .lang {
+      display: flex;
+      gap: 7px;
+      padding: 6px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--cream);
+      flex-shrink: 0;
+    }
+
+    .lang button {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 900;
+      padding: 8px 11px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .lang button.active {
+      background: var(--apricot);
+      color: #fff;
+    }
+
+    .intro {
+      background: linear-gradient(135deg, #fff7ed, #ffffff);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 26px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .intro h2 {
+      font-size: clamp(26px, 4vw, 44px);
+      line-height: 1.08;
+      margin-bottom: 10px;
+    }
+
+    .intro h2 span {
+      color: var(--apricot-dark);
+      font-style: italic;
+    }
+
+    .intro p {
+      color: var(--muted);
+      max-width: 720px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .categories {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 8px 0 20px;
+      scrollbar-width: thin;
+      margin-bottom: 12px;
+    }
+
+    .category-btn {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: 900;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .category-btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--apricot);
+    }
+
+    .category-btn.active {
+      background: var(--apricot);
+      color: #fff;
+      border-color: var(--apricot);
+      box-shadow: 0 12px 24px rgba(201, 101, 45, 0.22);
+    }
+
+    .menu-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin: 18px 0 20px;
+    }
+
+    .menu-head h2 {
+      font-size: clamp(28px, 4vw, 42px);
+    }
+
+    .menu-head p {
+      color: var(--muted);
+      font-weight: 600;
+      max-width: 520px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .menu-item {
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 0 10px 28px rgba(35, 23, 19, 0.05);
+      transition: 0.2s ease;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+      border-color: rgba(244, 163, 64, 0.65);
+    }
+
+    .menu-photo {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      background: var(--cream);
+    }
+
+    .menu-info {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: start;
+      padding: 18px;
+    }
+
+    .menu-item h3 {
+      font-size: 17px;
+      line-height: 1.25;
+      margin-bottom: 7px;
+    }
+
+    .menu-item p {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .price {
+      color: var(--apricot-dark);
+      font-weight: 900;
+      white-space: nowrap;
+      font-size: 17px;
+    }
+
+    @media (max-width: 760px) {
+      .top {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .menu-head {
+        display: block;
+      }
+
+      .menu-head p {
+        margin-top: 8px;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-info {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-photo {
+        height: 210px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header class="top">
+      <div class="brand">
+        <div class="brand-mark">A</div>
+        <div>
+          <h1>Apricot Cafe</h1>
+          <p data-i18n="subtitle">Մենյու</p>
+        </div>
+      </div>
+
+      <div class="lang">
+        <button class="active" data-lang="hy">HY</button>
+        <button data-lang="ru">RU</button>
+        <button data-lang="en">EN</button>
+      </div>
+    </header>
+
+    <section class="intro">
+      <h2 data-i18n-html="title">Ընտրեք ձեր սիրելի <span>համը</span></h2>
+      <p data-i18n="description">
+        Մեր մենյուն բաժանված է կատեգորիաների, որպեսզի հեշտ գտնեք նախաճաշ, լանչ, ընթրիք, սուրճ, խմիչքներ, կոկտեյլներ եւ աղանդեր։
+      </p>
+    </section>
+
+    <nav class="categories" id="categories"></nav>
+
+    <section>
+      <div class="menu-head">
+        <h2 id="categoryTitle">Նախաճաշ</h2>
+        <p id="categoryText">Թեթեւ, համեղ եւ հագեցնող ընտրանի օրը սկսելու համար։</p>
+      </div>
+
+      <div class="menu-grid" id="menuGrid"></div>
+    </section>
+  </main>
+
+  <script>
+    const photos = {
+      breakfast: [
+        "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1590412200988-a436970781fa?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?auto=format&fit=crop&w=900&q=85"
+      ],
+      lunch: [
+        "https://images.unsplash.com/photo-1546793665-c74683f339c1?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85"
+      ],
+      dinner: [
+        "https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=85"
+      ],
+      coffee: [
+        "https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1497636577773-f1231844b336?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1561882468-9110e03e0f78?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1534687941688-651ccaafbff8?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=900&q=85"
+      ],
+      drinks: [
+        "https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1502741224143-90386d7f8c82?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=900&q=85"
+      ],
+      cocktails: [
+        "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1609951651556-5334e2706168?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1556855810-ac404aa91e85?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1605270012917-bf157c5a9541?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1545438102-799c3991ffb2?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1500217052183-bc01eee1a74e?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1551751299-1b51cab2694c?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=85"
+      ],
+      desserts: [
+        "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=900&q=85",
+        "https://images.unsplash.com/photo-1549903072-7e6e0bedb7fb?auto=format&fit=crop&w=900&q=85"
+      ]
+    };
+
+    const translations = {
+      hy: {
+        subtitle: "Մենյու",
+        title: "Ընտրեք ձեր սիրելի <span>համը</span>",
+        description: "Մեր մենյուն բաժանված է կատեգորիաների, որպեսզի հեշտ գտնեք նախաճաշ, լանչ, ընթրիք, սուրճ, խմիչքներ, կոկտեյլներ եւ աղանդեր։",
+        categories: {
+          breakfast: ["Նախաճաշ", "Թեթեւ, համեղ եւ հագեցնող ընտրանի օրը սկսելու համար։"],
+          lunch: ["Լանչ", "Հարմար ուտեստներ արագ, համեղ եւ լիարժեք ճաշի համար։"],
+          dinner: ["Ընթրիք", "Տաք ուտեստներ եւ գեղեցիկ ընտրանի երեկոյան համար։"],
+          coffee: ["Սուրճ", "Բուրավետ սուրճեր ամեն ճաշակի համար։"],
+          drinks: ["Խմիչքներ", "Թարմացնող լիմոնադներ, հյութեր եւ սմուզիներ։"],
+          cocktails: ["Կոկտեյլներ", "Դասական եւ թարմացնող կոկտեյլներ։"],
+          desserts: ["Աղանդեր", "Քաղցր ու նուրբ աղանդեր սուրճի կամ թեյի հետ։"]
+        }
+      },
+      ru: {
+        subtitle: "Меню",
+        title: "Выберите любимый <span>вкус</span>",
+        description: "Наше меню разделено на категории, чтобы вы легко нашли завтрак, ланч, ужин, кофе, напитки, коктейли и десерты.",
+        categories: {
+          breakfast: ["Завтрак", "Легкий, вкусный и сытный выбор для начала дня."],
+          lunch: ["Ланч", "Удобные блюда для быстрого и полноценного обеда."],
+          dinner: ["Ужин", "Горячие блюда и красивая подборка для вечера."],
+          coffee: ["Кофе", "Ароматный кофе на любой вкус."],
+          drinks: ["Напитки", "Освежающие лимонады, соки и смузи."],
+          cocktails: ["Коктейли", "Классические и освежающие коктейли."],
+          desserts: ["Десерты", "Нежные сладости к кофе или чаю."]
+        }
+      },
+      en: {
+        subtitle: "Menu",
+        title: "Choose your favorite <span>flavor</span>",
+        description: "Our menu is organized into categories, so you can easily find breakfast, lunch, dinner, coffee, drinks, cocktails, and desserts.",
+        categories: {
+          breakfast: ["Breakfast", "Light, delicious, and filling choices to start the day."],
+          lunch: ["Lunch", "Comfortable dishes for a quick and complete lunch."],
+          dinner: ["Dinner", "Warm dishes and a beautiful selection for the evening."],
+          coffee: ["Coffee", "Aromatic coffee for every taste."],
+          drinks: ["Drinks", "Refreshing lemonades, juices, and smoothies."],
+          cocktails: ["Cocktails", "Classic and refreshing cocktails."],
+          desserts: ["Desserts", "Sweet and delicate desserts with coffee or tea."]
+        }
+      }
+    };
+
+    const menu = {
+      hy: {
+        breakfast: [
+          ["Դասական օմլետ", "Ձու, կարագ, կանաչի", "1,200 ֏"],
+          ["Օմլետ պանրով", "Ձու, պանիր, թարմ կանաչի", "1,500 ֏"],
+          ["Օմլետ սնկով", "Ձու, սունկ, պանիր", "1,700 ֏"],
+          ["Շակշուկա", "Ձու, լոլիկի սոուս, համեմունքներ", "1,900 ֏"],
+          ["Ավոկադոյով տոստ", "Ավոկադո, ձու, հաց, կանաչի", "2,200 ֏"],
+          ["Կրուասան պանրով", "Թարմ կրուասան, պանիր, սոուս", "1,600 ֏"],
+          ["Նրբաբլիթ կաթնաշոռով", "Նրբաբլիթ, կաթնաշոռ, թթվասեր", "1,800 ֏"],
+          ["Յոգուրտ գրանոլայով", "Յոգուրտ, գրանոլա, հատապտուղ", "1,700 ֏"]
+        ],
+        lunch: [
+          ["Հավով աղցան", "Հավ, հազար, լոլիկ, սոուս", "2,600 ֏"],
+          ["Հունական աղցան", "Լոլիկ, վարունգ, պանիր, ձիթապտուղ", "2,400 ֏"],
+          ["Կեսար աղցան", "Հավ, հազար, պարմեզան, չորահաց", "2,900 ֏"],
+          ["Սնկով կրեմ ապուր", "Սունկ, սերուցք, համեմունքներ", "2,100 ֏"],
+          ["Հավով ապուր", "Հավ, բանջարեղեն, արիշտա", "1,900 ֏"],
+          ["Պաստա Ալֆրեդո", "Պաստա, հավ, սերուցք, պանիր", "3,200 ֏"],
+          ["Մարգարիտա պիցցա", "Մոցարելլա, լոլիկի սոուս, ռեհան", "3,000 ֏"],
+          ["Չիզբուրգեր", "Միս, պանիր, բանջարեղեն, կարտոֆիլ", "3,400 ֏"]
+        ],
+        dinner: [
+          ["Հավի սթեյք", "Հավի ֆիլե, բանջարեղեն, սոուս", "3,600 ֏"],
+          ["Տավարի սթեյք", "Տավարի միս, կարտոֆիլ, սոուս", "5,800 ֏"],
+          ["Սաղմոն գրիլ", "Սաղմոն, բրինձ, բանջարեղեն", "6,200 ֏"],
+          ["Խոզի կողիկներ", "Կողիկներ, խորոված սոուս, կարտոֆիլ", "4,800 ֏"],
+          ["Հավով ռիզոտո", "Բրինձ, հավ, սունկ, պանիր", "3,700 ֏"],
+          ["Սնկով պաստա", "Պաստա, սունկ, սերուցք, պարմեզան", "3,300 ֏"],
+          ["Քառասեզոն պիցցա", "Պանիր, սունկ, խոզապուխտ, ձիթապտուղ", "3,900 ֏"],
+          ["Գրիլ բանջարեղեն", "Սեզոնային բանջարեղեն", "2,300 ֏"]
+        ],
+        coffee: [
+          ["Էսպրեսսո", "Կարճ եւ հարուստ սուրճ", "900 ֏"],
+          ["Ամերիկանո", "Էսպրեսսո եւ տաք ջուր", "1,000 ֏"],
+          ["Կապուչինո", "Սուրճ, կաթ, նուրբ փրփուր", "1,400 ֏"],
+          ["Լատտե", "Մեղմ կաթնային սուրճ", "1,500 ֏"],
+          ["Ֆլեթ Ուայթ", "Ուժեղ սուրճ կաթով", "1,600 ֏"],
+          ["Մոկա", "Սուրճ, շոկոլադ, կաթ", "1,700 ֏"],
+          ["Սառը սուրճ", "Սուրճ, սառույց, կաթ", "1,600 ֏"],
+          ["Հայկական սուրճ", "Դասական պատրաստում", "800 ֏"]
+        ],
+        drinks: [
+          ["Ջուր", "Գազավորված կամ բնական", "500 ֏"],
+          ["Թարմ նարնջի հյութ", "Թարմ քամած", "1,800 ֏"],
+          ["Խնձորի հյութ", "Բնական հյութ", "1,200 ֏"],
+          ["Հատապտղային լիմոնադ", "Հատապտուղ, լիմոն, անանուխ", "1,600 ֏"],
+          ["Ցիտրուսային լիմոնադ", "Լիմոն, նարինջ, սառույց", "1,600 ֏"],
+          ["Մանգոյի սմուզի", "Մանգո, բանան, յոգուրտ", "2,200 ֏"],
+          ["Ելակի սմուզի", "Ելակ, բանան, կաթ", "2,100 ֏"],
+          ["Սառը թեյ", "Թեյ, լիմոն, սառույց", "1,300 ֏"]
+        ],
+        cocktails: [
+          ["Մոխիտո", "Ռոմ, լայմ, անանուխ, սոդա", "3,000 ֏"],
+          ["Ապերոլ Սպրից", "Ապերոլ, պրոսեկո, սոդա", "3,500 ֏"],
+          ["Մարգարիտա", "Տեկիլա, լայմ, լիկյոր", "3,200 ֏"],
+          ["Նեգրոնի", "Ջին, վերմուտ, բիթեր", "3,400 ֏"],
+          ["Էսպրեսո Մարտինի", "Օղի, սուրճ, լիկյոր", "3,600 ֏"],
+          ["Պինա Կոլադա", "Ռոմ, արքայախնձոր, կոկոս", "3,500 ֏"],
+          ["Վիսկի Սաուր", "Վիսկի, լիմոն, օշարակ", "3,700 ֏"],
+          ["Ալկոհոլազուրկ Մոխիտո", "Լայմ, անանուխ, սոդա", "2,000 ֏"]
+        ],
+        desserts: [
+          ["Չիզքեյք", "Նուրբ կրեմային աղանդեր", "2,000 ֏"],
+          ["Տիրամիսու", "Սուրճ, կրեմ, կակաո", "2,200 ֏"],
+          ["Շոկոլադե տորթ", "Հարուստ շոկոլադային համ", "2,100 ֏"],
+          ["Մեղրով տորթ", "Դասական մեղրային շերտեր", "1,900 ֏"],
+          ["Պաննա Կոտա", "Կրեմային աղանդեր հատապտղով", "1,800 ֏"],
+          ["Պաղպաղակ", "Վանիլ, շոկոլադ կամ ելակ", "1,500 ֏"],
+          ["Վաֆլի պաղպաղակով", "Վաֆլի, պաղպաղակ, սոուս", "2,400 ֏"],
+          ["Կրուասան շոկոլադով", "Թարմ կրուասան, շոկոլադ", "1,600 ֏"]
+        ]
+      },
+
+      ru: {
+        breakfast: [
+          ["Классический омлет", "Яйца, масло, зелень", "1,200 ֏"],
+          ["Омлет с сыром", "Яйца, сыр, свежая зелень", "1,500 ֏"],
+          ["Омлет с грибами", "Яйца, грибы, сыр", "1,700 ֏"],
+          ["Шакшука", "Яйца, томатный соус, специи", "1,900 ֏"],
+          ["Тост с авокадо", "Авокадо, яйцо, хлеб, зелень", "2,200 ֏"],
+          ["Круассан с сыром", "Свежий круассан, сыр, соус", "1,600 ֏"],
+          ["Блины с творогом", "Блины, творог, сметана", "1,800 ֏"],
+          ["Йогурт с гранолой", "Йогурт, гранола, ягоды", "1,700 ֏"]
+        ],
+        lunch: [
+          ["Салат с курицей", "Курица, салат, томаты, соус", "2,600 ֏"],
+          ["Греческий салат", "Томаты, огурцы, сыр, оливки", "2,400 ֏"],
+          ["Цезарь", "Курица, салат, пармезан, сухари", "2,900 ֏"],
+          ["Грибной крем-суп", "Грибы, сливки, специи", "2,100 ֏"],
+          ["Куриный суп", "Курица, овощи, лапша", "1,900 ֏"],
+          ["Паста Альфредо", "Паста, курица, сливки, сыр", "3,200 ֏"],
+          ["Пицца Маргарита", "Моцарелла, томатный соус, базилик", "3,000 ֏"],
+          ["Чизбургер", "Мясо, сыр, овощи, картофель", "3,400 ֏"]
+        ],
+        dinner: [
+          ["Куриный стейк", "Куриное филе, овощи, соус", "3,600 ֏"],
+          ["Говяжий стейк", "Говядина, картофель, соус", "5,800 ֏"],
+          ["Лосось гриль", "Лосось, рис, овощи", "6,200 ֏"],
+          ["Свиные ребрышки", "Ребрышки, BBQ соус, картофель", "4,800 ֏"],
+          ["Ризотто с курицей", "Рис, курица, грибы, сыр", "3,700 ֏"],
+          ["Паста с грибами", "Паста, грибы, сливки, пармезан", "3,300 ֏"],
+          ["Пицца Четыре сезона", "Сыр, грибы, ветчина, оливки", "3,900 ֏"],
+          ["Овощи гриль", "Сезонные овощи", "2,300 ֏"]
+        ],
+        coffee: [
+          ["Эспрессо", "Короткий и насыщенный кофе", "900 ֏"],
+          ["Американо", "Эспрессо и горячая вода", "1,000 ֏"],
+          ["Капучино", "Кофе, молоко, нежная пенка", "1,400 ֏"],
+          ["Латте", "Мягкий молочный кофе", "1,500 ֏"],
+          ["Флэт Уайт", "Крепкий кофе с молоком", "1,600 ֏"],
+          ["Мокка", "Кофе, шоколад, молоко", "1,700 ֏"],
+          ["Айс кофе", "Кофе, лед, молоко", "1,600 ֏"],
+          ["Армянский кофе", "Классическое приготовление", "800 ֏"]
+        ],
+        drinks: [
+          ["Вода", "Газированная или негазированная", "500 ֏"],
+          ["Свежий апельсиновый сок", "Свежевыжатый", "1,800 ֏"],
+          ["Яблочный сок", "Натуральный сок", "1,200 ֏"],
+          ["Ягодный лимонад", "Ягоды, лимон, мята", "1,600 ֏"],
+          ["Цитрусовый лимонад", "Лимон, апельсин, лед", "1,600 ֏"],
+          ["Смузи манго", "Манго, банан, йогурт", "2,200 ֏"],
+          ["Смузи клубника", "Клубника, банан, молоко", "2,100 ֏"],
+          ["Айс ти", "Чай, лимон, лед", "1,300 ֏"]
+        ],
+        cocktails: [
+          ["Мохито", "Ром, лайм, мята, содовая", "3,000 ֏"],
+          ["Апероль Спритц", "Апероль, просекко, содовая", "3,500 ֏"],
+          ["Маргарита", "Текила, лайм, ликер", "3,200 ֏"],
+          ["Негрони", "Джин, вермут, биттер", "3,400 ֏"],
+          ["Эспрессо Мартини", "Водка, кофе, ликер", "3,600 ֏"],
+          ["Пина Колада", "Ром, ананас, кокос", "3,500 ֏"],
+          ["Виски Сауэр", "Виски, лимон, сироп", "3,700 ֏"],
+          ["Безалкогольный Мохито", "Лайм, мята, содовая", "2,000 ֏"]
+        ],
+        desserts: [
+          ["Чизкейк", "Нежный кремовый десерт", "2,000 ֏"],
+          ["Тирамису", "Кофе, крем, какао", "2,200 ֏"],
+          ["Шоколадный торт", "Насыщенный шоколадный вкус", "2,100 ֏"],
+          ["Медовик", "Классические медовые слои", "1,900 ֏"],
+          ["Панна котта", "Кремовый десерт с ягодами", "1,800 ֏"],
+          ["Мороженое", "Ваниль, шоколад или клубника", "1,500 ֏"],
+          ["Вафли с мороженым", "Вафли, мороженое, соус", "2,400 ֏"],
+          ["Круассан с шоколадом", "Свежий круассан, шоколад", "1,600 ֏"]
+        ]
+      },
+
+      en: {
+        breakfast: [
+          ["Classic omelette", "Eggs, butter, herbs", "1,200 ֏"],
+          ["Cheese omelette", "Eggs, cheese, fresh herbs", "1,500 ֏"],
+          ["Mushroom omelette", "Eggs, mushrooms, cheese", "1,700 ֏"],
+          ["Shakshuka", "Eggs, tomato sauce, spices", "1,900 ֏"],
+          ["Avocado toast", "Avocado, egg, bread, herbs", "2,200 ֏"],
+          ["Cheese croissant", "Fresh croissant, cheese, sauce", "1,600 ֏"],
+          ["Cottage cheese pancakes", "Pancakes, cottage cheese, sour cream", "1,800 ֏"],
+          ["Yogurt with granola", "Yogurt, granola, berries", "1,700 ֏"]
+        ],
+        lunch: [
+          ["Chicken salad", "Chicken, lettuce, tomato, sauce", "2,600 ֏"],
+          ["Greek salad", "Tomato, cucumber, cheese, olives", "2,400 ֏"],
+          ["Caesar salad", "Chicken, lettuce, parmesan, croutons", "2,900 ֏"],
+          ["Mushroom cream soup", "Mushrooms, cream, spices", "2,100 ֏"],
+          ["Chicken soup", "Chicken, vegetables, noodles", "1,900 ֏"],
+          ["Pasta Alfredo", "Pasta, chicken, cream, cheese", "3,200 ֏"],
+          ["Pizza Margherita", "Mozzarella, tomato sauce, basil", "3,000 ֏"],
+          ["Cheeseburger", "Meat, cheese, vegetables, fries", "3,400 ֏"]
+        ],
+        dinner: [
+          ["Chicken steak", "Chicken fillet, vegetables, sauce", "3,600 ֏"],
+          ["Beef steak", "Beef, potatoes, sauce", "5,800 ֏"],
+          ["Grilled salmon", "Salmon, rice, vegetables", "6,200 ֏"],
+          ["Pork ribs", "Ribs, BBQ sauce, potatoes", "4,800 ֏"],
+          ["Chicken risotto", "Rice, chicken, mushrooms, cheese", "3,700 ֏"],
+          ["Mushroom pasta", "Pasta, mushrooms, cream, parmesan", "3,300 ֏"],
+          ["Four seasons pizza", "Cheese, mushrooms, ham, olives", "3,900 ֏"],
+          ["Grilled vegetables", "Seasonal vegetables", "2,300 ֏"]
+        ],
+        coffee: [
+          ["Espresso", "Short and rich coffee", "900 ֏"],
+          ["Americano", "Espresso and hot water", "1,000 ֏"],
+          ["Cappuccino", "Coffee, milk, soft foam", "1,400 ֏"],
+          ["Latte", "Smooth milky coffee", "1,500 ֏"],
+          ["Flat white", "Strong coffee with milk", "1,600 ֏"],
+          ["Mocha", "Coffee, chocolate, milk", "1,700 ֏"],
+          ["Iced coffee", "Coffee, ice, milk", "1,600 ֏"],
+          ["Armenian coffee", "Classic preparation", "800 ֏"]
+        ],
+        drinks: [
+          ["Water", "Sparkling or still", "500 ֏"],
+          ["Fresh orange juice", "Freshly squeezed", "1,800 ֏"],
+          ["Apple juice", "Natural juice", "1,200 ֏"],
+          ["Berry lemonade", "Berries, lemon, mint", "1,600 ֏"],
+          ["Citrus lemonade", "Lemon, orange, ice", "1,600 ֏"],
+          ["Mango smoothie", "Mango, banana, yogurt", "2,200 ֏"],
+          ["Strawberry smoothie", "Strawberry, banana, milk", "2,100 ֏"],
+          ["Iced tea", "Tea, lemon, ice", "1,300 ֏"]
+        ],
+        cocktails: [
+          ["Mojito", "Rum, lime, mint, soda", "3,000 ֏"],
+          ["Aperol Spritz", "Aperol, prosecco, soda", "3,500 ֏"],
+          ["Margarita", "Tequila, lime, liqueur", "3,200 ֏"],
+          ["Negroni", "Gin, vermouth, bitter", "3,400 ֏"],
+          ["Espresso Martini", "Vodka, coffee, liqueur", "3,600 ֏"],
+          ["Pina Colada", "Rum, pineapple, coconut", "3,500 ֏"],
+          ["Whiskey Sour", "Whiskey, lemon, syrup", "3,700 ֏"],
+          ["Virgin Mojito", "Lime, mint, soda", "2,000 ֏"]
+        ],
+        desserts: [
+          ["Cheesecake", "Soft creamy dessert", "2,000 ֏"],
+          ["Tiramisu", "Coffee, cream, cocoa", "2,200 ֏"],
+          ["Chocolate cake", "Rich chocolate flavor", "2,100 ֏"],
+          ["Honey cake", "Classic honey layers", "1,900 ֏"],
+          ["Panna cotta", "Cream dessert with berries", "1,800 ֏"],
+          ["Ice cream", "Vanilla, chocolate, or strawberry", "1,500 ֏"],
+          ["Waffles with ice cream", "Waffles, ice cream, sauce", "2,400 ֏"],
+          ["Chocolate croissant", "Fresh croissant, chocolate", "1,600 ֏"]
+        ]
+      }
+    };
+
+    const categoryOrder = ["breakfast", "lunch", "dinner", "coffee", "drinks", "cocktails", "desserts"];
+
+    let currentLang = "hy";
+    let currentCategory = "breakfast";
+
+    const categoriesContainer = document.getElementById("categories");
+    const menuGrid = document.getElementById("menuGrid");
+    const categoryTitle = document.getElementById("categoryTitle");
+    const categoryText = document.getElementById("categoryText");
+
+    function renderStaticText() {
+      document.querySelectorAll("[data-i18n]").forEach(element => {
+        const key = element.dataset.i18n;
+        element.textContent = translations[currentLang][key];
+      });
+
+      document.querySelectorAll("[data-i18n-html]").forEach(element => {
+        const key = element.dataset.i18nHtml;
+        element.innerHTML = translations[currentLang][key];
+      });
+    }
+
+    function renderCategories() {
+      categoriesContainer.innerHTML = "";
+
+      categoryOrder.forEach(category => {
+        const button = document.createElement("button");
+        button.className = "category-btn";
+        button.textContent = translations[currentLang].categories[category][0];
+        button.classList.toggle("active", category === currentCategory);
+
+        button.addEventListener("click", () => {
+          currentCategory = category;
+          renderCategories();
+          renderMenu();
+        });
+
+        categoriesContainer.appendChild(button);
+      });
+    }
+
+    function renderMenu() {
+      const categoryInfo = translations[currentLang].categories[currentCategory];
+      categoryTitle.textContent = categoryInfo[0];
+      categoryText.textContent = categoryInfo[1];
+
+      menuGrid.innerHTML = "";
+
+      menu[currentLang][currentCategory].forEach((item, index) => {
+        const menuItem = document.createElement("article");
+        menuItem.className = "menu-item";
+
+        menuItem.innerHTML = `
+          <img class="menu-photo" src="${photos[currentCategory][index]}" alt="${item[0]}" loading="lazy">
+          <div class="menu-info">
+            <div>
+              <h3>${item[0]}</h3>
+              <p>${item[1]}</p>
+            </div>
+            <div class="price">${item[2]}</div>
+          </div>
+        `;
+
+        menuGrid.appendChild(menuItem);
+      });
+    }
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll("[data-lang]").forEach(button => {
+        button.classList.toggle("active", button.dataset.lang === lang);
+      });
+
+      renderStaticText();
+      renderCategories();
+      renderMenu();
+    }
+
+    document.querySelectorAll("[data-lang]").forEach(button => {
+      button.addEventListener("click", () => {
+        setLanguage(button.dataset.lang);
+      });
+    });
+
+    setLanguage("hy");
+  </script>
+</body>
+</html>
+```
